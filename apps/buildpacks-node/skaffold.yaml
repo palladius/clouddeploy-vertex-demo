@@ -1,0 +1,12 @@
+apiVersion: skaffold/v4beta1
+kind: Config
+metadata:
+  name: ricc-node
+build:
+  artifacts:
+  - image: skaffold-ricc-node
+    buildpacks:
+      builder: gcr.io/buildpacks/builder:v1
+manifests:
+  rawYaml:
+  - k8s/web.yaml
