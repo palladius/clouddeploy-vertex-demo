@@ -1,0 +1,35 @@
+# Can you help me generate a sample skaffold.yaml for a sample application
+apiVersion: skaffold/v4beta28
+kind: Config
+metadata:
+  name: ricky-e-povery
+deploy:
+  kubectl:
+    manifests:
+    - kubernetes-manifests/*.yaml
+build:
+  artifacts:
+  - image: gcr.io/clouddeploy-vertexai-demovegas/ricky-e-povery
+    context: .
+    docker:
+      buildArgs:
+      - --tag=gcr.io/clouddeploy-vertexai-demovegas/ricky-e-povery
+# kind: Config
+# metadata:
+#   name: ricky-e-povery
+# deploy:
+#   kubectl:
+#     manifests:
+#     - kubernetes-manifests/*.yaml
+# build:
+#   artifacts:
+#   - image: gcr.io/clouddeploy-vertexai-demovegas/ricky-e-povery
+#     context: .
+#     docker:
+#       buildArgs:
+#       - --tag=gcr.io/clouddeploy-vertexai-demovegas/ricky-e-povery
+verify:
+  deploy:
+    kubectl:
+      manifests:
+      - kubernetes-manifests/ricky-e-povery-deployment.yaml
