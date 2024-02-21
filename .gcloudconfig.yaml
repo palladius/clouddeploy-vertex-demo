@@ -1,0 +1,32 @@
+#PROJECT_ID
+# gcloud config get project --configuration=pbt-secure-phpmyadmin
+
+# Parsed with Bard in 30sec wow!
+# bin/import_config.py
+# TODO(ricc): automagtically move to the current FOLDER as config name:
+#
+local_config:
+  auto: true
+configurations:
+  # The comment `Given a hash from YAML it creates one gcloud config per key` is describing the purpose of the
+  # `inject_all_configs` function. This function is intended to take a dictionary (hash) loaded from a YAML file and
+  # create a separate gcloud configuration for each key in the dictionary. Each key in the dictionary represents a
+  # configuration name, and the corresponding value is a set of properties for that configuration. The function is
+  # responsible for setting up these configurations based on the data provided in the YAML file.
+  # default:  # Configuration name
+  #   project: my-gcp-project
+  #   account: user@example.com
+  #   region: europe-west1
+  clouddeploy-vertex-demo:
+    project: rick-and-nardy-demo
+    compute/region: us-central1
+    account: ricc@google.com
+    # TODO(ricc): support sub trees and expand with slashes
+    #compute:
+    #  region: us-east1
+    #description: Rick and Nardy go to Vegas
+  clouddeploy-vertex-demo-terraform:
+    project: rick-and-nardy-demo
+    compute/region: us-central1
+    account: terraform-demiurgh@rick-and-nardy-demo.iam.gserviceaccount.com
+
