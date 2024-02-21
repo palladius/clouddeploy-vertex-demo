@@ -9,4 +9,3 @@ This demo aims at pleonastically demonstrate how Cloud Deploy can be utilized to
 
 * More info: go/ricc-inardini
 * Create two CD configs: 1 quick n dirty (STAG+PROD) and 1 proper (DEV for Cloud Build to pass, then STAG then button to PROD).
-
