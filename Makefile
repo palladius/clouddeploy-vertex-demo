@@ -8,3 +8,9 @@ app-dev:
 
 # app-deploy:
 # 	cd apps/buildpacks-node && skaffold run
+
+minikube-stop:
+	minikube delete -p minikube
+
+minikube-start:
+	bin/minikube-start.sh
