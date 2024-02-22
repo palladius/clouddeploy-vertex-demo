@@ -1,6 +1,7 @@
 #!/bin/bash
 #export TMPDIR=$(mktemp -d)
-export TMPDIR=/tmp/tmp.Fe9QrUEzpe/
+# #export TMPDIR=/tmp/tmp.Fe9QrUEzpe/
+# export TMPDIR=out/ # /tmp/tmp.Fe9QrUEzpe/
 
 mkdir -p "$TMPDIR"
 

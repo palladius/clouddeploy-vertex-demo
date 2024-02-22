@@ -1,7 +1,7 @@
 
 export TMPDIR=/tmp/tmp.Fe9QrUEzpe/
 
-gcloud deploy releases create release-001 \
+gcloud deploy releases create release-002 \
     --delivery-pipeline=vertex-ai-cloud-deploy-pipeline \
     --project=$PROJECT_ID \
     --region=$REGION \
