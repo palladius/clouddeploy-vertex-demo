@@ -25,6 +25,13 @@ resource "google_project_service" "storage" {
   service = "storage.googleapis.com"
 }
 
+resource "google_project_service" "aiplatform" {
+  service = "aiplatform.googleapis.com"
+}
+resource "google_project_service" "compute" {
+  service = "compute.googleapis.com"
+}
+#
 # TODO Add
 # Vertex AI API
 # Dataform API
