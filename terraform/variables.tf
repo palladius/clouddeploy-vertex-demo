@@ -8,7 +8,8 @@ variable "region" {
   type        = string
 }
 
-# variable "zone" {
-#   description = "The zone where you want to create your resources."
-#   type        = string
-# }
+variable "zone" {
+  description = "The zone where you want to create your resources."
+  type        = string
+  default     = "us-central1-a"
+}

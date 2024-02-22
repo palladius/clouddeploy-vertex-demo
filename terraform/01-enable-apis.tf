@@ -4,5 +4,21 @@ resource "google_project_service" "cloudbuild" {
 }
 
 resource "google_project_service" "deploy" {
-  service = "deploy.googleapis.com"
+  service = "clouddeploy.googleapis.com"
 }
+
+resource "google_project_service" "run" {
+  service = "run.googleapis.com"
+}
+
+resource "google_project_service" "artifactregistry" {
+  service = "artifactregistry.googleapis.com"
+}
+
+resource "google_project_service" "container" {
+  service = "container.googleapis.com"
+}
+
+# TODO Add
+# Vertex AI API
+# Dataform API
