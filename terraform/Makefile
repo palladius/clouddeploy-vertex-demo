@@ -10,5 +10,9 @@ apply:
 destroy:
 	terraform destroy
 
+refresh:
+# this is equivalent to TF refresh: https://developer.hashicorp.com/terraform/cli/commands/refresh
+	terraform apply -refresh-only -auto-approve
+
 login:
 	gcloud auth application-default login
