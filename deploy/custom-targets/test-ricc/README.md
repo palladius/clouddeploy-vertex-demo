@@ -8,3 +8,14 @@ completed steps 1. 2.
 
 
 6. ran scripts in `iac/02.sh`
+
+# Prepare your Skaffold configuration and application manifest
+
+1. done but its called "test-ricc" instead of "custom-target-quickstart"
+
+# Create your delivery pipeline, custom target type, and target
+
+In the custom-target-quickstart directory, create a new file, cloudeploy.yaml, with the following content:
+
+2. register. Filed bug -> cl/609302153
+3. confirm
