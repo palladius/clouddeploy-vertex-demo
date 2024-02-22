@@ -8,6 +8,7 @@ customActions:
     command: ['/bin/bash']
     args:
       - '-c'
+      # This goes in the rendered manifest of the Release. Eg, https://pantheon.corp.google.com/deploy/delivery-pipelines/us-central1/ricc-custom-targets-pipeline/release-inspector;releaseId=test-release-002;targetId=sample-env;phaseId=stable;mode=manifest?e=-13802955&mods=logs_tg_staging&project=rick-and-nardy-demo
       - |-
         echo "🇮🇹 Welcome to a sample 🤌 Italian manifest rendered content" > manifest.txt
         gsutil cp manifest.txt $CLOUD_DEPLOY_OUTPUT_GCS_PATH/manifest.txt
