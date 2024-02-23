@@ -5,6 +5,14 @@ variable "project_id" {
   default     = "rick-and-nardy-demo"
 }
 
+# variable "project_number" {
+#   description = "The NUMBER of your Google Cloud project (could be autoinferred by project id but Im a TF newbie)"
+#   type        = string
+#   # TODO(ricc): remove when done.
+#   # (gcloud projects describe "$PROJECT_ID"   --format="value(projectNumber)"
+#   default     = "849075740253"
+# }
+
 variable "region" {
   description = "The region where you want to create your resources."
   type        = string
