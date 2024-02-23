@@ -3,6 +3,7 @@ data "google_project" "my_project" {
       project_id = var.project_id
 }
 
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/billing_account#billing_account
 data "google_billing_account" "my_baid" {
       billing_account = data.google_project.my_project.billing_account
 #  display_name = "My Billing Account"
@@ -22,10 +23,6 @@ output "baid_name" {
 output "project_number" {
       value = local.project_number
 }
-# output "project_number" {
-#   value = data.google_project.project.number
-# }
-
 
 # terraform state list
 # terraform state show

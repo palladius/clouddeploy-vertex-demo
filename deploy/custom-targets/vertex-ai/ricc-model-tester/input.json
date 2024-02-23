@@ -1,19 +1,17 @@
 {
-  "encoding": "BAG_OF_FEATURES",
-  "modality": "numeric",
-  "index_feature_mapping": [
-      "crim",
-      "zn",
-      "indus",
-      "chas",
-      "nox",
-      "rm",
-      "age",
-      "dis",
-      "rad",
-      "tax",
-      "ptratio",
-      "b",
-      "lstat",
-  ]
-  }
+   "instances":[[
+      -71.058899,
+      42.358412,
+      28.6,
+      880.0,
+      435.0,
+      35065.0,
+      14287.0,
+      80082.0,
+      0,
+      0,
+      0,
+      0,
+      0
+   ]]
+}

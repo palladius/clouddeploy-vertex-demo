@@ -8,10 +8,10 @@ provider "google" {
 #   project = var.project_id
 # }
 
-# terraform {
-#   backend "gcs" {
-#     bucket = "rick-and-nardy-tfstate"
-#     prefix  = "terraform/state"
-#   }
-# }
+terraform {
+  backend "gcs" {
+    bucket = "rick-and-nardy-tfstate"
+    prefix  = "terraform/state"
+  }
+}
 

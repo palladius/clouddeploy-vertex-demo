@@ -14,3 +14,7 @@ minikube-stop:
 
 minikube-start:
 	bin/minikube-start.sh
+
+tf-show:
+	gsutil ls -alL gs://rick-and-nardy-tfstate/terraform/state/
+

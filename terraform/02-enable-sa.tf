@@ -1,9 +1,5 @@
-#
 # google_project_iam_member: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
 # You should use MEMBER as NON AUTHORATIVE
-
-
-
 
 # gcloud projects add-iam-policy-binding "$PROJECT_ID" \
 #     --member=serviceAccount:$PROJECT_NUMBER-compute@developer.gserviceaccount.com \

@@ -26,7 +26,10 @@ curl \
     -H "Authorization: Bearer $(gcloud auth print-access-token)" \
     -H "Content-Type: application/json" \
     https://us-central1-aiplatform.googleapis.com/v1/projects/${PROJECT_NUMBER}/locations/us-central1/endpoints/${ENDPOINT_ID}:predict \
-    -d "@${INPUT_DATA_FILE}" 2>/dev/null
+    -d "@${INPUT_DATA_FILE}" 2>/dev/null |
+        tee output.json
 
 echo
-echo "- cURL returned $?"
+echo "🕸️  cURL returned: '$?'"
+echo -en "🏡 Predicted price of the house in 💲: "
+    cat output.json | jq .predictions[0][0]
