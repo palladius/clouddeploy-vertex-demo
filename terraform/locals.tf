@@ -14,6 +14,7 @@ data "google_billing_account" "my_baid" {
 locals {
       project_number = data.google_project.my_project.number
       baid_name =  data.google_billing_account.my_baid.display_name
+#compute_service_account = "serviceAccount:${data.google_project.my_project.number}-compute@developer.gserviceaccount.com"
 }
 
 output "baid_name" {
@@ -23,19 +24,3 @@ output "baid_name" {
 output "project_number" {
       value = local.project_number
 }
-
-# terraform state list
-# terraform state show
-# terraform state show data.google_project.project
-# # data.google_project.project:
-# data "google_project" "project" {
-#     billing_account  = "..."
-#     effective_labels = {}
-#     folder_id        = "1053275019153"
-#     id               = "projects/rick-and-nardy-demo"
-#     labels           = {}
-#     name             = "Rick and Nardy - Demo"
-#     number           = "849075740253"
-#     project_id       = "rick-and-nardy-demo"
-#     terraform_labels = {}
-# }

@@ -1,7 +1,8 @@
 
 
 plan:
-	TF_VAR_project_id='rick-and-nardy-demo' terraform plan # -input=false -out=tfplan
+	TF_VAR_project_id='rick-and-nardy-demo' terraform plan
+# -input=false -out=tfplan
 
 apply:
 # -auto-approve
@@ -15,4 +16,12 @@ refresh:
 	terraform apply -refresh-only -auto-approve
 
 login:
+# this is for TF
 	gcloud auth application-default login
+# this is for you
+	gcloud auth login
+
+tf-show:
+	gsutil ls -al gs://rick-and-nardy-tfstate/terraform/state/
+#	gsutil ls -alL gs://rick-and-nardy-tfstate/terraform/state/
+

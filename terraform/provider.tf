@@ -6,12 +6,14 @@ provider "google" {
 
 # provider "google-beta" {
 #   project = var.project_id
+#   region = var.region
+
 # }
 
-terraform {
-  backend "gcs" {
-    bucket = "rick-and-nardy-tfstate"
-    prefix  = "terraform/state"
-  }
-}
+# terraform {
+#   backend "gcs" {
+#     bucket = "rick-and-nardy-tfstate"
+#     prefix  = "terraform/state"
+#   }
+# }
 
