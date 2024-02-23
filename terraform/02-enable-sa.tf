@@ -17,6 +17,7 @@ resource "google_project_iam_member" "project" {
   member  =  "serviceAccount:${local.project_number}-compute@developer.gserviceaccount.com"
   # member  =  local.compute_service_account
 }
+
 resource "google_project_iam_member" "iam_service_account_user" {
   project = var.project_id
   role    = "roles/iam.serviceAccountUser"
@@ -27,3 +28,14 @@ resource "google_project_iam_member" "iam_service_account_user" {
 # these are needed for the TF Quickstart
 # https://github.com/GoogleCloudPlatform/cloud-deploy-samples/blob/main/custom-targets/terraform/quickstart/QUICKSTART.md
 ####################################################
+resource "google_project_iam_member" "terraform_prereq2" {
+  project = var.project_id
+  role    =  "roles/storage.objectUser"
+  member  =  "serviceAccount:${local.project_number}-compute@developer.gserviceaccount.com"
+}
+resource "google_project_iam_member" "terraform_prereq3" {
+  project = var.project_id
+  role    = "roles/compute.networkAdmin"
+  member  =  "serviceAccount:${local.project_number}-compute@developer.gserviceaccount.com"
+}
+
