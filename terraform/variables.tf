@@ -1,8 +1,9 @@
+# TF_VAR_project_id=aaa
 variable "project_id" {
   description = "The ID of your Google Cloud project."
   type        = string
   # TODO(ricc): remove when done.
-  default     = "rick-and-nardy-demo"
+  #default     = "rick-and-nardy-demo"
 }
 
 # variable "project_number" {

@@ -23,5 +23,5 @@ resource "google_compute_network" "network" {
   project = var.project_id
   auto_create_subnetworks = var.auto_create_subnetworks
   # Changing MTU
-  #mtu = 1442
+  mtu = 1460
 }
