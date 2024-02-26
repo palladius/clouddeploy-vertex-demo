@@ -1,0 +1,11 @@
+{
+  "predictions": [
+    [
+      8446.51758
+    ]
+  ],
+  "deployedModelId": "3399643773595025408",
+  "model": "projects/849075740253/locations/us-central1/models/test_model",
+  "modelDisplayName": "test-model",
+  "modelVersionId": "1"
+}
