@@ -17,13 +17,17 @@ kind: Config
 manifests:
   rawYaml:
   - run.yaml
+# deploy:
+#   cloudrun: {}
 deploy:
-  cloudrun: {}
+  cloudrun:
+    region: us-central1
+    projectid: rick-and-nardy-demo
 verify:
 - name: verify-requests-are-not-5xx
   container:
     name: verify-requests
-    image: %IMAGE% # To be replaced
+    image: us-central1-docker.pkg.dev/rick-and-nardy-demo/ricc-verify-demo/ricc-verify-test@sha256:e4012ff0f0d8dd851921650f9167a974064b2fda6f89b459f36404ee0865a80e
     command: ["./verify-evaluate-cloud-metrics"]
     args:
     - --table-name=cloud_run_revision
