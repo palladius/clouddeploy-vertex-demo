@@ -1,17 +1,27 @@
 #! /bin/bash
 
+# Usage:
+# - ./model-seems-ok.sh (sensible defaults)
+# - MIN_VALUE=8000 MAX_VALUE=9000 ./model-seems-ok.sh (make your own values by setting these TWO env vars)
+#
+# this scripts calls the MODEL and checks if it works.
+
+
 # Model artifact location gs://cloud-samples-data/vertex-ai/model-deployment/models/boston/model
 ENDPOINT_ID="quickstart-prod"
-#PROJECT_ID=rick-and-nardy-demo
-PROJECT_NUMBER="849075740253"
+PROJECT_ID='rick-and-nardy-demo'
+export PROJECT_NUMBER="$(gcloud projects describe "$PROJECT_ID" --format="value(projectNumber)")"
+#PROJECT_NUMBER="849075740253"
 INPUT_DATA_FILE="${1:-input.json}"
 
+# House price comes around 8000.
 MIN_VALUE="${MIN_VALUE:-42}"
 MAX_VALUE="${MAX_VALUE:-5000}"
 
 set -euo pipefail
 
-echo "Testing model on INPUT_DATA_FILE: $INPUT_DATA_FILE"
+# Specifying the explicit project id in case this came to but me in the future.
+echo "Testing model on project '$PROJECT_ID' on INPUT_DATA_FILE: $INPUT_DATA_FILE"
 echo "Verifying the house price is between $MIN_VALUE and $MAX_VALUE"
 
 #######################################################################
@@ -48,10 +58,10 @@ echo  "🏙️ Predicted 🇺🇸 Boston 🏡 house price in 💲: '$HOUSE_PRICE
 # HOUSE_PRICE=2500.75
 
 if (( $(bc <<< "$HOUSE_PRICE >= $MIN_VALUE && $HOUSE_PRICE <= $MAX_VALUE") )); then
-    echo "[Gemini] HOUSE_PRICE=$HOUSE_PRICE is within range. Model seems good!"
+    echo "[Gemini] 👍 HOUSE_PRICE=$HOUSE_PRICE is within range. Model seems good!"
     exit 0
 else
-    echo "[Gemini] HOUSE_PRICE=$HOUSE_PRICE is outside range [$MIN_VALUE, $MAX_VALUE]"
+    echo "[Gemini] 👎 HOUSE_PRICE=$HOUSE_PRICE is outside range [$MIN_VALUE, $MAX_VALUE]"
     exit 142
 fi
 

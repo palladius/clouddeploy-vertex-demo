@@ -13,9 +13,43 @@
 # limitations under the License.
 apiVersion: skaffold/v4beta7
 kind: Config
+
+# Needed for Custom TArgets
 customActions:
 - name: add-aliases
   containers:
   - name: add-aliases
     image: us-central1-docker.pkg.dev/rick-and-nardy-demo/cd-custom-targets/vertexai@sha256:aa1934e146fe0acd9a7b11a4b6a05403acc3319a75b33e6798c329f6417a3a57
     args: ["/bin/vertex-ai-deployer", "--add-aliases-mode"]
+
+# RIcc add verify stanza
+verify:
+# - name: verify-requests-are-not-5xx
+#   container:
+#     name: verify-requests
+#     image: %IMAGE% # To be replaced
+#     command: ["./verify-evaluate-cloud-metrics"]
+#     args:
+#     - --table-name=cloud_run_revision
+#     - --metric-type=run.googleapis.com/request_count
+#     - --predicates=resource.location=='us-west2',resource.service_name=='hello-app' # filter out metrics for `hello-app` in `us-west2`
+#     - --refresh-period=1m
+#     - --sliding-window=1m
+#     - --max-error-percentage=15 # verify that less than 15% of the requests are 5xx errors
+# - name: verify-integration-test
+#   container:
+#     name: integration-test
+#     image: integration-test
+#     command: ["./test-systems.sh"]
+# - name: verify-endpoint-test
+#   container:
+#     name: alpine
+#     image: alpine
+#     command: ["/bin/sh"]
+#     args: ["-c", "wget #ENDPOINT_URL"]
+- name: verify-it-s-a-good-model-v1
+  container:
+    name: alpine
+    image: alpine
+    command: ["/bin/sh"]
+    args: ["-c", "exco Yes Riccardo its a GREAT model. TODO add the model test curl INLINE once this works."]

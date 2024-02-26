@@ -4,25 +4,21 @@
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 
-#     https:#www.apache.org/licenses/LICENSE-2.0
+#     https://www.apache.org/licenses/LICENSE-2.0
 
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-apiVersion: skaffold/v4beta7
-kind: Config
-customActions:
-- name: add-aliases
-  containers:
-  - name: add-aliases
-    image: $REGION-docker.pkg.dev/$PROJECT_ID/cd-custom-targets/$_CT_IMAGE_NAME@$IMAGE_SHA
-    args: ["/bin/vertex-ai-deployer", "--add-aliases-mode"]
 
-- name: verify-endpoint-test
-  container:
-    name: alpine
-    image: alpine
-    command: ["/bin/sh"]
-    args: ["-c", "wget #ENDPOINT_URL"]
+FROM golang:1.20 AS build
+WORKDIR /verify
+COPY go.mod go.sum main.go ./
+RUN go mod download
+RUN CGO_ENABLED=0 GOOS=linux go build -o /verify-evaluate-cloud-metrics
+
+FROM gcr.io/distroless/static-debian11:latest AS release
+WORKDIR /
+COPY --from=build /verify-evaluate-cloud-metrics /verify-evaluate-cloud-metrics
+CMD ["/verify-evaluate-cloud-metrics"]
