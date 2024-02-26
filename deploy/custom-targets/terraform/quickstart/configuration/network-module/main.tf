@@ -14,9 +14,14 @@
  * limitations under the License.
  */
 
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_network
+
 resource "google_compute_network" "network" {
-  name                    = var.network_name
+  name = var.network_name
+  #description = "[TF] " + var.description
   description = var.description
   project = var.project_id
   auto_create_subnetworks = var.auto_create_subnetworks
+  # Changing MTU
+  #mtu = 1442
 }

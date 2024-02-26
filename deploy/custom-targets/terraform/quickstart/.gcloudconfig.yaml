@@ -1,0 +1,15 @@
+local_config:
+  auto: true
+configurations:
+  # default:
+  #   project: my-default-personal-project
+  #   compute/region: us-central1
+  #   compute/zone: us-central1-b
+  #   account: your.personal.email@gmail.com
+  # Note: gcloud wont accept this config name if it starts with a number (#btdt)
+  quickstart:
+    project: rick-and-nardy-demo
+    compute/region: us-central1
+    compute/zone: us-central1-b
+    account: ricc@google.com
+
