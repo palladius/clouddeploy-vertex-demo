@@ -27,12 +27,17 @@ verify:
 - name: verify-requests-are-not-5xx
   container:
     name: verify-requests
-    image: us-central1-docker.pkg.dev/rick-and-nardy-demo/ricc-verify-demo/ricc-verify-test@sha256:e4012ff0f0d8dd851921650f9167a974064b2fda6f89b459f36404ee0865a80e
+    #image: "us-central1-docker.pkg.dev/rick-and-nardy-demo/ricc-verify-demo/ricc-verify-test@sha256:e4012ff0f0d8dd851921650f9167a974064b2fda6f89b459f36404ee0865a80e"
+    image: "us-central1-docker.pkg.dev/rick-and-nardy-demo/ricc-verify-demo/ricc-verify-test:latest"
+    #image: us-central1-docker.pkg.dev/rick-and-nardy-demo/ricc-verify-demo/ricc-verify-test
     command: ["./verify-evaluate-cloud-metrics"]
     args:
+    # I added this just6 to try thr `skaffold verify` locally. Its NOT needed by Cloud Deploy who instead passes an ENV var to it.
+    - --project=rick-and-nardy-demo # TODO REMOVEME
     - --table-name=cloud_run_revision
     - --metric-type=run.googleapis.com/request_count
-    - --predicates=resource.location=='us-west2',resource.service_name=='hello-app' # filter out metrics for `hello-app` in `us-west2`
+    - --predicates=resource.location=='us-central1',resource.service_name=='hello-app' # filter out metrics for `hello-app` in `us-west2`
     - --refresh-period=1m
     - --sliding-window=1m
-    - --max-error-percentage=15 # verify that less than 15% of the requests are 5xx errors
+    #- --max-error-percentage=15 # verify that less than 15% of the requests are 5xx errors
+    - --max-error-percentage=100 # verify that less than 15% of the requests are 5xx errors

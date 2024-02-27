@@ -45,5 +45,5 @@ serialPipeline:
           cloudRun:
             automaticTrafficControl: true
         canaryDeployment:
-          percentages: [50]
+          percentages: [42]
           verify: true
