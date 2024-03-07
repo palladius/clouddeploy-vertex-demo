@@ -1,0 +1,4 @@
+# python libs needed.
+google-cloud-aiplatform
+google-cloud-storage
+ipykernel
