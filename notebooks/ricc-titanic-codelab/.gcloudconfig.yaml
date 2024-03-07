@@ -1,0 +1,19 @@
+########################################################
+# This is a sample from auto_import_config.py v1.1
+# Code: https://github.com/palladius/sakura/blob/master/bin/auto_import_config.py
+########################################################
+# Once done you can do: gcloud config configurations activate YOUR_VAVORITE_CONFIG
+local_config:
+  auto: true
+configurations:
+  # default:
+  #   project: my-default-personal-project
+  #   compute/region: us-central1
+  #   compute/zone: us-central1-b
+  #   account: your.personal.email@gmail.com
+  # Note: gcloud wont accept this config name if it starts with a number (#btdt)
+  ricc-titanic-codelab:
+    project: ricc-demo-vegas24
+    compute/region: us-central1
+    #compute/zone: us-central1-c
+    account: ricc@cloudadvocacyorg.joonix.net
