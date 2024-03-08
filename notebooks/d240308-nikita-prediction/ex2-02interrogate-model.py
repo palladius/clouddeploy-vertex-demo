@@ -31,6 +31,8 @@ im = Image.open(IMAGE_PATH)
 
 x_test = np.asarray(im).astype(np.float32).tolist()
 
+print(f"Since it fails, let me show you the NUMPY buridone: {x_test}")
+
 prediction = endpoint.predict(instances=x_test).predictions
 
 print(f"🐈𓂀🦁 Prediction for file {IMAGE_PATH}: {prediction}")
