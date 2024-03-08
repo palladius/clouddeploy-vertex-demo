@@ -31,3 +31,19 @@ my_model = aiplatform.Model.upload(
 # Model created. Resource name: projects/849075740253/locations/us-central1/models/8596246888255062016@1
 # To use this Model in another session:
 # model = aiplatform.Model('projects/849075740253/locations/us-central1/models/8596246888255062016@1')
+
+
+exit(42)
+
+# TODO https://codelabs.developers.google.com/vertex-p2p-predictions?hl=en#4
+
+my_model = aiplatform.Model("projects/{PROJECT_NUMBER}/locations/us-central1/models/{MODEL_ID}")
+
+endpoint = my_model.deploy(
+     deployed_model_display_name='my-endpoint',
+     traffic_split={"0": 100},
+     machine_type="n1-standard-4",
+     accelerator_count=0,
+     min_replica_count=1,
+     max_replica_count=1,
+   )
