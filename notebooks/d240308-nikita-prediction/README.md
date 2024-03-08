@@ -26,3 +26,14 @@ PROJECT_ID='rick-and-nardy-demo'
 BUCKET="gs://${PROJECT_ID}-bucket"
 gsutil mb -l us-central1 $BUCKET
 ```
+
+... moved everything into .gcloudconfig.yaml
+
+now it all works after 3 tries. Lets move on to GEtting predictions!
+
+## 2 https://codelabs.developers.google.com/vertex-p2p-predictions?hl=en#0
+
+Lets update to model registry.
+
+
+

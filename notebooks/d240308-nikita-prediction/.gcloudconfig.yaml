@@ -22,6 +22,7 @@ configurations:
       BUCKET_NAME: "${PROJECT_ID}-flower-bucket"
       GS_BUCKET: "gs://${BUCKET_NAME}"
       OUTPUT_MODEL_DIRECTORY: "gs://${BUCKET_NAME}/flowers_output/"
+      OUTPUT_MODEL_DIRECTORY_V3: "gs://${BUCKET_NAME}/model_output/"
       VERTEX_TRAINING_JOB_NAME: 'flowers-try3'
       REPO_NAME: 'my-awesome-app'
       # Not implemented yet, but who knows..
