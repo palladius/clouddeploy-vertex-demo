@@ -1,3 +1,5 @@
 .echodo_history
 glinux-cmd404*
 out/
+notebooks/ricc-titanic-codelab/titanic/trainer/__pycache__/
+notebooks/ricc-titanic-codelab/titanic/trainer.egg-info/
