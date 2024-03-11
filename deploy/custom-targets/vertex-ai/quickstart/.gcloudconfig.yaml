@@ -19,6 +19,7 @@ configurations:
       REGION: ${GCP_REGION}
       # PROJECT_NUMBER = "849075740253"
       TMPDIR: out/
+      VAI_PIPELINE: vertex-ai-demo-v2
 
       ######################################################
       # Quickstart of Terraform: https://github.com/GoogleCloudPlatform/cloud-deploy-samples/blob/main/custom-targets/terraform/quickstart/QUICKSTART.md

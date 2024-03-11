@@ -20,9 +20,9 @@ customActions:
     image: $REGION-docker.pkg.dev/$PROJECT_ID/cd-custom-targets/$_CT_IMAGE_NAME@$IMAGE_SHA
     args: ["/bin/vertex-ai-deployer", "--add-aliases-mode"]
 
-  - name: verify-endpoint-test
-    container:
-      name: alpine
-      image: alpine
-      command: ["/bin/sh"]
-      args: ["-c", "wget #ENDPOINT_URL"]
+  # - name: verify-endpoint-test
+  #   container:
+  #     name: alpine
+  #     image: alpine
+  #     command: ["/bin/sh"]
+  #     args: ["-c", "wget #ENDPOINT_URL"]

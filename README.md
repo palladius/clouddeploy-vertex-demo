@@ -4,6 +4,8 @@ Self: https://github.com/palladius/clouddeploy-vertex-demo
 
 This demo aims at pleonastically demonstrate how Cloud Deploy can be utilized to deploy a Vertex AI "moving target" model. This should be showcases in Vegas in April 2024.
 
+Github repo: https://github.com/GoogleCloudPlatform/cloud-deploy-samples/tree/main/custom-targets/
+
 
 ## Ideas
 
@@ -16,6 +18,8 @@ This demo aims at pleonastically demonstrate how Cloud Deploy can be utilized to
 * Make multi-stage (multi-env) Model deployment on Vertex AI backed by the power of CD.
 * [optional] Make PROD to deploy to a new PROD project id.
 * [optional] Do the same with terraform.
+
+## Possible models to use
 
 Ivan idea:
 
