@@ -41,6 +41,9 @@ Lets update to model registry.
 
 I can run the predict script with a file in `images/` and it returns the probability:
 
+![Image of the tulip](images/bulbi-di-tulipano-fiamma-128.png)
+
+
 ```
 🐼 ./ex2-02interrogate-model.py
 🐈𓂀🦁 Prediction for file images/bulbi-di-tulipano-fiamma-128.png: [[1.01279773e-09, 1.05273939e-05, 0.00660999911, 0.0412245356, 0.952154934]]
