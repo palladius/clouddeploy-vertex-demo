@@ -1,5 +1,7 @@
 # Cloud Deploy Vertex AI Deployer Sample
-This directory contains a sample implementation of a Cloud Deploy Custom Target for deploying Vertex AI Models to an endpoint.
+
+This directory contains a sample implementation of a Cloud Deploy Custom Target for deploying Vertex AI Models to
+an endpoint.
 
 **This is not an officially supported Google product, and it is not covered by a
 Google Cloud support contract. To report bugs or request features in a Google
@@ -16,7 +18,7 @@ A quickstart that uses this sample is available [here](./quickstart/QUICKSTART.m
 The Vertex AI model deployer expects a YAML representation of a [DeployedModel](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints#DeployedModel) to be provided when a Cloud Deploy Release is created. The deployer supports substituting placeholder values in the DeployedModel YAML with values provided as [deploy parameters](https://cloud.google.com/deploy/docs/parameters)
 
 ```text
-displayName:test_model
+displayName: test_model
 dedicatedResources:
   minReplicaCount: 3
   maxReplicaCount: 9
@@ -28,7 +30,7 @@ This custom deployer sample require certain [Deploy Parameters](https://cloud.go
 
 The table below lists the supported deploy parameters, whether the parameter is required, and the recommended resource where the parameter should be defined.
 
-| Parameter                              | Required | Recommended Location | Description                                                                                                                                                                   | 
+| Parameter                              | Required | Recommended Location | Description                                                                                                                                                                   |
 |----------------------------------------|----------|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | customTarget/vertexAIModel             | Yes      | Release              | Model to deploy. Format is "projects/{project}/locations/{location}/models/{modelId}".                                                                                        |
 | customTarget/vertexAIEndpoint          | Yes      | Target               | The Vertex AI endpoint where the model will be deployed to. Format is "projects/{project}/locations/{location}/endpoints/{endpointId}"                                        |
@@ -84,7 +86,7 @@ on how this substitution works.
 ## Assigning aliases using a post-deploy hook
 
 The custom image supports adding aliases to the deployed Vertex AI models, this functionality is meant to be
-invoked through a post-deploy hook. The post-deploy runs the custom image, and provides the `--add-aliases-mode` flag to activate this 
+invoked through a post-deploy hook. The post-deploy runs the custom image, and provides the `--add-aliases-mode` flag to activate this
 functionality.
 
 Additional configuration for the Delivery Pipeline and `skaffold.yaml` provided to the release is needed to activate this feature.

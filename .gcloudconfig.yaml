@@ -17,16 +17,25 @@ configurations:
   #   project: my-gcp-project
   #   account: user@example.com
   #   region: europe-west1
+  quickstart:
+    gcloud:
+      project: rick-and-nardy-demo
+      compute/region: us-central1
+      account: ricc@google.com
+    env:
+      description: This is the demo in /deploy/custom-targets/vertex-ai/quickstart/ for CD on VAI.
   clouddeploy-vertex-demo:
-    project: rick-and-nardy-demo
-    compute/region: us-central1
-    account: ricc@google.com
-    # TODO(ricc): support sub trees and expand with slashes
-    #compute:
-    #  region: us-east1
-    #description: Rick and Nardy go to Vegas
+    gcloud:
+      project: rick-and-nardy-demo
+      compute/region: us-central1
+      account: ricc@google.com
+    env:
+      description: This is the file in /
   clouddeploy-vertex-demo-terraform:
-    project: rick-and-nardy-demo
-    compute/region: us-central1
-    account: terraform-demiurgh@rick-and-nardy-demo.iam.gserviceaccount.com
+    gcloud:
+      project: rick-and-nardy-demo
+      compute/region: us-central1
+      account: terraform-demiurgh@rick-and-nardy-demo.iam.gserviceaccount.com
+    env:
+      description: Rick and Nardy go to Vegas via Terraform
 

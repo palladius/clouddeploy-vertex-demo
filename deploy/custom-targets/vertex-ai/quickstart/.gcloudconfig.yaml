@@ -1,0 +1,43 @@
+# The symlink doesnt work well with dirname => creating a new one.
+local_config:
+  auto: true
+configurations:
+  quickstart:
+    gcloud:
+      project: rick-and-nardy-demo
+      compute/region: us-central1
+      account: ricc@google.com
+    env:
+      description: This is the demo in /deploy/custom-targets/vertex-ai/quickstart/ for CD on VAI.
+      collaborator: inardini@google.com
+      PROD_PROJECT_ID: 'rick-and-nardy-prod'
+      ENDPOINT_ID: "quickstart-prod"
+      REGION: ${GCP_REGION}
+      # PROJECT_NUMBER = "849075740253"
+
+      ######################################################
+      # Quickstart of Terraform: https://github.com/GoogleCloudPlatform/cloud-deploy-samples/blob/main/custom-targets/terraform/quickstart/QUICKSTART.md
+      DEV_BACKEND_BUCKET: ${PROJECT_ID}-${REGION}-tf-dev-backend
+      PROD_BACKEND_BUCKET: ${PROJECT_ID}-${REGION}-tf-prod-backend
+      ######################################################
+
+      ######################################################
+      # verify-evaluate-cloud-metrics
+      SKAFFOLD_DEFAULT_REPO: "us-central1-docker.pkg.dev/rick-and-nardy-demo/skaffoldume"
+      ######################################################
+
+  # clouddeploy-vertex-demo:
+  #   gcloud:
+  #     project: rick-and-nardy-demo
+  #     compute/region: us-central1
+  #     account: ricc@google.com
+  #   env:
+  #     description: This is the file in /
+  # clouddeploy-vertex-demo-terraform:
+  #   gcloud:
+  #     project: rick-and-nardy-demo
+  #     compute/region: us-central1
+  #     account: terraform-demiurgh@rick-and-nardy-demo.iam.gserviceaccount.com
+  #   env:
+  #     description: Rick and Nardy go to Vegas via Terraform
+

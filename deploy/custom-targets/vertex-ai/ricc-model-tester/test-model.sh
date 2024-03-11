@@ -1,5 +1,7 @@
 #! /bin/bash
 
+source '_env_gaic.sh'
+
 # Mdeol: test-model
 # Model artifact location gs://cloud-samples-data/vertex-ai/model-deployment/models/boston/model
 ENDPOINT_ID="quickstart-prod"
