@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo 'are you sure?'
+echo 'Are you sure? Naah I wont let you. See commented code anyhow if you REALLY want to do it.'
 #sleep 5
 
 
