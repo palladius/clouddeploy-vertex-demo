@@ -5,11 +5,13 @@ this is just to remind you that this dir gets copied in its entirety (with some 
 * FROM: deploy/custom-targets/vertex-ai/quickstart/configuration/ (TEMPLATES)
 * TO: deploy/custom-targets/vertex-ai/quickstart/out/configuration/ (HYDRATED version)
 
-This means: edit the latter at your own risk.
+Change happens when you invoke this script: `06-create-cd-stuff.sh`
 
-Let me also add
+This also means: **edit the latter at your own risk**.
 
+## CHANGELOG
 
-## VERSION HISTORY
+Let me also add a history for you :)
 
-* 11mar24: Added dev/ folder too to comply with Ivan requirements.
+* 11mar24: v1.1 Added dev/ folder too to comply with Ivan requirements.
+* 22feb24: v1.0 First copy of original from GH.
