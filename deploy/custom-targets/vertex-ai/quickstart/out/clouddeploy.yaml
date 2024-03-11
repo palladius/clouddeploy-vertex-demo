@@ -35,10 +35,10 @@ metadata:
 customTarget:
   customTargetType: vertex-ai-endpoint
 deployParameters:
-  customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/quickstart-dev
+  customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/quickstart-prod
   customTarget/vertexAIConfigurationPath: "dev/deployedModel.yaml"
   customTarget/vertexAIMinReplicaCount: "1"
-  customTarget/vertexAIAliases: "dev,testme"
+  customTarget/vertexAIAliases: "dem,testme"
 ---
 apiVersion: deploy.cloud.google.com/v1
 kind: Target

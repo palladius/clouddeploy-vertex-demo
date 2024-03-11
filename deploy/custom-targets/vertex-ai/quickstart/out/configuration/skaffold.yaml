@@ -47,9 +47,9 @@ verify:
 #     image: alpine
 #     command: ["/bin/sh"]
 #     args: ["-c", "wget #ENDPOINT_URL"]
-- name: verify-it-s-a-good-model-v1
+- name: verify-its-a-good-model-v1
   container:
     name: alpine
     image: alpine
     command: ["/bin/sh"]
-    args: ["-c", "exco Yes Riccardo its a GREAT model. TODO add the model test curl INLINE once this works."]
+    args: ["-c", "echo Yes Riccardo its a GREAT model. TODO add the model test curl INLINE once this works."]
