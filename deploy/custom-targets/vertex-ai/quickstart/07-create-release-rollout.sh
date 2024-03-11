@@ -5,6 +5,10 @@
 set -euo pipefail
 
 REL_NAME="release-008"
+
+# ERROR
+#{"errorCode":"CONFIG_FILE_PARSING_ERR","errorMessage":"error parsing skaffold configuration file: unable to parse config: yaml: unmarshal errors:\n  line 10: field container not found in type v4beta7.Action"}
+#
 # 11mar rel07: Substituting replace_vars with also dev EP..  DEV model is now 2371068237996621824 correclty https://screenshot.googleplex.com/ByaPQadtnsRLJLy
 # 11mar rel06: After creating the dev-endpoint (with wrong model_id)
 # 11mar rel05: fixed other stuff in configuration/ and pushing rel5 afterwards. out/ was broken so i moved it out. It would created out/configuration/ over and over. Maybe a mktmp is better :)
