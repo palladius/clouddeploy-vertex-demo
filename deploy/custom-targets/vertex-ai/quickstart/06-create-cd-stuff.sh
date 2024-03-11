@@ -3,6 +3,8 @@
 # #export TMPDIR=/tmp/tmp.Fe9QrUEzpe/
 # export TMPDIR=out/ # /tmp/tmp.Fe9QrUEzpe/
 
+set -euo pipefail
+
 mkdir -p "$TMPDIR"
 
 echo "1. Replacing vars in this dir: $TMPDIR"
