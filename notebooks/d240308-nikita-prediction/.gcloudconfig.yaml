@@ -18,6 +18,7 @@ configurations:
       compute/region: us-central1
       compute/zone: us-central1-b
       account: ricc@google.com
+    login: gcloud auth application-default login # TODO just ADC
     env:
       PN: "849075740253"
       BUCKET_NAME: "${PROJECT_ID}-flower-bucket"

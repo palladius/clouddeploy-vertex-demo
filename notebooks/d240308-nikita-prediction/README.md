@@ -37,3 +37,14 @@ Lets update to model registry.
 
 
 
+## and it works!
+
+I can run the predict script with a file in `images/` and it returns the probability:
+
+```
+🐼 ./ex2-02interrogate-model.py
+🐈𓂀🦁 Prediction for file images/bulbi-di-tulipano-fiamma-128.png: [[1.01279773e-09, 1.05273939e-05, 0.00660999911, 0.0412245356, 0.952154934]]
+The sphinx has spoken -> tulip (probability: 95.2154934%)
+```
+
+In this case, it says `images/bulbi-di-tulipano-fiamma-128.png` has a 95.2% prob of being a tulip. Well done!
