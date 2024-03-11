@@ -104,8 +104,7 @@ Create a Vertex AI endpoint using the following commands:
    gcloud ai endpoints create --display-name prod-endpoint --endpoint-id $ENDPOINT_ID --region $REGION --project $PROJECT_ID
    ```
 
-If this is your first time using Vertex AI in this project, this operation will
-take 5 minutes or so.
+If this is your first time using Vertex AI in this project, this operation will take 5 minutes or so.
 
 The endpoint ID will be used to refer to the endpoint, rather than the display name.
 
@@ -191,7 +190,7 @@ After the rollout completes, you can inspect the deployed models and traffic spl
 ```shell
 gcloud ai endpoints describe $ENDPOINT_ID --region $REGION --project $PROJECT_ID
 ```
-## 9. Inspect aliases in the deployed model 
+## 9. Inspect aliases in the deployed model
 
 Monitor the post-deploy operation by querying the rollout:
 

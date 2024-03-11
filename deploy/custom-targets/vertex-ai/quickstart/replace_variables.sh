@@ -2,13 +2,16 @@
 
 export _CT_IMAGE_NAME=vertexai
 
-while getopts "p:r:e:t:" arg; do
+while getopts "p:r:e:t:d:" arg; do
   case "${arg}" in
     p)
       PROJECT="${OPTARG}"
       ;;
     r)
       REGION="${OPTARG}"
+      ;;
+    d)
+      DEV_ENDPOINT="${OPTARG}"
       ;;
     e)
       ENDPOINT="${OPTARG}"
@@ -42,6 +45,7 @@ cp -r configuration "$TMPDIR"/configuration
 sed -i "s/\$PROJECT_ID/${PROJECT}/g" "$TMPDIR"/clouddeploy.yaml
 sed -i "s/\$REGION/${REGION}/g" "$TMPDIR"/clouddeploy.yaml
 sed -i "s/\$ENDPOINT_ID/${ENDPOINT}/g" "$TMPDIR"/clouddeploy.yaml
+sed -i "s/\$DEV_ENDPOINT_ID/${DEV_ENDPOINT}/g" "$TMPDIR"/clouddeploy.yaml
 
 # replace variables in configuration/skaffold.yaml with actual values
 sed -i "s/\$REGION/${REGION}/g" "$TMPDIR"/configuration/skaffold.yaml

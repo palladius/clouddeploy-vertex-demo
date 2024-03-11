@@ -35,7 +35,7 @@ metadata:
 customTarget:
   customTargetType: vertex-ai-endpoint
 deployParameters:
-  customTarget/vertexAIEndpoint: projects/$PROJECT_ID/locations/$REGION/endpoints/$ENDPOINT_ID
+  customTarget/vertexAIEndpoint: projects/$PROJECT_ID/locations/$REGION/endpoints/$DEV_ENDPOINT_ID
   customTarget/vertexAIConfigurationPath: "dev/deployedModel.yaml"
   customTarget/vertexAIMinReplicaCount: "1"
   customTarget/vertexAIAliases: "dev,testme"
