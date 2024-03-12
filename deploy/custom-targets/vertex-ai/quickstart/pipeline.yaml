@@ -1,5 +1,5 @@
 # PIPELINE DEFINITION
-# Name: california-demo-pipeline
+# Name: ricc-cal-demo-vpipeline
 # Description: A demo pipeline.
 # Inputs:
 #    model_name: str [Default: 'None']
@@ -38,7 +38,7 @@ components:
             parameters:
               display_name:
                 runtimeValue:
-                  constant: california_reg_model
+                  constant: california_reg_model_ricc
               version_aliases:
                 runtimeValue:
                   constant:
@@ -99,7 +99,7 @@ components:
             parameters:
               display_name:
                 runtimeValue:
-                  constant: california_reg_model
+                  constant: california_reg_model_ricc
               version_aliases:
                 runtimeValue:
                   constant:
@@ -625,7 +625,7 @@ deploymentSpec:
         image: python:3.10
 pipelineInfo:
   description: A demo pipeline.
-  name: california-demo-pipeline
+  name: ricc-cal-demo-vpipeline
 root:
   dag:
     outputs:

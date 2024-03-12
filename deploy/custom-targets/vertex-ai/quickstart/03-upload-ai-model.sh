@@ -2,7 +2,9 @@
 
 set -euo pipefail
 
-exho "Uploading CD_BOSTON_MODEL: $CD_BOSTON_MODEL"
+echo "Uploading CD_BOSTON_MODEL: $CD_BOSTON_MODEL"
+
+# https://screenshot.googleplex.com/5tXKcQZ7ssDHKab
 
 gcloud ai models upload \
     --artifact-uri gs://cloud-samples-data/vertex-ai/model-deployment/models/boston/model \

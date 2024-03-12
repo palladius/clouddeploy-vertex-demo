@@ -7,6 +7,8 @@ configurations:
       project: rick-and-nardy-demo
       compute/region: us-central1
       account: ricc@google.com
+      # to do this: gcloud ai models list
+      ai/region: us-central1
     env:
       description: This is the demo in /deploy/custom-targets/vertex-ai/quickstart/ for CD on VAI.
       collaborator: inardini@google.com
@@ -25,9 +27,9 @@ configurations:
       VAI_PIPELINE: vertex-ai-cloud-deploy-pipeline
       # This used to be the model to deploy.
       # This is from Ivan for the demo
-      CD_DEPLOYABLE_MODEL: california_reg_model
-      # This will not be used.
-      CD_BOSTON_MODEL: test_model
+      CD_DEPLOYABLE_MODEL: california_reg_model # Created by Ivan
+      CD_BOSTON_MODEL: test_model # created by QUICKSTART tutorial
+      # See below for MODEL_NAME
 
       ######################################################
       # Quickstart of Terraform: https://github.com/GoogleCloudPlatform/cloud-deploy-samples/blob/main/custom-targets/terraform/quickstart/QUICKSTART.md
@@ -44,7 +46,7 @@ configurations:
       ######################################################
       # Ivan ENV vars
       ######################################################
-      PIPELINE_NAME: "california-demo-pipeline" # TODO change me AFTER it works
+      PIPELINE_NAME: "ricc-cal-demo-vpipeline" # TODO change me AFTER it works
       BUCKET_URI: "gs://${PROJECT_ID}-rnn-demo24"
       # derived -> TODO
       PIPELINE_ROOT: "${BUCKET_URI}/california_pipeline"
