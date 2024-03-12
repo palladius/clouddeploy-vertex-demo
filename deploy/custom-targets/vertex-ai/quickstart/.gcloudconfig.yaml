@@ -23,6 +23,11 @@ configurations:
       # VAI_PIPELINE: vertex-ai-demo-v2 # it worked but before i switched the last release from old one worked so moving back to normal name..
       # Anyhow, good to know this also works :)
       VAI_PIPELINE: vertex-ai-cloud-deploy-pipeline
+      # This used to be the model to deploy.
+      # This is from Ivan for the demo
+      CD_DEPLOYABLE_MODEL: california_reg_model
+      # This will not be used.
+      CD_BOSTON_MODEL: test_model
 
       ######################################################
       # Quickstart of Terraform: https://github.com/GoogleCloudPlatform/cloud-deploy-samples/blob/main/custom-targets/terraform/quickstart/QUICKSTART.md

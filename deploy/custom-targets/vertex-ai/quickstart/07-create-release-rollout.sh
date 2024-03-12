@@ -31,5 +31,5 @@ gcloud deploy releases create "$REL_NAME" \
     --project=$PROJECT_ID \
     --region=$REGION \
     --source=$TMPDIR/configuration \
-    --deploy-parameters="customTarget/vertexAIModel=projects/$PROJECT_ID/locations/$REGION/models/test_model"
+    --deploy-parameters="customTarget/vertexAIModel=projects/$PROJECT_ID/locations/$REGION/models/$CD_DEPLOYABLE_MODEL"
 
