@@ -4,7 +4,7 @@
 # Do NOT edit or it might get overwritten. Please edit the .gcloudconfig.yaml (and if needed relaunch the script)!
 ################################################################################
 
-# [BASH]   source '_env_gaic.sh' 
+# [BASH]   source '_env_gaic.sh'
 # [DIRENV] layout ricc_gcloud
 export PROJECT_ID="rick-and-nardy-demo"
 export PROJECT_NUMBER="849075740253"
@@ -17,7 +17,7 @@ export ENDPOINT_ID="quickstart-prod"
 export DEV_ENDPOINT_ID="2371068237996621824"
 export REGION="us-central1"
 export TMPDIR="out/"
-export VAI_PIPELINE="vertex-ai-demo-v2"
+export VAI_PIPELINE="vertex-ai-cloud-deploy-pipeline"
 export DEV_BACKEND_BUCKET="rick-and-nardy-demo-us-central1-tf-dev-backend"
 export PROD_BACKEND_BUCKET="rick-and-nardy-demo-us-central1-tf-prod-backend"
 export SKAFFOLD_DEFAULT_REPO="us-central1-docker.pkg.dev/rick-and-nardy-demo/skaffoldume"

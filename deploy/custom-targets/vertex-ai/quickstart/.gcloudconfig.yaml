@@ -19,7 +19,9 @@ configurations:
       REGION: ${GCP_REGION}
       # PROJECT_NUMBER = "849075740253"
       TMPDIR: out/
-      VAI_PIPELINE: vertex-ai-demo-v2
+      # VAI_PIPELINE: vertex-ai-demo-v2 # it worked but before i switched the last release from old one worked so moving back to normal name..
+      # Anyhow, good to know this also works :)
+      VAI_PIPELINE: vertex-ai-cloud-deploy-pipeline
 
       ######################################################
       # Quickstart of Terraform: https://github.com/GoogleCloudPlatform/cloud-deploy-samples/blob/main/custom-targets/terraform/quickstart/QUICKSTART.md
