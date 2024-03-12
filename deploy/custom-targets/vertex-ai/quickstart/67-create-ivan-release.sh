@@ -28,7 +28,9 @@ gcloud deploy apply --file=$TMPDIR_IVAN/clouddeploy.yaml --project=$PROJECT_ID -
 
 #############################################
 # Release name
-REL_NAME_BASE="015"
+REL_NAME_BASE="017"
+# crated demo-dev e demo-prod
+# 12mar v016 after lunch. maybe it helps. Also Ivan pinned a version.
 # 12mar v015 added CD_DEPLOYABLE_MODELto gaic and piggybacked in all scripts
 # 12mar v014 direnv allow
 # 12mar v013 fixed TMPDIR_IVAN in script 7 below.
