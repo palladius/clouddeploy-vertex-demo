@@ -1,5 +1,5 @@
 # PIPELINE DEFINITION
-# Name: california-demo-pipeline-ricc
+# Name: california-demo-pipeline
 # Description: A demo pipeline.
 # Inputs:
 #    model_name: str [Default: 'None']
@@ -625,7 +625,7 @@ deploymentSpec:
         image: python:3.10
 pipelineInfo:
   description: A demo pipeline.
-  name: california-demo-pipeline-ricc
+  name: california-demo-pipeline
 root:
   dag:
     outputs:
