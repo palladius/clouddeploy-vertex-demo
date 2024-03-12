@@ -6,3 +6,4 @@ notebooks/ricc-titanic-codelab/titanic/trainer.egg-info/
 terraform/terraform.tfstate.backup
 deploy/custom-targets/vertex-ai/ricc-model-tester/_env_gaic.py
 deploy/custom-targets/vertex-ai/ricc-model-tester/_env_gaic.rb
+__pycache__/
