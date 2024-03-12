@@ -18,6 +18,10 @@ echo "+ CD_DEPLOYABLE_MODEL: $CD_DEPLOYABLE_MODEL"
 echo "+ TMPDIR_IVAN: $TMPDIR_IVAN"
 echo "+ PROD_DEMO_ENDPOINT_ID: $PROD_DEMO_ENDPOINT_ID"
 echo "+ DEV_DEMO_ENDPOINT_ID: $DEV_DEMO_ENDPOINT_ID"
+echo "+ CD_DEPLOYABLE_MODEL: $CD_DEPLOYABLE_MODEL"
+echo "+ CD_DEPLOYABLE_MODEL_ID: $CD_DEPLOYABLE_MODEL_ID"
+
+
 
 echo "1. Replacing vars in this dir: $TMPDIR_IVAN"
 
@@ -42,12 +46,14 @@ gcloud deploy apply --file=$TMPDIR_IVAN/clouddeploy.yaml --project=$PROJECT_ID -
 
 #############################################
 # Release name
-REL_NAME_BASE="020"
-# v20 new naming. stil nada.
-# v19 I have a feeling i never sent the 17 but sent the 16 twice. So there you go, trying again 19 with IDS.
-# v18 using name instead
-# v17 ->
-# 12mar v016 created demo-dev e demo-prod and using those. if it doesnt work using the other names.
+REL_NAME_BASE="021"
+# 12mar v021 i think i found the issue, i need to use the ID (number), not the string (in fact there are TWO `california_reg_model`). See script 09.
+#            The problem was ismply i had to use CD_DEPLOYABLE_MODEL_ID instead of CD_DEPLOYABLE_MODEL since Ivan gave me ugly name (big number buridone)
+# 12mar v020 new naming. stil nada.
+# 12mar v019 I have a feeling i never sent the 17 but sent the 16 twice. So there you go, trying again 19 with IDS.
+# 12mar v018 using name instead
+# 12mar v017 -> with ids.
+# 12mar v016 created `demo-dev` e `demo-prod` and using those. if it doesnt work using the other names.
 # 12mar v016 after lunch. maybe it helps. Also Ivan pinned a version.
 # 12mar v015 added CD_DEPLOYABLE_MODELto gaic and piggybacked in all scripts
 # 12mar v014 direnv allow
@@ -64,7 +70,7 @@ gcloud deploy releases create "$REL_NAME" \
     --project=$PROJECT_ID \
     --region=$REGION \
     --source=$TMPDIR_IVAN/configuration \
-    --deploy-parameters="customTarget/vertexAIModel=projects/$PROJECT_ID/locations/$REGION/models/$CD_DEPLOYABLE_MODEL"
+    --deploy-parameters="customTarget/vertexAIModel=projects/$PROJECT_ID/locations/$REGION/models/$CD_DEPLOYABLE_MODEL_ID"
 
 echo "😍 All good."
 echo "🚀 Deployed release '$REL_NAME'.. to model '$CD_DEPLOYABLE_MODEL'.."
