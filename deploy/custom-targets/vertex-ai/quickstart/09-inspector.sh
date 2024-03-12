@@ -12,3 +12,13 @@ CD_DEPLOYABLE_MODEL_ID="3485927948584747008"
 gcloud ai models describe "$CD_DEPLOYABLE_MODEL_ID" --region $REGION --project $PROJECT_ID --format "(versionAliases)"
 #echodo gcloud ai models describe "california_reg_model" --region $REGION --project $PROJECT_ID --format "(versionAliases)"
 #gcloud ai models describe "$CD_DEPLOYABLE_MODEL" --region $REGION --project $PROJECT_ID --format "(versionAliases)"
+
+echo '😎 3. Lets now the ENDPOINTS:'
+#gcloud ai endpoints describe demo24-prod
+for DEMO_ENV in demo24-dev demo24-prod ; do
+    echo "== $DEMO_ENV =="
+    gcloud ai endpoints describe $DEMO_ENV | tee t.endpoint.$DEMO_ENV.yaml | yq .deployedModels[0]
+#end
+done
+
+#cat t.endpoint.demo24-prod.yaml | yq .deployedModels[0]

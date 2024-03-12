@@ -44,3 +44,4 @@ deployParameters:
   customTarget/vertexAIConfigurationPath: "prod/deployedModel.yaml"
   customTarget/vertexAIMinReplicaCount: "3"
   customTarget/vertexAIAliases: "prod,champion"
+  # Note: the customTarget/vertexAIModel is passed via CLI instead..
