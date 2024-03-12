@@ -30,25 +30,16 @@ configurations:
       ######################################################
       # verify-evaluate-cloud-metrics
       SKAFFOLD_DEFAULT_REPO: "us-central1-docker.pkg.dev/rick-and-nardy-demo/skaffoldume"
+      # allow_public_ssh_keys: ??
       ######################################################
 
-      ### allow_public_ssh_keys:
+      ######################################################
       # Ivan ENV vars
-      PIPELINE_NAME: "california-demo-pipeline-ricc"
+      ######################################################
+      PIPELINE_NAME: "california-demo-pipeline"
       BUCKET_URI: "gs://${PROJECT_ID}-rnn-demo"
-
-  # clouddeploy-vertex-demo:
-  #   gcloud:
-  #     project: rick-and-nardy-demo
-  #     compute/region: us-central1
-  #     account: ricc@google.com
-  #   env:
-  #     description: This is the file in /
-  # clouddeploy-vertex-demo-terraform:
-  #   gcloud:
-  #     project: rick-and-nardy-demo
-  #     compute/region: us-central1
-  #     account: terraform-demiurgh@rick-and-nardy-demo.iam.gserviceaccount.com
-  #   env:
-  #     description: Rick and Nardy go to Vegas via Terraform
-
+      # derived -? TODO
+      # PIPELINE_ROOT = f"{BUCKET_URI}/california_pipeline"
+      # MODEL_PATH = f"{PIPELINE_ROOT}/model"
+      # MODEL_NAME = "california_reg_model"
+      ######################################################
