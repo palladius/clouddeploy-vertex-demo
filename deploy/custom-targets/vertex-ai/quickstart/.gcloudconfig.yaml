@@ -36,10 +36,10 @@ configurations:
       ######################################################
       # Ivan ENV vars
       ######################################################
-      PIPELINE_NAME: "california-demo-pipeline"
+      PIPELINE_NAME: "california-demo-pipeline" # TODO change me AFTER it works
       BUCKET_URI: "gs://${PROJECT_ID}-rnn-demo"
       # derived -? TODO
-      # PIPELINE_ROOT = f"{BUCKET_URI}/california_pipeline"
-      # MODEL_PATH = f"{PIPELINE_ROOT}/model"
-      # MODEL_NAME = "california_reg_model"
+      PIPELINE_ROOT: "${BUCKET_URI}/california_pipeline"
+      MODEL_PATH: "${PIPELINE_ROOT}/model"
+      MODEL_NAME: "california_reg_model_ricc" # changed from Ivan
       ######################################################
