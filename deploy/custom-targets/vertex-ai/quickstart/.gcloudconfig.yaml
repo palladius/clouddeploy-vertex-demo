@@ -10,6 +10,7 @@ configurations:
     env:
       description: This is the demo in /deploy/custom-targets/vertex-ai/quickstart/ for CD on VAI.
       collaborator: inardini@google.com
+      PROJECT_NUMBER2: "849075740253" # manually set
       PROD_PROJECT_ID: 'rick-and-nardy-prod'
       ENDPOINT_ID: "quickstart-prod"
       #DEV_ENDPOINT_ID: "quickstart-dev" # todo Ivan
