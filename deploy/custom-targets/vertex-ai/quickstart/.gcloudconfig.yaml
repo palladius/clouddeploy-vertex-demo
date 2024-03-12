@@ -30,6 +30,8 @@ configurations:
       CD_DEPLOYABLE_MODEL: california_reg_model # Created by Ivan
       CD_BOSTON_MODEL: test_model # created by QUICKSTART tutorial
       # See below for MODEL_NAME
+      PROD_DEMO_ENDPOINT_ID: "demo24-prod"
+      DEV_DEMO_ENDPOINT_ID: "demo24-dev"
 
       ######################################################
       # Quickstart of Terraform: https://github.com/GoogleCloudPlatform/cloud-deploy-samples/blob/main/custom-targets/terraform/quickstart/QUICKSTART.md

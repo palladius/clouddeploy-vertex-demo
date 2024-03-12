@@ -15,9 +15,23 @@ mkdir -p "${TMPDIR_IVAN}"
 
 echo "0. Vars:"
 echo "+ CD_DEPLOYABLE_MODEL: $CD_DEPLOYABLE_MODEL"
+echo "+ TMPDIR_IVAN: $TMPDIR_IVAN"
+echo "+ PROD_DEMO_ENDPOINT_ID: $PROD_DEMO_ENDPOINT_ID"
+echo "+ DEV_DEMO_ENDPOINT_ID: $DEV_DEMO_ENDPOINT_ID"
 
 echo "1. Replacing vars in this dir: $TMPDIR_IVAN"
-./replace_variables.sh -p $PROJECT_ID -r $REGION -e $ENDPOINT_ID -t $TMPDIR_IVAN -d $DEV_ENDPOINT_ID
+
+# Normal test version
+#./replace_variables.sh -p $PROJECT_ID -r $REGION -e $ENDPOINT_ID -t $TMPDIR_IVAN -d $DEV_ENDPOINT_ID
+# Demo version
+#PROD_DEMO_ENDPOINT_ID="demo-prod"
+#DEV_DEMO_ENDPOINT_ID="demo-dev"
+# demo-dev     dev-endpoint
+#demo-prod    prod-endpoint
+#PROD_DEMO_ENDPOINT_NAME="prod-endpoint"
+#DEV_DEMO_ENDPOINT_NAME="dev-endpoint"
+#./replace_variables.sh -p $PROJECT_ID -r $REGION -e $PROD_DEMO_ENDPOINT_NAME -t $TMPDIR_IVAN -d $DEV_DEMO_ENDPOINT_NAME
+./replace_variables.sh -p $PROJECT_ID -r $REGION -e $PROD_DEMO_ENDPOINT_ID -t $TMPDIR_IVAN -d $DEV_DEMO_ENDPOINT_ID
 
 echo 2. Lets now apply CD config..
 gcloud deploy apply --file=$TMPDIR_IVAN/clouddeploy.yaml --project=$PROJECT_ID --region=$REGION
@@ -28,8 +42,12 @@ gcloud deploy apply --file=$TMPDIR_IVAN/clouddeploy.yaml --project=$PROJECT_ID -
 
 #############################################
 # Release name
-REL_NAME_BASE="017"
-# crated demo-dev e demo-prod
+REL_NAME_BASE="020"
+# v20 new naming. stil nada.
+# v19 I have a feeling i never sent the 17 but sent the 16 twice. So there you go, trying again 19 with IDS.
+# v18 using name instead
+# v17 ->
+# 12mar v016 created demo-dev e demo-prod and using those. if it doesnt work using the other names.
 # 12mar v016 after lunch. maybe it helps. Also Ivan pinned a version.
 # 12mar v015 added CD_DEPLOYABLE_MODELto gaic and piggybacked in all scripts
 # 12mar v014 direnv allow
@@ -49,3 +67,4 @@ gcloud deploy releases create "$REL_NAME" \
     --deploy-parameters="customTarget/vertexAIModel=projects/$PROJECT_ID/locations/$REGION/models/$CD_DEPLOYABLE_MODEL"
 
 echo "😍 All good."
+echo "🚀 Deployed release '$REL_NAME'.. to model '$CD_DEPLOYABLE_MODEL'.."
