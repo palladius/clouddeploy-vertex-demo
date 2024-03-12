@@ -32,6 +32,11 @@ configurations:
       SKAFFOLD_DEFAULT_REPO: "us-central1-docker.pkg.dev/rick-and-nardy-demo/skaffoldume"
       ######################################################
 
+      ### allow_public_ssh_keys:
+      # Ivan ENV vars
+      PIPELINE_NAME: "california-demo-pipeline-ricc"
+      BUCKET_URI: "gs://${PROJECT_ID}-rnn-demo"
+
   # clouddeploy-vertex-demo:
   #   gcloud:
   #     project: rick-and-nardy-demo
