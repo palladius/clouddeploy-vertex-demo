@@ -74,15 +74,15 @@ metadata:
   name: vertex-triptych/promote # -dev2preprod
 description: promotes a release
 suspended: false
-#serviceAccount: 105792947502-compute@developer.gserviceaccount.com
+serviceAccount: 849075740253-compute@developer.gserviceaccount.com # correct ricc SA for ricc-and-nardy
 selector:
 - target:
-  id: vertex-dev
+    id: vertex-dev
 rules:
 - promoteRelease:
     name: "promote-release"
     #wait: 3s
     wait: 1m
     #toTargetId: "@next"
-    toTargetId:  vertex-preprod
+    toTargetId: vertex-preprod
 
