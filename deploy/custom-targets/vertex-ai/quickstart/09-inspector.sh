@@ -9,10 +9,14 @@ set -euo pipefail
 
 echo '😎 Lets now see if aliases are assigned:'
 CD_DEPLOYABLE_MODEL_ID="3485927948584747008"
-echodo gcloud ai models describe "$CD_DEPLOYABLE_MODEL_ID" --region $REGION --project $PROJECT_ID --format "(versionAliases)"
-echodo gcloud ai models describe "$CD_DEPLOYABLE_MODEL_ID@1" --region $REGION --project $PROJECT_ID --format "(versionAliases)"
-echodo gcloud ai models describe "$CD_DEPLOYABLE_MODEL_ID@2" --region $REGION --project $PROJECT_ID --format "(versionAliases)"
-echodo gcloud ai models describe "$CD_DEPLOYABLE_MODEL_ID@3" --region $REGION --project $PROJECT_ID --format "(versionAliases)"
+#echodo gcloud ai models describe "$CD_DEPLOYABLE_MODEL_ID" --region $REGION --project $PROJECT_ID --format "(versionAliases)"
+for MODEL_VERSION in 1 2 3 v1 v2 ; do
+    #echodo
+    echo "== Model version $MODEL_VERSION =="
+    gcloud ai models describe "$CD_DEPLOYABLE_MODEL_ID@$MODEL_VERSION" --region $REGION --project $PROJECT_ID --format "(versionAliases)" | yq .versionAliases
+done
+#echodo gcloud ai models describe "$CD_DEPLOYABLE_MODEL_ID@2" --region $REGION --project $PROJECT_ID --format "(versionAliases)"
+#echodo gcloud ai models describe "$CD_DEPLOYABLE_MODEL_ID@3" --region $REGION --project $PROJECT_ID --format "(versionAliases)"
 #echodo gcloud ai models describe "california_reg_model" --region $REGION --project $PROJECT_ID --format "(versionAliases)"
 #gcloud ai models describe "$CD_DEPLOYABLE_MODEL" --region $REGION --project $PROJECT_ID --format "(versionAliases)"
 
