@@ -11,17 +11,17 @@ metadata:
   name: vertex-triptych
 serialPipeline:
   stages:
-  - targetId: dev-endpoint
+  - targetId: vertex-dev
     strategy:
       standard:
         postdeploy:
           actions: ["add-aliases"] # TODO change me
-  - targetId: preprod-endpoint
+  - targetId: vertex-preprod
     strategy:
       standard:
         postdeploy:
           actions: ["add-aliases"] # TODO change me
-  - targetId: prod-endpoint
+  - targetId: vertex-prod
     strategy:
       standard:
         postdeploy:
@@ -30,11 +30,11 @@ serialPipeline:
 apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
-  name: dev-endpoint
+  name: vertex-dev
 customTarget:
-  customTargetType: vertex-ai-endpoint
+  customTargetType: vertex-vertex-ai
 deployParameters:
-  customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/demo24-dev
+  customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/2371068237996621824
   customTarget/vertexAIConfigurationPath: "dev/deployedModel.yaml"
   customTarget/vertexAIMinReplicaCount: "1"
   customTarget/vertexAIAliases: "demo24-dev,testme,stage1"
@@ -42,11 +42,11 @@ deployParameters:
 apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
-  name: preprod-endpoint
+  name: vertex-preprod
 customTarget:
-  customTargetType: vertex-ai-endpoint
+  customTargetType: vertex-vertex-ai
 deployParameters:
-  customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/demo24-prod
+  customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/quickstart-prod
   customTarget/vertexAIConfigurationPath: "preprod/deployedModel.yaml"
   customTarget/vertexAIMinReplicaCount: "3"
   customTarget/vertexAIAliases: "demo24-preprod,nearlythere,stage2"
@@ -55,12 +55,34 @@ deployParameters:
 apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
-  name: prod-endpoint
+  name: vertex-prod
 customTarget:
-  customTargetType: vertex-ai-endpoint
+  customTargetType: vertex-vertex-ai
 deployParameters:
-  customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/demo24-prod
+  customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/quickstart-prod
   customTarget/vertexAIConfigurationPath: "prod/deployedModel.yaml"
   customTarget/vertexAIMinReplicaCount: "3"
   customTarget/vertexAIAliases: "demo24-prod,champion,stage3"
   # Note: the customTarget/vertexAIModel is passed via CLI instead..
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Automation
+metadata:
+# ERROR: (gcloud.deploy.apply) Automation name thx-nate-promote in the configuration should be in the formatof pipeline_id/automation_id.
+#  name: pop-stats-multitarget/promote
+# pipeline_id/automation_id.
+  name: vertex-triptych/promote # -dev2preprod
+description: promotes a release
+suspended: false
+#serviceAccount: 105792947502-compute@developer.gserviceaccount.com
+selector:
+- target:
+  id: vertex-dev
+rules:
+- promoteRelease:
+    name: "promote-release"
+    #wait: 3s
+    wait: 1m
+    #toTargetId: "@next"
+    toTargetId:  vertex-preprod
+

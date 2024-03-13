@@ -19,7 +19,13 @@ customActions:
   - name: add-aliases
     image: us-central1-docker.pkg.dev/rick-and-nardy-demo/cd-custom-targets/vertexai@sha256:aa1934e146fe0acd9a7b11a4b6a05403acc3319a75b33e6798c329f6417a3a57
     args: ["/bin/vertex-ai-deployer", "--add-aliases-mode"]
-
+verify:
+- name: this-should-always-works
+  container:
+    name: alpine
+    image: alpine
+    command: ["/bin/sh"]
+    args: ["-c", "echo IT WORKS"
   # - name: verify-endpoint-test
   #   container:
   #     name: alpine
