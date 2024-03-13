@@ -46,7 +46,10 @@ gcloud deploy apply --file=$TMPDIR_IVAN/clouddeploy.yaml --project=$PROJECT_ID -
 
 #############################################
 # Release name
-REL_NAME_BASE="021"
+REL_NAME_BASE="022"
+# 12mar v022 Now just testing some changes in the parasms, here i moved these 2:
+#               customTarget/vertexAIMinReplicaCount: "2" (from 1)
+#               customTarget/vertexAIAliases: "demo24-dev,testme" (from dev,testme)
 # 12mar v021 i think i found the issue, i need to use the ID (number), not the string (in fact there are TWO `california_reg_model`). See script 09.
 #            The problem was ismply i had to use CD_DEPLOYABLE_MODEL_ID instead of CD_DEPLOYABLE_MODEL since Ivan gave me ugly name (big number buridone)
 # 12mar v020 new naming. stil nada.

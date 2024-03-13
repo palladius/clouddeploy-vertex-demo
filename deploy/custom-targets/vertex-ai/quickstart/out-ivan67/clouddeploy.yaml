@@ -30,8 +30,8 @@ customTarget:
 deployParameters:
   customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/demo24-dev
   customTarget/vertexAIConfigurationPath: "dev/deployedModel.yaml"
-  customTarget/vertexAIMinReplicaCount: "1"
-  customTarget/vertexAIAliases: "dev,testme"
+  customTarget/vertexAIMinReplicaCount: "2"
+  customTarget/vertexAIAliases: "demo24-dev,testme"
 ---
 apiVersion: deploy.cloud.google.com/v1
 kind: Target
@@ -43,4 +43,5 @@ deployParameters:
   customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/demo24-prod
   customTarget/vertexAIConfigurationPath: "prod/deployedModel.yaml"
   customTarget/vertexAIMinReplicaCount: "3"
-  customTarget/vertexAIAliases: "prod,champion"
+  customTarget/vertexAIAliases: "demo24-prod,champion"
+  # Note: the customTarget/vertexAIModel is passed via CLI instead..
