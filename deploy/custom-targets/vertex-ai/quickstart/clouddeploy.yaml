@@ -32,7 +32,7 @@ kind: Target
 metadata:
   name: vertex-dev
 customTarget:
-  customTargetType: vertex-vertex-ai
+  customTargetType: vertex-ai-endpoint
 deployParameters:
   customTarget/vertexAIEndpoint: projects/$PROJECT_ID/locations/$REGION/endpoints/$DEV_ENDPOINT_ID
   customTarget/vertexAIConfigurationPath: "dev/deployedModel.yaml"
@@ -44,7 +44,7 @@ kind: Target
 metadata:
   name: vertex-preprod
 customTarget:
-  customTargetType: vertex-vertex-ai
+  customTargetType: vertex-ai-endpoint
 deployParameters:
   customTarget/vertexAIEndpoint: projects/$PROJECT_ID/locations/$REGION/endpoints/$ENDPOINT_ID
   customTarget/vertexAIConfigurationPath: "preprod/deployedModel.yaml"
@@ -57,7 +57,7 @@ kind: Target
 metadata:
   name: vertex-prod
 customTarget:
-  customTargetType: vertex-vertex-ai
+  customTargetType: vertex-ai-endpoint
 deployParameters:
   customTarget/vertexAIEndpoint: projects/$PROJECT_ID/locations/$REGION/endpoints/$ENDPOINT_ID
   customTarget/vertexAIConfigurationPath: "prod/deployedModel.yaml"

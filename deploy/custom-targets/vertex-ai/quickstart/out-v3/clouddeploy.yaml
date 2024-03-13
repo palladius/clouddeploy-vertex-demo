@@ -32,7 +32,7 @@ kind: Target
 metadata:
   name: vertex-dev
 customTarget:
-  customTargetType: vertex-vertex-ai
+  customTargetType: vertex-ai-endpoint
 deployParameters:
   customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/2371068237996621824
   customTarget/vertexAIConfigurationPath: "dev/deployedModel.yaml"
@@ -44,7 +44,7 @@ kind: Target
 metadata:
   name: vertex-preprod
 customTarget:
-  customTargetType: vertex-vertex-ai
+  customTargetType: vertex-ai-endpoint
 deployParameters:
   customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/quickstart-prod
   customTarget/vertexAIConfigurationPath: "preprod/deployedModel.yaml"
@@ -57,7 +57,7 @@ kind: Target
 metadata:
   name: vertex-prod
 customTarget:
-  customTargetType: vertex-vertex-ai
+  customTargetType: vertex-ai-endpoint
 deployParameters:
   customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/quickstart-prod
   customTarget/vertexAIConfigurationPath: "prod/deployedModel.yaml"
