@@ -75,6 +75,16 @@ metadata:
 description: promotes a release
 suspended: false
 serviceAccount: 849075740253-compute@developer.gserviceaccount.com # correct ricc SA for ricc-and-nardy
+# Gave it:
+# Cloud Build Editor
+# Cloud Deploy Approver
+# Cloud Deploy Runner
+# Cloud Deploy Viewer
+# Cloud Run Admin
+# Compute Network Admin
+# Service Account User
+# Storage Object User
+# Vertex AI user
 selector:
 - target:
     id: vertex-dev
