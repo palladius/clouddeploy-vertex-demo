@@ -46,7 +46,8 @@ gcloud deploy apply --file=$TMPDIR_IVAN/clouddeploy.yaml --project=$PROJECT_ID -
 
 #############################################
 # Release name
-REL_NAME_BASE="022"
+REL_NAME_BASE="023"
+# 13mar v023 Reversed 22 changes
 # 12mar v022 Now just testing some changes in the parasms, here i moved these 2:
 #               customTarget/vertexAIMinReplicaCount: "2" (from 1)
 #               customTarget/vertexAIAliases: "demo24-dev,testme" (from dev,testme)

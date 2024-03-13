@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-echo '😎 Now Inspecting aliases in the deployed model:'
+#echo '😎 Now Inspecting aliases in the deployed model:'
 #gcloud ai endpoints describe $ENDPOINT_ID --region $REGION --project $PROJECT_ID
 # gcloud ai endpoints describe $DEV_DEMO_ENDPOINT_ID --region $REGION --project $PROJECT_ID
 # gcloud ai endpoints describe $PROD_DEMO_ENDPOINT_ID --region $REGION --project $PROJECT_ID
