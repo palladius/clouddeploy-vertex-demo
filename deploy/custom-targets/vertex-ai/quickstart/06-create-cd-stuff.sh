@@ -5,6 +5,11 @@
 
 set -euo pipefail
 
+echo "===================================="
+echo "TMPDIR: $TMPDIR"
+echo "VAI_PIPELINE: $VAI_PIPELINE"
+echo "===================================="
+
 mkdir -p "$TMPDIR"
 
 echo "1. Replacing vars in this dir: $TMPDIR"

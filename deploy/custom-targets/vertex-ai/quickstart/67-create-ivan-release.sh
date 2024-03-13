@@ -9,13 +9,12 @@ set -euo pipefail
 #############################################
 
 #TMPDIR = "out/"
-export TMPDIR_IVAN="out-ivan67/"
-
-mkdir -p "${TMPDIR_IVAN}"
+#export TMPDIR="out-ivan67/"
+mkdir -p "${TMPDIR}"
 
 echo "0. Vars:"
 echo "+ CD_DEPLOYABLE_MODEL: $CD_DEPLOYABLE_MODEL"
-echo "+ TMPDIR_IVAN: $TMPDIR_IVAN"
+echo "+ TMPDIR: $TMPDIR"
 echo "+ PROD_DEMO_ENDPOINT_ID: $PROD_DEMO_ENDPOINT_ID"
 echo "+ DEV_DEMO_ENDPOINT_ID: $DEV_DEMO_ENDPOINT_ID"
 echo "+ CD_DEPLOYABLE_MODEL: $CD_DEPLOYABLE_MODEL"
@@ -23,10 +22,10 @@ echo "+ CD_DEPLOYABLE_MODEL_ID: $CD_DEPLOYABLE_MODEL_ID"
 
 
 
-echo "1. Replacing vars in this dir: $TMPDIR_IVAN"
+echo "1. Replacing vars in this dir: $TMPDIR"
 
 # Normal test version
-#./replace_variables.sh -p $PROJECT_ID -r $REGION -e $ENDPOINT_ID -t $TMPDIR_IVAN -d $DEV_ENDPOINT_ID
+#./replace_variables.sh -p $PROJECT_ID -r $REGION -e $ENDPOINT_ID -t $TMPDIR -d $DEV_ENDPOINT_ID
 # Demo version
 #PROD_DEMO_ENDPOINT_ID="demo-prod"
 #DEV_DEMO_ENDPOINT_ID="demo-dev"
@@ -34,11 +33,11 @@ echo "1. Replacing vars in this dir: $TMPDIR_IVAN"
 #demo-prod    prod-endpoint
 #PROD_DEMO_ENDPOINT_NAME="prod-endpoint"
 #DEV_DEMO_ENDPOINT_NAME="dev-endpoint"
-#./replace_variables.sh -p $PROJECT_ID -r $REGION -e $PROD_DEMO_ENDPOINT_NAME -t $TMPDIR_IVAN -d $DEV_DEMO_ENDPOINT_NAME
-./replace_variables.sh -p $PROJECT_ID -r $REGION -e $PROD_DEMO_ENDPOINT_ID -t $TMPDIR_IVAN -d $DEV_DEMO_ENDPOINT_ID
+#./replace_variables.sh -p $PROJECT_ID -r $REGION -e $PROD_DEMO_ENDPOINT_NAME -t $TMPDIR -d $DEV_DEMO_ENDPOINT_NAME
+./replace_variables.sh -p $PROJECT_ID -r $REGION -e $PROD_DEMO_ENDPOINT_ID -t $TMPDIR -d $DEV_DEMO_ENDPOINT_ID
 
 echo 2. Lets now apply CD config..
-gcloud deploy apply --file=$TMPDIR_IVAN/clouddeploy.yaml --project=$PROJECT_ID --region=$REGION
+gcloud deploy apply --file=$TMPDIR/clouddeploy.yaml --project=$PROJECT_ID --region=$REGION
 
 #############################################
 # Script 07 - adapted
@@ -46,7 +45,8 @@ gcloud deploy apply --file=$TMPDIR_IVAN/clouddeploy.yaml --project=$PROJECT_ID -
 
 #############################################
 # Release name
-REL_NAME_BASE="023"
+REL_NAME_BASE="300"
+# 13mar v300 Same as abover, but first in the new CD Pipeline (rtyuptic) with 3 targets hence 300.
 # 13mar v023 Reversed 22 changes
 # 12mar v022 Now just testing some changes in the parasms, here i moved these 2:
 #               customTarget/vertexAIMinReplicaCount: "2" (from 1)
@@ -61,7 +61,7 @@ REL_NAME_BASE="023"
 # 12mar v016 after lunch. maybe it helps. Also Ivan pinned a version.
 # 12mar v015 added CD_DEPLOYABLE_MODELto gaic and piggybacked in all scripts
 # 12mar v014 direnv allow
-# 12mar v013 fixed TMPDIR_IVAN in script 7 below.
+# 12mar v013 fixed TMPDIR in script 7 below.
 # 12mar v012 First test using Ivan Pipeline (PIPELINE_NAME)
 # Starting from 12 since 11
 
@@ -73,7 +73,7 @@ gcloud deploy releases create "$REL_NAME" \
     --delivery-pipeline=$VAI_PIPELINE \
     --project=$PROJECT_ID \
     --region=$REGION \
-    --source=$TMPDIR_IVAN/configuration \
+    --source=$TMPDIR/configuration \
     --deploy-parameters="customTarget/vertexAIModel=projects/$PROJECT_ID/locations/$REGION/models/$CD_DEPLOYABLE_MODEL_ID"
 
 echo "😍 All good."
