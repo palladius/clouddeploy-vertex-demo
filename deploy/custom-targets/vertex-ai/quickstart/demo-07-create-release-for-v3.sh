@@ -52,17 +52,17 @@ echo "========================================================================"
 echo "🚀 Deploying release '$REL_NAME'.."
 # vertex-ai-cloud-deploy-pipeline
 #echodo
-# gcloud deploy releases create "$REL_NAME" \
-#     --delivery-pipeline=$VAI_PIPELINE \
-#     --project=$PROJECT_ID \
-#     --region=$REGION \
-#     --source=$TMPDIR/configuration \
-#     --deploy-parameters="customTarget/vertexAIModel=projects/$PROJECT_ID/locations/$REGION/models/$CD_DEPLOYABLE_MODEL_ID@$MODEL_VERSION"
-
-gcloud deploy releases create "$REL_NAME-ohne" \
+gcloud deploy releases create "$REL_NAME" \
     --delivery-pipeline=$VAI_PIPELINE \
     --project=$PROJECT_ID \
     --region=$REGION \
     --source=$TMPDIR/configuration \
-    --deploy-parameters="customTarget/vertexAIModel=projects/$PROJECT_ID/locations/$REGION/models/$CD_DEPLOYABLE_MODEL_ID"
+    --deploy-parameters="customTarget/vertexAIModel=projects/$PROJECT_ID/locations/$REGION/models/$CD_DEPLOYABLE_MODEL_ID@$MODEL_VERSION"
+
+# gcloud deploy releases create "$REL_NAME-ohne" \
+#     --delivery-pipeline=$VAI_PIPELINE \
+#     --project=$PROJECT_ID \
+#     --region=$REGION \
+#     --source=$TMPDIR/configuration \
+#     --deploy-parameters="customTarget/vertexAIModel=projects/$PROJECT_ID/locations/$REGION/models/$CD_DEPLOYABLE_MODEL_ID"
 

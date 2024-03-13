@@ -34,7 +34,7 @@ metadata:
 customTarget:
   customTargetType: vertex-ai-endpoint
 deployParameters:
-  customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/2371068237996621824
+  customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/demo24-dev
   customTarget/vertexAIConfigurationPath: "dev/deployedModel.yaml"
   customTarget/vertexAIMinReplicaCount: "1"
   customTarget/vertexAIAliases: "demo24-dev,testme,stage1"
@@ -46,7 +46,7 @@ metadata:
 customTarget:
   customTargetType: vertex-ai-endpoint
 deployParameters:
-  customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/quickstart-prod
+  customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/demo24-preprod
   customTarget/vertexAIConfigurationPath: "preprod/deployedModel.yaml"
   customTarget/vertexAIMinReplicaCount: "3"
   customTarget/vertexAIAliases: "demo24-preprod,nearlythere,stage2"
@@ -59,7 +59,7 @@ metadata:
 customTarget:
   customTargetType: vertex-ai-endpoint
 deployParameters:
-  customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/quickstart-prod
+  customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/demo24-prod
   customTarget/vertexAIConfigurationPath: "prod/deployedModel.yaml"
   customTarget/vertexAIMinReplicaCount: "3"
   customTarget/vertexAIAliases: "demo24-prod,champion,stage3"
@@ -75,16 +75,17 @@ metadata:
 description: promotes a release
 suspended: false
 serviceAccount: 849075740253-compute@developer.gserviceaccount.com # correct ricc SA for ricc-and-nardy
-# Gave it:
-# Cloud Build Editor
-# Cloud Deploy Approver
-# Cloud Deploy Runner
-# Cloud Deploy Viewer
-# Cloud Run Admin
-# Compute Network Admin
-# Service Account User
-# Storage Object User
-# Vertex AI user
+# I Gave it to make sure it works these:
+# * Cloud Build Editor
+# * Cloud Deploy Approver
+# These already were there:
+# * Cloud Deploy Runner
+# * Cloud Deploy Viewer
+# * Cloud Run Admin
+# * Compute Network Admin
+# * Service Account User
+# * Storage Object User
+# * Vertex AI user
 selector:
 - target:
     id: vertex-dev
@@ -95,4 +96,3 @@ rules:
     wait: 1m
     #toTargetId: "@next"
     toTargetId: vertex-preprod
-

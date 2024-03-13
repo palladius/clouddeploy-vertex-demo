@@ -14,9 +14,12 @@ configurations:
       collaborator: inardini@google.com
       PROJECT_NUMBER2: "849075740253" # manually set
       PROD_PROJECT_ID: 'rick-and-nardy-prod'
-      ENDPOINT_ID: "quickstart-prod"
+      #ENDPOINT_ID: "quickstart-prod"
+      ENDPOINT_ID: demo24-prod
       #DEV_ENDPOINT_ID: "quickstart-dev" # todo Ivan
-      DEV_ENDPOINT_ID: "2371068237996621824" # https://screenshot.googleplex.com/AbYAAZu2PYd9wTz
+      #DEV_ENDPOINT_ID: "2371068237996621824" # https://screenshot.googleplex.com/AbYAAZu2PYd9wTz
+      DEV_ENDPOINT_ID: demo24-dev
+      PREPROD_ENDPOINT_ID: demo24-preprod
       #DEV_ENDPOINT_ID: "ricc-test-deleteme" # TODO Ivan gives me a better one
       # https://pantheon.corp.google.com/vertex-ai/models/locations/us-central1/models/test_model/versions/1/deploy?e=-13802955&mods=logs_tg_staging&project=rick-and-nardy-demo
       REGION: ${GCP_REGION}

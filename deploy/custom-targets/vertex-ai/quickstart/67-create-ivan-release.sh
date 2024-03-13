@@ -34,7 +34,8 @@ echo "1. Replacing vars in this dir: $TMPDIR"
 #PROD_DEMO_ENDPOINT_NAME="prod-endpoint"
 #DEV_DEMO_ENDPOINT_NAME="dev-endpoint"
 #./replace_variables.sh -p $PROJECT_ID -r $REGION -e $PROD_DEMO_ENDPOINT_NAME -t $TMPDIR -d $DEV_DEMO_ENDPOINT_NAME
-./replace_variables.sh -p $PROJECT_ID -r $REGION -e $PROD_DEMO_ENDPOINT_ID -t $TMPDIR -d $DEV_DEMO_ENDPOINT_ID
+#./replace_variables.sh -p $PROJECT_ID -r $REGION -e $PROD_DEMO_ENDPOINT_ID -t $TMPDIR -d $DEV_DEMO_ENDPOINT_ID
+./replace_variables.sh -p $PROJECT_ID -r $REGION -e $ENDPOINT_ID -t $TMPDIR -d $DEV_ENDPOINT_ID -q $PREPROD_ENDPOINT_ID
 
 echo 2. Lets now apply CD config..
 gcloud deploy apply --file=$TMPDIR/clouddeploy.yaml --project=$PROJECT_ID --region=$REGION
