@@ -33,14 +33,19 @@ INPUT_DATA_FILE="${1:-california-input.json}"
 # House price comes around 8000.
 MIN_VALUE="${MIN_VALUE:-42}"
 MAX_VALUE="${MAX_VALUE:-5000}"
+# this should fail with 5000 and not fail with
 
 set -euo pipefail
 
 echo "-------------"
-echo "ENDPOINT_ID: $ENDPOINT_ID"
-echo "INPUT_DATA_FILE: $INPUT_DATA_FILE"
-echo MODEL_NAME: $MODEL_NAME
-echo MODEL_ID: $MODEL_ID
+echo "ENV vars:"
+echo "🌱 ENDPOINT_ID: $ENDPOINT_ID"
+echo "🌱 INPUT_DATA_FILE: $INPUT_DATA_FILE"
+echo "🌱 MODEL_NAME: $MODEL_NAME"
+echo "🌱 MODEL_ID: $MODEL_ID"
+echo "House value:"
+echo "🏡 MIN_VALUE: $MIN_VALUE"
+echo "🏡 MAX_VALUE: $MAX_VALUE"
 echo "-------------"
 # Specifying the explicit project id in case this came to but me in the future.
 echo "Testing model on project '$PROJECT_ID' on INPUT_DATA_FILE: $INPUT_DATA_FILE"
@@ -64,7 +69,14 @@ curl \
     -d "@${INPUT_DATA_FILE}" 2>/dev/null \
        > output.json  # | tee output.json
 
-echo "🕸️  cURL returned: '$?' (0 is good)"
+curl_ret="$?"
+echo "🕸️  cURL returned: '$curl_ret' (0 is good)"
+if [ "0" -eq "$curl_ret" ]; then
+    echo All good. curl foujnd the endpoint. Lets now see the values...
+else
+    echo cURL returned ERROR: "$curl_ret". Probably the endpoint wasnt found or is down.
+fi
+
 HOUSE_PRICE="$(cat output.json | jq .predictions[0][0])"
 echo  "🏙️ Predicted 🇺🇸 Boston 🏡 house price in 💲: '$HOUSE_PRICE'"
 
