@@ -7,3 +7,6 @@ terraform/terraform.tfstate.backup
 deploy/custom-targets/vertex-ai/ricc-model-tester/_env_gaic.py
 deploy/custom-targets/vertex-ai/ricc-model-tester/_env_gaic.rb
 __pycache__/
+_env_gaic.py
+_env_gaic.rb
+_env_gaic.sh
