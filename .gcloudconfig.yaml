@@ -17,13 +17,13 @@ configurations:
   #   project: my-gcp-project
   #   account: user@example.com
   #   region: europe-west1
-  quickstart:
-    gcloud:
-      project: rick-and-nardy-demo
-      compute/region: us-central1
-      account: ricc@google.com
-    env:
-      description: This is the demo in /deploy/custom-targets/vertex-ai/quickstart/ for CD on VAI.
+  # quickstart:
+  #   gcloud:
+  #     project: rick-and-nardy-demo
+  #     compute/region: us-central1
+  #     account: ricc@google.com
+  #   env:
+  #     description: This is the demo in /deploy/custom-targets/vertex-ai/quickstart/ for CD on VAI.
   clouddeploy-vertex-demo:
     gcloud:
       project: rick-and-nardy-demo
