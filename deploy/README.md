@@ -13,7 +13,7 @@
   * `util`. Copied from .../util Contains common code for all deployers to work
   * `vertex-ai`. Copied from .../vertex-ai
     * `model-deployer/`: (included in original repo). Contains `go` code for deploying and rendering to Vertex AI. Untouched
-    * `quickstart/`: (included in original repo). Ricc added PLENTY of stuff. Mostly done on Feb22.
+    * `quickstart/`: (included in original repo, but..). 💛 Ricc added PLENTY of stuff. Mostly done on Feb22.
       * **Pipeline**:
       * **Targets**:
         * `prod-endpoint`
