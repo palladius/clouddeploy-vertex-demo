@@ -29,7 +29,7 @@ echo "🚀 Deploying release '$REL_NAME'.."
 # vertex-ai-cloud-deploy-pipeline
 gcloud deploy releases create "$REL_NAME" \
     --delivery-pipeline=$VAI_PIPELINE \
-    --description="[👷Rel07] $REL_DESCRIPTION" \
+    --description="[👷Rel07🛢️] $REL_DESCRIPTION" \
     --project=$PROJECT_ID \
     --region=$REGION \
     --source=$TMPDIR/configuration \

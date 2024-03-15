@@ -19,7 +19,12 @@ fi
 DEFAULT_MODEL_VERSION="2"
 MODEL_VERSION="${1:-$DEFAULT_MODEL_VERSION}"
 
-# to reset: rm .release_counter.txt
+####################################################
+# Created with Gemini :) This is where you ask yourself: why the hell did you choose bash?!?
+# And to quote CGB.. "NO QUESTIONS!" :)
+#
+# To reset: rm .release_counter.txt
+####################################################
 _auto_increase_release_number() {
     COUNTER_FILE=".release_counter.txt"
     # Create the counter file if it doesn't exist
@@ -38,7 +43,9 @@ _auto_increase_release_number() {
     echo $RELEASE_NUMBER
 }
 
-REL_NAME="relv3-model-$MODEL_VERSION-$(_auto_increase_release_number)"
+AUTO_INC="$(_auto_increase_release_number)"
+REL_NAME="relv3-model-$MODEL_VERSION-$AUTO_INC"
+REL_DESCRIPTION="[$AUTO_INC] Adding description and model_version"
 
 
 echo "========================================================================"
@@ -47,6 +54,8 @@ echo "CD_DEPLOYABLE_MODEL_ID: $CD_DEPLOYABLE_MODEL_ID"
 echo "REL_NAME: $REL_NAME"
 echo "MODEL_VERSION:  $MODEL_VERSION"
 echo "VAI_PIPELINE: $VAI_PIPELINE"
+echo "AUTO_INC: $AUTO_INC"
+echo "REL_DESCRIPTION: $REL_DESCRIPTION"
 echo "========================================================================"
 
 echo "🚀 Deploying release '$REL_NAME'.."
@@ -54,6 +63,7 @@ echo "🚀 Deploying release '$REL_NAME'.."
 #echodo
 gcloud deploy releases create "$REL_NAME" \
     --delivery-pipeline=$VAI_PIPELINE \
+    --description="[📸Demo7] model=$CD_DEPLOYABLE_MODEL ver='$MODEL_VERSION' $REL_DESCRIPTION" \
     --project=$PROJECT_ID \
     --region=$REGION \
     --source=$TMPDIR/configuration \

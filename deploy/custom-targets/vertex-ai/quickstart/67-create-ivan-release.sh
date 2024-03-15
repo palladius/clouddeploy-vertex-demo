@@ -12,6 +12,7 @@ set -euo pipefail
 #export TMPDIR="out-ivan67/"
 mkdir -p "${TMPDIR}"
 
+echo "========================================================="
 echo "0. Vars:"
 echo "+ CD_DEPLOYABLE_MODEL: $CD_DEPLOYABLE_MODEL"
 echo "+ TMPDIR: $TMPDIR"
@@ -19,8 +20,7 @@ echo "+ PROD_DEMO_ENDPOINT_ID: $PROD_DEMO_ENDPOINT_ID"
 echo "+ DEV_DEMO_ENDPOINT_ID: $DEV_DEMO_ENDPOINT_ID"
 echo "+ CD_DEPLOYABLE_MODEL: $CD_DEPLOYABLE_MODEL"
 echo "+ CD_DEPLOYABLE_MODEL_ID: $CD_DEPLOYABLE_MODEL_ID"
-
-
+echo "========================================================="
 
 echo "1. Replacing vars in this dir: $TMPDIR"
 
@@ -46,8 +46,10 @@ gcloud deploy apply --file=$TMPDIR/clouddeploy.yaml --project=$PROJECT_ID --regi
 
 #############################################
 # Release name
-REL_NAME_BASE="300"
-# 13mar v300 Same as abover, but first in the new CD Pipeline (rtyuptic) with 3 targets hence 300.
+REL_NAME_BASE="301"
+REL_DESCRIPTION="Adding description"
+# 15mar v301 Adding description
+# 13mar v300 Same as above, but first in the new CD Pipeline (rtyuptic) with 3 targets hence 300.
 # 13mar v023 Reversed 22 changes
 # 12mar v022 Now just testing some changes in the parasms, here i moved these 2:
 #               customTarget/vertexAIMinReplicaCount: "2" (from 1)
@@ -67,12 +69,14 @@ REL_NAME_BASE="300"
 # Starting from 12 since 11
 
 REL_NAME="rel-ivan-${REL_NAME_BASE}"
+
 echo "🚀 3. Deploying release '$REL_NAME'.. to model '$CD_DEPLOYABLE_MODEL'.."
 #    --deploy-parameters="customTarget/vertexAIModel=projects/$PROJECT_ID/locations/$REGION/models/test_model"
 # vertex-ai-cloud-deploy-pipeline
 gcloud deploy releases create "$REL_NAME" \
     --delivery-pipeline=$VAI_PIPELINE \
     --project=$PROJECT_ID \
+    --description="[👷Rel67🤟] model=$CD_DEPLOYABLE_MODEL ver='-' $REL_DESCRIPTION" \
     --region=$REGION \
     --source=$TMPDIR/configuration \
     --deploy-parameters="customTarget/vertexAIModel=projects/$PROJECT_ID/locations/$REGION/models/$CD_DEPLOYABLE_MODEL_ID"
