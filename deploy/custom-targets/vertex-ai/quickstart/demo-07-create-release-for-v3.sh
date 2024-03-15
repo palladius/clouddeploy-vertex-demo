@@ -38,7 +38,7 @@ _auto_increase_release_number() {
     echo $RELEASE_NUMBER
 }
 
-REL_NAME="relv3-model$MODEL_VERSION-$(_auto_increase_release_number)"
+REL_NAME="relv3-model-$MODEL_VERSION-$(_auto_increase_release_number)"
 
 
 echo "========================================================================"

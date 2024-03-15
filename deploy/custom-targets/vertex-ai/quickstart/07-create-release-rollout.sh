@@ -5,8 +5,9 @@
 set -euo pipefail
 
 REL_NAME="release-011"
-
+REL_DESCRIPTION="Trying descriptions now.."
 # ok wuith rel11 moving back to normal one...
+# rel11 15mar Trying descriptions now..
 # rel10b: same as above, but I changed pipeline to an entirely NEW one.
 # rel10: recreating a NEW empty pipeline. maybe it doesnt work with old one. Fixed by copying the skaffold (broken)
 #        directly from https://github.com/GoogleCloudPlatform/cloud-deploy-samples/blob/main/custom-targets/vertex-ai/quickstart/configuration/skaffold.yaml
@@ -28,6 +29,7 @@ echo "🚀 Deploying release '$REL_NAME'.."
 # vertex-ai-cloud-deploy-pipeline
 gcloud deploy releases create "$REL_NAME" \
     --delivery-pipeline=$VAI_PIPELINE \
+    --description="[👷Rel07] $REL_DESCRIPTION" \
     --project=$PROJECT_ID \
     --region=$REGION \
     --source=$TMPDIR/configuration \
