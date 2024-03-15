@@ -45,7 +45,7 @@ _auto_increase_release_number() {
 
 AUTO_INC="$(_auto_increase_release_number)"
 REL_NAME="relv3-model-$MODEL_VERSION-$AUTO_INC"
-REL_DESCRIPTION="[$AUTO_INC] Adding description and model_version"
+REL_DESCRIPTION="[$AUTO_INC] testing automations after powering SA"
 
 
 echo "========================================================================"
@@ -63,7 +63,7 @@ echo "🚀 Deploying release '$REL_NAME'.."
 #echodo
 gcloud deploy releases create "$REL_NAME" \
     --delivery-pipeline=$VAI_PIPELINE \
-    --description="[📸Demo7] model=$CD_DEPLOYABLE_MODEL ver='$MODEL_VERSION' $REL_DESCRIPTION" \
+    --description="[📸Demo7] $CD_DEPLOYABLE_MODEL@$MODEL_VERSION $REL_DESCRIPTION" \
     --project=$PROJECT_ID \
     --region=$REGION \
     --source=$TMPDIR/configuration \

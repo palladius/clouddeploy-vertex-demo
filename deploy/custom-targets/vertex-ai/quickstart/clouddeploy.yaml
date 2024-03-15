@@ -71,7 +71,7 @@ metadata:
 # ERROR: (gcloud.deploy.apply) Automation name thx-nate-promote in the configuration should be in the formatof pipeline_id/automation_id.
 #  name: pop-stats-multitarget/promote
 # pipeline_id/automation_id.
-  name: vertex-triptych/promote # -dev2preprod
+  name: vertex-triptych/promote # from Nate
 description: promotes a release
 suspended: false
 serviceAccount: 849075740253-compute@developer.gserviceaccount.com # correct ricc SA for ricc-and-nardy
