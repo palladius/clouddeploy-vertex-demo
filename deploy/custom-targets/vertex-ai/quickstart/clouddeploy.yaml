@@ -72,7 +72,7 @@ metadata:
 #  name: pop-stats-multitarget/promote
 # pipeline_id/automation_id.
   name: vertex-triptych/promote # from Nate
-description: promotes a release
+description: promotes a release Dev 2 PreProd after 1min
 suspended: false
 serviceAccount: 849075740253-compute@developer.gserviceaccount.com # correct ricc SA for ricc-and-nardy
 # I Gave it to make sure it works these:
@@ -86,6 +86,8 @@ serviceAccount: 849075740253-compute@developer.gserviceaccount.com # correct ric
 # * Service Account User
 # * Storage Object User
 # * Vertex AI user
+# It also needs or it fails: https://screenshot.googleplex.com/8irfbdBNgsXMWGr
+# * CloudDeploy Releaser
 selector:
 - target:
     id: vertex-dev
@@ -93,6 +95,7 @@ rules:
 - promoteRelease:
     name: "promote-release"
     #wait: 3s
-    wait: 1m
+    #wait: 1m
+    wait: 0m
     #toTargetId: "@next"
     toTargetId: vertex-preprod

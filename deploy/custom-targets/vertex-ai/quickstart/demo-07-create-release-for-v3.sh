@@ -45,7 +45,7 @@ _auto_increase_release_number() {
 
 AUTO_INC="$(_auto_increase_release_number)"
 REL_NAME="relv3-model-$MODEL_VERSION-$AUTO_INC"
-REL_DESCRIPTION="[$AUTO_INC] testing automations after powering SA"
+REL_DESCRIPTION="[$AUTO_INC] had to recerate demo24-preprod which had bad name"
 
 
 echo "========================================================================"
