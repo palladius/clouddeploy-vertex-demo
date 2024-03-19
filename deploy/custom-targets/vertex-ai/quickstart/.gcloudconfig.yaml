@@ -32,7 +32,7 @@ configurations:
       # This used to be the model to deploy.
       # This is from Ivan for the demo
       CD_DEPLOYABLE_MODEL: california_reg_model # Created by Ivan
-      CD_DEPLOYABLE_MODEL_ID: "3485927948584747008" # 3 versions: 1,2,3
+      CD_DEPLOYABLE_MODEL_ID: "3485927948584747008" # 3 versions: 1,2,3  # distrutto da ivan il 19mar salle 12:00
       CD_BOSTON_MODEL: test_model # created by QUICKSTART tutorial
       # See below for MODEL_NAME
       PROD_DEMO_ENDPOINT_ID: "demo24-prod"

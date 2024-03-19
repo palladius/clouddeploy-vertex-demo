@@ -15,17 +15,17 @@ serialPipeline:
     strategy:
       standard:
         postdeploy:
-          actions: ["add-aliases"] # TODO change me
+          actions: ["add-aliases"]
   - targetId: vertex-preprod
     strategy:
       standard:
         postdeploy:
-          actions: ["add-aliases"] # TODO change me
+          actions: ["add-aliases"]
   - targetId: vertex-prod
     strategy:
       standard:
         postdeploy:
-          actions: ["add-aliases"] # This is correct (PROD)
+          actions: ["add-aliases"] # (PROD)
 ---
 apiVersion: deploy.cloud.google.com/v1
 kind: Target

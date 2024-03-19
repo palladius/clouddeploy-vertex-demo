@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#export TMPDIR=/tmp/tmp.Fe9QrUEzpe/
+# See also `auto_increase_number` in sakura
 
 set -euo pipefail
 
@@ -64,6 +64,7 @@ echo "🚀 Deploying release '$REL_NAME'.."
 gcloud deploy releases create "$REL_NAME" \
     --delivery-pipeline=$VAI_PIPELINE \
     --description="[📸Demo7] $CD_DEPLOYABLE_MODEL@$MODEL_VERSION $REL_DESCRIPTION" \
+    --enable-initial-rollout \
     --project=$PROJECT_ID \
     --region=$REGION \
     --source=$TMPDIR/configuration \
