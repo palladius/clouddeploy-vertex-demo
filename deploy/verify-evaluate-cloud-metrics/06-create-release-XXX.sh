@@ -4,7 +4,7 @@ set -euo pipefail
 
 # needs skaffold.yaml
 RELNAME="${1:-XXX}"
-REL_DESC="Trying something new"
+REL_DESC="gave CB_SA AR admin"
 
 cd cloud-deploy/ &&
   gcloud deploy releases create "rel-$RELNAME" \
