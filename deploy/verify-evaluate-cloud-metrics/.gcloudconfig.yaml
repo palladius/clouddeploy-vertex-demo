@@ -25,12 +25,6 @@ configurations:
       PN: '849075740253'
       # Billed thru Advocacy
       # https://console.cloud.google.com/welcome?project=rick-and-nardy-paljoo
-
-      #GCP_REGION: this is autopopulated from above
-      # VERTEX_TRAINING_JOB_NAME: 'train-test-123'
-      # REPO_NAME: 'my-awesome-app'
-      # # These work! Just make sure you do it in ORDER. (God bless python dicts naivity)
-      # BUCKET: "gs://my-unique-${PROJECT_ID}-bucket"
-      # IMAGE_URI: "${GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${REPO_NAME}/my_vertex_image:latest"
-
-# ... Now its time to CRL-D
+      DESCRIPTION: |
+        This is just to understand how the CD Verify works.
+      #MODEL_NAME: "california_reg_model"

@@ -8,11 +8,16 @@
 #
 # this scripts calls the MODEL and checks if it works.
 
+source '_env_gaic.sh'
+
+set -euo pipefail
 
 # Model artifact location gs://cloud-samples-data/vertex-ai/model-deployment/models/boston/model
 #ENDPOINT_ID="quickstart-prod"
-MODEL_NAME="california_reg_model" # useless! there's two!
-MODEL_ID="3485927948584747008"
+#MODEL_NAME="california_reg_model" # useless! there's two!
+MODEL_NAME=$DEMO_MODEL_NAME
+#MODEL_ID="3485927948584747008"
+MODEL_ID="$DEMO_MODEL_ID"
 VERSION_ID="1"
 # 🐼 gcloud ai endpoints list
 # Using endpoint [https://us-central1-aiplatform.googleapis.com/]
@@ -72,9 +77,25 @@ curl \
 curl_ret="$?"
 echo "🕸️  cURL returned: '$curl_ret' (0 is good)"
 if [ "0" -eq "$curl_ret" ]; then
-    echo All good. curl foujnd the endpoint. Lets now see the values...
+    echo All good. cURL found the endpoint. Lets now see the values...
+
 else
     echo cURL returned ERROR: "$curl_ret". Probably the endpoint wasnt found or is down.
+fi
+
+# Inspecting the output.json
+# Note that when it wont fail, probably this code needs fixing :)
+if cat output.json | jq .error.code | egrep '^2' ; then
+    echo "output.json seems 2XX: all good"
+else
+    ERR_CODE="$(cat output.json | jq .error.code)"
+    echo "- ERROR CODE: $ERR_CODE"
+    echo "- ERROR MESSAGE: $(cat output.json | jq .error.message)"
+    echo "❎ While the cURL returned correctly, the endpoint yielded an application-level error: Exiting."
+    echo "--"
+    cat output.json | jq .error
+    exit "$ERR_CODE"
+
 fi
 
 HOUSE_PRICE="$(cat output.json | jq .predictions[0][0])"
