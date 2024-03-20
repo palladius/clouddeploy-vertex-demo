@@ -18,10 +18,11 @@ configurations:
     env:
       # No need! It's auto imported for you. You're welcome
       #PROJECT_ID: this is autopopulated from above
-      CLOUD_DEPLOY_PROJECT=rick-and-nardy-demo
-      OTHER_PROJECT=rick-and-nardy-paljoo
-      OTHER_PROJECT_ORG=palladius.joonix.net # (426276118631)
-      OTHER_PROJECT_ORG_ID=426276118631
+      CLOUD_DEPLOY_PROJECT: "rick-and-nardy-demo"
+      OTHER_PROJECT: "rick-and-nardy-paljoo"
+      OTHER_PROJECT_ORG: "palladius.joonix.net" # (426276118631)
+      OTHER_PROJECT_ORG_ID: "426276118631"
+      PN: '849075740253'
       # Billed thru Advocacy
       # https://console.cloud.google.com/welcome?project=rick-and-nardy-paljoo
 
