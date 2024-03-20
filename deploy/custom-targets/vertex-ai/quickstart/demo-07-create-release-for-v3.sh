@@ -2,6 +2,8 @@
 
 # See also `auto_increase_number` in sakura
 
+source '_env_gaic.sh'
+
 set -euo pipefail
 
 if [ $# -ne 1 ]; then
@@ -45,7 +47,7 @@ _auto_increase_release_number() {
 
 AUTO_INC="$(_auto_increase_release_number)"
 REL_NAME="relv3-model-$MODEL_VERSION-$AUTO_INC"
-REL_DESCRIPTION="[$AUTO_INC] had to recerate demo24-preprod which had bad name"
+REL_DESCRIPTION="[$AUTO_INC] updated model to xx696"
 
 
 echo "========================================================================"
@@ -63,7 +65,7 @@ echo "🚀 Deploying release '$REL_NAME'.."
 #echodo
 gcloud deploy releases create "$REL_NAME" \
     --delivery-pipeline=$VAI_PIPELINE \
-    --description="[📸Demo7] $CD_DEPLOYABLE_MODEL@$MODEL_VERSION $REL_DESCRIPTION" \
+    --description="[📸Demo] $CD_DEPLOYABLE_MODEL@$MODEL_VERSION $REL_DESCRIPTION" \
     --enable-initial-rollout \
     --project=$PROJECT_ID \
     --region=$REGION \
