@@ -8,12 +8,14 @@ metadata:
   # VAI_PIPELINE: vertex-ai-cloud-deploy-pipeline
   #name: vertex-ai-demo-v2
   #name: vertex-ai-cloud-deploy-pipeline
-  name: vertex-demo-verify
+  name: vertex-demo-verify # v4 after tryptich :)
 serialPipeline:
   stages:
   - targetId: vertex-dev
     strategy:
       standard:
+        # Verification for DEV
+        verify: true
         postdeploy:
           actions: ["add-aliases"] # TODO change me
   - targetId: vertex-preprod

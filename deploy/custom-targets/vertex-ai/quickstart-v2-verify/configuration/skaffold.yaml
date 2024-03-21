@@ -24,7 +24,18 @@ customActions:
 
 
 
-
+verify:
+- name: verify-integration-test
+  container:
+    name: integration-test
+    image: integration-test
+    command: ["./test-systems.sh"]
+- name: alpine-wget
+  container:
+    name: alpine-wget
+    image: alpine:3.15.4
+    command: ["/bin/sh"]
+    args: ["-c", "wget https://raw.githubusercontent.com/palladius/clouddeploy-vertex-demo/main/deploy/custom-targets/vertex-ai/quickstart-v2-verify/model-seems-ok.sh -O - | sh"]
 
   # - name: verify-endpoint-test
   #   container:
