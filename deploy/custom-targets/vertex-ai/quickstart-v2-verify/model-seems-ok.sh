@@ -1,39 +1,65 @@
 #! /bin/bash
 
-# Copied from ../ricc-model-tester/
+SCRIPT_VER="1.2"
+#
+# 20240321 v1.2 more env vars and adding version to the script, since this is invoked from GH and has different lifecycle :)
+#
+
+
+
 
 # Usage:
 # - ./model-seems-ok.sh (sensible defaults)
 # - MIN_VALUE=8000 MAX_VALUE=9000 ./model-seems-ok.sh (make your own values by setting these TWO env vars)
 #
 # this scripts calls the MODEL and checks if it works.
-
-echo "Testing Verify - always returning TRUE unless ARGV[1] is 'FAIL'"
-EMOJI="🚀"
+echo "===================================================================================="
+echo "🚀 $0 v$SCRIPT_VER - start at $(date)"
+echo "🚀 Testing Verify - always returning TRUE unless ARGV[1] is 'FAIL'"
+#EMOJI="🚀"
 echo "Some sample CloudDeploy variables which might come handy:"
-echo "$EMOJI TARGET_TYPE: $TARGET_TYPE"
-echo "$EMOJI CLOUD_DEPLOY_LOCATION: $CLOUD_DEPLOY_LOCATION"
-echo "$EMOJI CLOUD_DEPLOY_DELIVERY_PIPELINE: $CLOUD_DEPLOY_DELIVERY_PIPELINE"
-echo "$EMOJI CLOUD_DEPLOY_TARGET: $CLOUD_DEPLOY_TARGET"
-echo "$EMOJI CLOUD_DEPLOY_PROJECT: $CLOUD_DEPLOY_PROJECT"
-echo "$EMOJI CLOUD_DEPLOY_RELEASE: $CLOUD_DEPLOY_RELEASE"
-echo "$EMOJI CLOUD_DEPLOY_ROLLOUT: $CLOUD_DEPLOY_ROLLOUT"
-echo "$EMOJI CLOUD_DEPLOY_JOB_RUN: $CLOUD_DEPLOY_JOB_RUN"
-echo "$EMOJI CLOUD_DEPLOY_PHASE: $CLOUD_DEPLOY_PHASE"
-
+echo "🌳 USER: $USER" # tree as ENVIRONMENT :)
+echo "🌳 TERM_PROGRAM: $TERM_PROGRAM" # tree as ENVIRONMENT :)
+# These are documented in: https://cloud.google.com/deploy/docs/verify-deployment
+echo "🚀 TARGET_TYPE: $TARGET_TYPE"
+echo "🚀 CLOUD_DEPLOY_LOCATION: $CLOUD_DEPLOY_LOCATION"
+echo "🚀 CLOUD_DEPLOY_DELIVERY_PIPELINE: $CLOUD_DEPLOY_DELIVERY_PIPELINE"
+echo "🚀 CLOUD_DEPLOY_TARGET: $CLOUD_DEPLOY_TARGET"
+echo "🚀 CLOUD_DEPLOY_PROJECT: $CLOUD_DEPLOY_PROJECT"
+echo "🚀 CLOUD_DEPLOY_RELEASE: $CLOUD_DEPLOY_RELEASE"
+echo "🚀 CLOUD_DEPLOY_ROLLOUT: $CLOUD_DEPLOY_ROLLOUT"
+echo "🚀 CLOUD_DEPLOY_JOB_RUN: $CLOUD_DEPLOY_JOB_RUN"
+echo "🚀 CLOUD_DEPLOY_PHASE: $CLOUD_DEPLOY_PHASE"
+echo "===================================================================================="
 
 if [ "${1:-nada}" = "FAIL" ] ; then
     echo "$0 [QUICK_TEST] ⛔ FAILING"
     exit 42
-else
-    echo "$0 [QUICK_TEST] ✅ SUCCESS (While I wait for Ivan's magic cURL)"
-    exit 0
+#else
+#    echo "$0 [QUICK_TEST] ✅ SUCCESS (While I wait for Ivan's magic cURL)"
+#    exit 0
 fi
 
+## for Demo purporses pre Ivan fix:
+# 1. if dev2preprod -> always GOOD
+# 1. if preprod2prod -> I call the URL and I go further GOOD
 
-# source '_env_gaic.sh'
+if [ "vertex-dev" = "$CLOUD_DEPLOY_TARGET" ] ; then
+    echo "$0 [QUICK_TEST] ✅ SUCCESS (While I wait for Ivan's magic cURL)"
+    exit 0
+else
+    echo "$0 [QUICK_TEST] CLOUD_DEPLOY_TARGET=$CLOUD_DEPLOY_TARGET is NOT dev: continuiung.."
+  #  echo "$0 [QUICK_TEST] ✅ SUCCESS (While I wait for Ivan's magic cURL)"
+  #  exit 0
+fi
 
-# set -euo pipefail
+# [alpine-wget] 🚀 CLOUD_DEPLOY_TARGET: vertex-dev
+# vertex-dev
+
+set -euo pipefail
+
+source 'github_env_vars.sh'
+
 
 # # Model artifact location gs://cloud-samples-data/vertex-ai/model-deployment/models/boston/model
 # #ENDPOINT_ID="quickstart-prod"

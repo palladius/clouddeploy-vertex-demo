@@ -65,7 +65,7 @@ echo "🚀 Deploying release '$REL_NAME'.."
 
 gcloud deploy releases create "$REL_NAME" \
     --delivery-pipeline=$VAI_PIPELINE \
-    --description="[📸Demo] $CD_DEPLOYABLE_MODEL@$MODEL_VERSION $REL_DESCRIPTION" \
+    --description="$CD_DEPLOYABLE_MODEL@$MODEL_VERSION 🧠 $REL_DESCRIPTION" \
     --enable-initial-rollout \
     --project=$PROJECT_ID \
     --region=$REGION \

@@ -60,14 +60,15 @@ echo "-------------"
 # ./model-seems-ok.sh FAIL   -> ERR
 # I only need this until Ivan provides me with a magic cURL for this model
 ############################################
-echo "Testing Verify - always returning TRUE unless ARGV[1] is 'FAIL'"
-if [ "${1:-nada}" = "FAIL" ] ; then
-    echo "$0 [QUICK_TEST] FAILING"
-    exit 42
-else
-    echo "$0 [QUICK_TEST] SUCCESS (While I wait for Ivan's magic cURL)"
-    exit 0
-fi
+echo Ivan dummy test is under quickstart-v2-verify. Here I keep the right one.
+# echo "Testing Verify - always returning TRUE unless ARGV[1] is 'FAIL'"
+# if [ "${1:-nada}" = "FAIL" ] ; then
+#     echo "$0 [QUICK_TEST] FAILING"
+#     exit 42
+# else
+#     echo "$0 [QUICK_TEST] SUCCESS (While I wait for Ivan's magic cURL)"
+#     exit 0
+# fi
 ############################################
 # /removeme QUICK_TEST
 ############################################
