@@ -1,0 +1,129 @@
+# Copied from https://github.com/GoogleCloudPlatform/cloud-deploy-samples/blob/main/custom-targets/vertex-ai/quickstart/
+
+apiVersion: deploy.cloud.google.com/v1
+kind: DeliveryPipeline
+metadata:
+  name: vertex-triptych
+serialPipeline:
+  stages:
+  - targetId: vertex-dev
+    strategy:
+      standard:
+        postdeploy:
+          actions: ["add-aliases"]
+  - targetId: vertex-preprod
+    strategy:
+      standard:
+        postdeploy:
+          actions: ["add-aliases"]
+  - targetId: vertex-prod
+    strategy:
+      standard:
+        postdeploy:
+          actions: ["add-aliases"]
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: vertex-dev
+customTarget:
+  customTargetType: vertex-ai-endpoint
+deployParameters:
+  customTarget/vertexAIEndpoint: |
+    projects/$PROJECT_ID/locations/$REGION/endpoints/$DEV_ENDPOINT_ID
+  customTarget/vertexAIConfigurationPath: "dev/deployedModel.yaml"
+  customTarget/vertexAIMinReplicaCount: "1"
+  customTarget/vertexAIAliases: "demo24-dev,testme,stage1,water-is-on"
+  # Note: the customTarget/vertexAIModel is passed via CLI instead..
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: vertex-preprod
+customTarget:
+  customTargetType: vertex-ai-endpoint
+deployParameters:
+  customTarget/vertexAIEndpoint: |
+    projects/$PROJECT_ID/locations/$REGION/endpoints/$PREPROD_ENDPOINT_ID
+  customTarget/vertexAIConfigurationPath: "preprod/deployedModel.yaml"
+  customTarget/vertexAIMinReplicaCount: "3"
+  customTarget/vertexAIAliases: "demo24-preprod,mamma-butta-la-pasta"
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: vertex-prod
+customTarget:
+  customTargetType: vertex-ai-endpoint
+deployParameters:
+  customTarget/vertexAIEndpoint: projects/$PROJECT_ID/locations/$REGION/endpoints/$ENDPOINT_ID
+  customTarget/vertexAIConfigurationPath: "prod/deployedModel.yaml"
+  customTarget/vertexAIMinReplicaCount: "3"
+  customTarget/vertexAIAliases: "demo24-prod,champion,pasta-ready"
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Automation
+metadata:
+# ERROR: (gcloud.deploy.apply) Automation name thx-nate-promote in the configuration should be in the formatof pipeline_id/automation_id.
+#  name: pop-stats-multitarget/promote
+# pipeline_id/automation_id.
+  name: vertex-triptych/promote # from Nate
+description: promotes a release Dev 2 PreProd after 1min
+suspended: false
+serviceAccount: 849075740253-compute@developer.gserviceaccount.com # correct ricc SA for ricc-and-nardy
+# I Gave it to make sure it works these:
+# * Cloud Build Editor
+# * Cloud Deploy Approver
+# These already were there:
+# * Cloud Deploy Runner
+# * Cloud Deploy Viewer
+# * Cloud Run Admin
+# * Compute Network Admin
+# * Service Account User
+# * Storage Object User
+# * Vertex AI user
+# It also needs or it fails: https://screenshot.googleplex.com/8irfbdBNgsXMWGr
+# * CloudDeploy Releaser
+selector:
+- target:
+    id: vertex-dev
+rules:
+- promoteRelease:
+    name: "promote-release"
+    #wait: 3s
+    #wait: 1m
+    wait: 0m
+    #toTargetId: "@next"
+    toTargetId: vertex-preprod
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+kind: Target
+metadata:
+  name: vertex-dev
+deployParameters:
+  customTarget/vertexAIAliases: "demo24-dev,testme,stage1,water-is-on"
+---
+kind: Target
+metadata:
+  name: vertex-preprod
+deployParameters:
+  customTarget/vertexAIAliases: "demo24-preprod,mamma-butta-la-pasta"
+---
+kind: Target
+metadata:
+  name: vertex-prod
+deployParameters:
+  customTarget/vertexAIAliases: "demo24-prod,champion,pasta-ready"
+---

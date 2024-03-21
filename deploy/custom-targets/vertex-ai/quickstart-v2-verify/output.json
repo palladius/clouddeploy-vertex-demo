@@ -1,1 +1,0 @@
-{"detail":"The following exception has occurred: AttributeError. Arguments: (\"'XGBModel' object has no attribute 'gpu_id'\",)."}
