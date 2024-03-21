@@ -21,7 +21,6 @@ serialPipeline:
   - targetId: vertex-preprod
     strategy:
       standard:
-        verify: true
         postdeploy:
           actions: ["add-aliases"] # TODO change me
   - targetId: vertex-prod
@@ -67,3 +66,20 @@ deployParameters:
   customTarget/vertexAIMinReplicaCount: "3"
   customTarget/vertexAIAliases: "demo24-prod,v4-verify,pasta-ready,stage3"
   # Note: the customTarget/vertexAIModel is passed via CLI instead..
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Automation
+metadata:
+  name:  vertex-demo-verify/auto-promote-after-verify # from Nate
+description: promotes a release Dev 2 PreProd after 1min
+suspended: false
+serviceAccount: 849075740253-compute@developer.gserviceaccount.com # correct ricc SA for ricc-and-nardy
+selector:
+- target:
+    id: vertex-dev
+rules:
+- promoteRelease:
+    name: "promote-release-v4"
+    wait: 0m
+    #toTargetId: "@next"
+    toTargetId: vertex-preprod

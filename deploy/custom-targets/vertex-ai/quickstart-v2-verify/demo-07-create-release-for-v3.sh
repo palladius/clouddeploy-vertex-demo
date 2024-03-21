@@ -6,8 +6,8 @@ source '_env_gaic.sh'
 
 set -euo pipefail
 
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 [1|2|3|v1|v2|v3]"
+if [ $# -lt 3 ]; then
+    echo "Usage: $0 [1|2|3|v1|v2|v3] Description of this release in your own words"
     exit 1
 fi
 # Validate the argument format
@@ -47,7 +47,8 @@ _auto_increase_release_number() {
 
 AUTO_INC="$(_auto_increase_release_number)"
 REL_NAME="relv4-model-$MODEL_VERSION-$AUTO_INC"
-REL_DESCRIPTION="[$AUTO_INC] updated model to xx696"
+shift
+REL_DESCRIPTION="[$AUTO_INC] $*"
 
 
 echo "========================================================================"
@@ -61,8 +62,7 @@ echo "REL_DESCRIPTION: $REL_DESCRIPTION"
 echo "========================================================================"
 
 echo "🚀 Deploying release '$REL_NAME'.."
-# vertex-ai-cloud-deploy-pipeline
-#echodo
+
 gcloud deploy releases create "$REL_NAME" \
     --delivery-pipeline=$VAI_PIPELINE \
     --description="[📸Demo] $CD_DEPLOYABLE_MODEL@$MODEL_VERSION $REL_DESCRIPTION" \
@@ -71,11 +71,3 @@ gcloud deploy releases create "$REL_NAME" \
     --region=$REGION \
     --source=$TMPDIR/configuration \
     --deploy-parameters="customTarget/vertexAIModel=projects/$PROJECT_ID/locations/$REGION/models/$CD_DEPLOYABLE_MODEL_ID@$MODEL_VERSION"
-
-# gcloud deploy releases create "$REL_NAME-ohne" \
-#     --delivery-pipeline=$VAI_PIPELINE \
-#     --project=$PROJECT_ID \
-#     --region=$REGION \
-#     --source=$TMPDIR/configuration \
-#     --deploy-parameters="customTarget/vertexAIModel=projects/$PROJECT_ID/locations/$REGION/models/$CD_DEPLOYABLE_MODEL_ID"
-
