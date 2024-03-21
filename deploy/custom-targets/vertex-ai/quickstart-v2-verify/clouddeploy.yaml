@@ -17,7 +17,7 @@ metadata:
   #name: vertex-ai-cloud-deploy-pipeline
   name: vertex-demo-verify # v4 after tryptich :)
 serialPipeline:
-  stages:
+  stages:s
   - targetId: vertex-dev
     strategy:
       standard:
