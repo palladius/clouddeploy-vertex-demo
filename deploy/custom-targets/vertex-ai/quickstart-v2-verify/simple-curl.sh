@@ -5,8 +5,8 @@ source _env_gaic.sh
 set -euo pipefail
 
 INPUT_DATA_FILE="california-input.json"
-export IVAN_MODEL_ID=6853909085834706944
-
+export IVAN_MODEL_ID1=3030353002197155840
+export IVAN_MODEL_ID2=6234664137071263744
 #echo ENDPOINT_ID: $ENDPOINT_ID
 
 function _curl_endpoint() {
@@ -22,8 +22,11 @@ function _curl_endpoint() {
     cat output-$MY_ENDPOINT.json | jq
 
 }
-echo "1. Testing PROD Model by Ricc: $ENDPOINT_ID"
-_curl_endpoint "$ENDPOINT_ID"
+#echo "1. Testing PROD Model by Ricc: $ENDPOINT_ID"
+#_curl_endpoint "$ENDPOINT_ID"
 
-echo "1. Testing TEST (yet libfixed) Ivan Model by Ivan: $IVAN_MODEL_ID"
-_curl_endpoint "$IVAN_MODEL_ID"
+echo "1. Testing TEST (yet libfixed) Ivan Model by Ivan: $IVAN_MODEL_ID1"
+_curl_endpoint "$IVAN_MODEL_ID1"
+echo "1. Testing TEST (yet libfixed) Ivan Model by Ivan: $IVAN_MODEL_ID2"
+_curl_endpoint "$IVAN_MODEL_ID2"
+

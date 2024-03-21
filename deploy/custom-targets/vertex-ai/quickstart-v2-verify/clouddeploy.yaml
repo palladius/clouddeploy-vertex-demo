@@ -1,5 +1,12 @@
 # Copied from https://github.com/GoogleCloudPlatform/cloud-deploy-samples/blob/main/custom-targets/vertex-ai/quickstart/
-
+################################################################################################
+# After talking to Sander, we agreed the best approach is to:
+# 1. [DONE] Make automation dev2stag
+# 2. [DONE] Make automation stag2prod
+# 3. [DONE] Make ``requireApproval: true`` in prod
+# 4. Use https://cloud.google.com/deploy/docs/parameters which are available in proper places.
+# 5. Add verify to both DEV and STAGING
+################################################################################################
 apiVersion: deploy.cloud.google.com/v1
 kind: DeliveryPipeline
 metadata:
@@ -21,6 +28,7 @@ serialPipeline:
   - targetId: vertex-preprod
     strategy:
       standard:
+        verify: true
         postdeploy:
           actions: ["add-aliases"] # TODO change me
   - targetId: vertex-prod
@@ -60,6 +68,7 @@ metadata:
   name: vertex-prod
 customTarget:
   customTargetType: vertex-ai-endpoint
+requireApproval: true
 deployParameters:
   customTarget/vertexAIEndpoint: projects/$PROJECT_ID/locations/$REGION/endpoints/$ENDPOINT_ID
   customTarget/vertexAIConfigurationPath: "prod/deployedModel.yaml"
@@ -70,8 +79,9 @@ deployParameters:
 apiVersion: deploy.cloud.google.com/v1
 kind: Automation
 metadata:
-  name:  vertex-demo-verify/auto-promote-after-verify # from Nate
-description: promotes a release Dev 2 PreProd after 1min
+  name:  vertex-demo-verify/promote-dev2preprod
+  #name:  vertex-demo-verify/auto-promote-after-verify # from Nate
+description: promotes a release Dev 2 PreProd immediately # after Deploy, Verify, PostDeploy
 suspended: false
 serviceAccount: 849075740253-compute@developer.gserviceaccount.com # correct ricc SA for ricc-and-nardy
 selector:
@@ -79,7 +89,24 @@ selector:
     id: vertex-dev
 rules:
 - promoteRelease:
-    name: "promote-release-v4"
+    name: "promote-release-v4-1to2"
     wait: 0m
-    #toTargetId: "@next"
-    toTargetId: vertex-preprod
+    toTargetId: "@next"
+    #toTargetId: vertex-preprod
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Automation
+metadata:
+  name:  vertex-demo-verify/promote-preprod2prod
+description: promotes a release PreProd 2 Prod immediately - pending approval
+suspended: false
+serviceAccount: 849075740253-compute@developer.gserviceaccount.com # correct ricc SA for ricc-and-nardy
+selector:
+- target:
+    id: vertex-preprod
+rules:
+- promoteRelease:
+    name: "promote-release-v4-2to3"
+    wait: 0m
+    toTargetId: "@next"
+    #toTargetId: vertex-preprod

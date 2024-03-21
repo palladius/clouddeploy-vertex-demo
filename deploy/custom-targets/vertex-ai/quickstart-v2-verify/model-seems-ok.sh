@@ -31,6 +31,11 @@ echo "🚀 CLOUD_DEPLOY_RELEASE: $CLOUD_DEPLOY_RELEASE"
 echo "🚀 CLOUD_DEPLOY_ROLLOUT: $CLOUD_DEPLOY_ROLLOUT"
 echo "🚀 CLOUD_DEPLOY_JOB_RUN: $CLOUD_DEPLOY_JOB_RUN"
 echo "🚀 CLOUD_DEPLOY_PHASE: $CLOUD_DEPLOY_PHASE"
+echo "CD Parameters now: see https://cloud.google.com/deploy/docs/parameters"
+# customTarget/vertexAIAliases
+echo "📊 customTarget:    $customTarget"
+echo "📊 vertexAIAliases: $vertexAIAliases"
+env | grep -i vertex # echo "📊 vertexAIAliases: $vertexAIAliases"
 echo "===================================================================================="
 
 if [ "${1:-nada}" = "FAIL" ] ; then
