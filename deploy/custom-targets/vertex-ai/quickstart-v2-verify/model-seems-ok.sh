@@ -23,10 +23,10 @@ echo "$EMOJI CLOUD_DEPLOY_PHASE: $CLOUD_DEPLOY_PHASE"
 
 
 if [ "${1:-nada}" = "FAIL" ] ; then
-    echo "$0 [QUICK_TEST] FAILING"
+    echo "$0 [QUICK_TEST] ⛔ FAILING"
     exit 42
 else
-    echo "$0 [QUICK_TEST] SUCCESS (While I wait for Ivan's magic cURL)"
+    echo "$0 [QUICK_TEST] ✅ SUCCESS (While I wait for Ivan's magic cURL)"
     exit 0
 fi
 
