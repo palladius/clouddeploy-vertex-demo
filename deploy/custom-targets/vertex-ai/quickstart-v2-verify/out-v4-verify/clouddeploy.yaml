@@ -21,6 +21,7 @@ serialPipeline:
   - targetId: vertex-preprod
     strategy:
       standard:
+        verify: true
         postdeploy:
           actions: ["add-aliases"] # TODO change me
   - targetId: vertex-prod
@@ -36,7 +37,7 @@ metadata:
 customTarget:
   customTargetType: vertex-ai-endpoint
 deployParameters:
-  customTarget/vertexAIEndpoint: projects/$PROJECT_ID/locations/$REGION/endpoints/$DEV_ENDPOINT_ID
+  customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/demo24-dev
   customTarget/vertexAIConfigurationPath: "dev/deployedModel.yaml"
   customTarget/vertexAIMinReplicaCount: "1"
   customTarget/vertexAIAliases: "demo24-dev,v4-verify,put-on-water,stage1"
@@ -48,7 +49,7 @@ metadata:
 customTarget:
   customTargetType: vertex-ai-endpoint
 deployParameters:
-  customTarget/vertexAIEndpoint: projects/$PROJECT_ID/locations/$REGION/endpoints/$PREPROD_ENDPOINT_ID
+  customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/demo24-preprod
   customTarget/vertexAIConfigurationPath: "preprod/deployedModel.yaml"
   customTarget/vertexAIMinReplicaCount: "3"
   customTarget/vertexAIAliases: "demo24-preprod,v4-verify,butta-la-pasta,stage2"
@@ -61,7 +62,7 @@ metadata:
 customTarget:
   customTargetType: vertex-ai-endpoint
 deployParameters:
-  customTarget/vertexAIEndpoint: projects/$PROJECT_ID/locations/$REGION/endpoints/$ENDPOINT_ID
+  customTarget/vertexAIEndpoint: projects/rick-and-nardy-demo/locations/us-central1/endpoints/demo24-prod
   customTarget/vertexAIConfigurationPath: "prod/deployedModel.yaml"
   customTarget/vertexAIMinReplicaCount: "3"
   customTarget/vertexAIAliases: "demo24-prod,v4-verify,pasta-ready,stage3"

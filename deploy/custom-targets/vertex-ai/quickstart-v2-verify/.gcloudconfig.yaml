@@ -1,4 +1,6 @@
 # The symlink doesnt work well with dirname => creating a new one.
+#
+# Call me: `gaic`
 local_config:
   auto: true
 configurations:
@@ -9,6 +11,8 @@ configurations:
       account: ricc@google.com
       # to do this: gcloud ai models list
       ai/region: us-central1
+      deploy/delivery_pipeline: vertex-demo-verify
+      deploy/region: us-central1
     env:
       description: |
         This is the demo in /deploy/custom-targets/vertex-ai/quickstart-v2-verify/ for CD on VAI.

@@ -15,3 +15,6 @@ test-model-should-fail:
 # but it doesnt... Ivan on it
 test-model-should-succeed:
 	MIN_VALUE=1 MAX_VALUE=20000 ./model-seems-ok.sh california-input.json
+
+test-verify-as-is:
+	cd configuration/ && skaffold verify

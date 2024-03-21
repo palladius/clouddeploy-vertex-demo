@@ -9,6 +9,19 @@
 # this scripts calls the MODEL and checks if it works.
 
 echo "Testing Verify - always returning TRUE unless ARGV[1] is 'FAIL'"
+EMOJI="🚀"
+echo "Some sample CloudDeploy variables which might come handy:"
+echo "$EMOJI TARGET_TYPE: $TARGET_TYPE"
+echo "$EMOJI CLOUD_DEPLOY_LOCATION: $CLOUD_DEPLOY_LOCATION"
+echo "$EMOJI CLOUD_DEPLOY_DELIVERY_PIPELINE: $CLOUD_DEPLOY_DELIVERY_PIPELINE"
+echo "$EMOJI CLOUD_DEPLOY_TARGET: $CLOUD_DEPLOY_TARGET"
+echo "$EMOJI CLOUD_DEPLOY_PROJECT: $CLOUD_DEPLOY_PROJECT"
+echo "$EMOJI CLOUD_DEPLOY_RELEASE: $CLOUD_DEPLOY_RELEASE"
+echo "$EMOJI CLOUD_DEPLOY_ROLLOUT: $CLOUD_DEPLOY_ROLLOUT"
+echo "$EMOJI CLOUD_DEPLOY_JOB_RUN: $CLOUD_DEPLOY_JOB_RUN"
+echo "$EMOJI CLOUD_DEPLOY_PHASE: $CLOUD_DEPLOY_PHASE"
+
+
 if [ "${1:-nada}" = "FAIL" ] ; then
     echo "$0 [QUICK_TEST] FAILING"
     exit 42

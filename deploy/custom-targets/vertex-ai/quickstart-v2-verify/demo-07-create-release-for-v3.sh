@@ -46,7 +46,7 @@ _auto_increase_release_number() {
 }
 
 AUTO_INC="$(_auto_increase_release_number)"
-REL_NAME="relv3-model-$MODEL_VERSION-$AUTO_INC"
+REL_NAME="relv4-model-$MODEL_VERSION-$AUTO_INC"
 REL_DESCRIPTION="[$AUTO_INC] updated model to xx696"
 
 
