@@ -1,0 +1,18 @@
+createTime: '2024-03-12T13:15:34.519915Z'
+deployedModels:
+- createTime: '2024-03-15T15:30:30.837405Z'
+  dedicatedResources:
+    machineSpec:
+      machineType: n1-standard-2
+    maxReplicaCount: 1
+    minReplicaCount: 1
+  displayName: california_reg_model
+  id: '594525728347783168'
+  model: projects/849075740253/locations/us-central1/models/3485927948584747008
+  modelVersionId: '3'
+displayName: demo24-dev
+etag: AMEw9yNI7I_f7UzTgVjm9mpgO5WKhSzUaRTOqjPTe0VKqJ21z2YHv-tEwGycRoMmFOXW
+name: projects/849075740253/locations/us-central1/endpoints/demo24-dev
+trafficSplit:
+  '594525728347783168': 100
+updateTime: '2024-03-15T15:31:34.389825Z'

@@ -1,0 +1,70 @@
+# The symlink doesnt work well with dirname => creating a new one.
+local_config:
+  auto: true
+configurations:
+  quickstart-v2-verify:
+    gcloud:
+      project: rick-and-nardy-demo
+      compute/region: us-central1
+      account: ricc@google.com
+      # to do this: gcloud ai models list
+      ai/region: us-central1
+    env:
+      description: |
+        This is the demo in /deploy/custom-targets/vertex-ai/quickstart-v2-verify/ for CD on VAI.
+        Same as /quickstart/ bnut it has deplioyment verification and NO automation.
+      collaborator: inardini@google.com
+      PROJECT_NUMBER2: "849075740253" # manually set
+      PROD_PROJECT_ID: 'rick-and-nardy-prod'
+      DESCRIPTION: |
+        This is the MAIN Demo for Las Vegas 2024 by Riccardo and Ivan.
+        With deployment verification.
+
+        This is the v4.
+        v1 cant remember.
+        v2 the first functioning with single target.
+        v3 Tryptich with 3 CD targets
+        v4 This one
+      #ENDPOINT_ID: "quickstart-prod"
+      ENDPOINT_ID: demo24-prod
+      DEV_ENDPOINT_ID: demo24-dev
+      PREPROD_ENDPOINT_ID: demo24-preprod
+      # https://pantheon.corp.google.com/vertex-ai/models/locations/us-central1/models/test_model/versions/1/deploy?e=-13802955&mods=logs_tg_staging&project=rick-and-nardy-demo
+      REGION: ${GCP_REGION}
+      TMPDIR: out-v4-verify/
+      VAI_PIPELINE: vertex-demo-verify # CD Pipeline: was vertex tryptich
+      # This used to be the model to deploy.
+      # This is from Ivan for the demo
+      CD_DEPLOYABLE_MODEL: california_reg_model # Created by Ivan
+      CD_DEPLOYABLE_MODEL_ID_BEFORE_MESSUP: "3485927948584747008" # 3 versions: 1,2,3  # distrutto da ivan il 19mar salle 12:00
+      CD_DEPLOYABLE_MODEL_ID: "2596959603388317696" # 3 versions: 1,2,3  # distrutto da ivan il 19mar salle 12:00
+      CD_BOSTON_MODEL: test_model # created by QUICKSTART tutorial
+      # See below for MODEL_NAME
+      PROD_DEMO_ENDPOINT_ID: "demo24-prod"
+      DEV_DEMO_ENDPOINT_ID: "demo24-dev"
+
+      ######################################################
+      # Quickstart of Terraform: https://github.com/GoogleCloudPlatform/cloud-deploy-samples/blob/main/custom-targets/terraform/quickstart/QUICKSTART.md
+      DEV_BACKEND_BUCKET: ${PROJECT_ID}-${REGION}-tf-dev-backend
+      PROD_BACKEND_BUCKET: ${PROJECT_ID}-${REGION}-tf-prod-backend
+      ######################################################
+
+      ######################################################
+      # verify-evaluate-cloud-metrics
+      SKAFFOLD_DEFAULT_REPO: "us-central1-docker.pkg.dev/rick-and-nardy-demo/skaffoldume"
+      # allow_public_ssh_keys: ??
+      ######################################################
+
+      ######################################################
+      # Ivan ENV vars
+      ######################################################
+      PIPELINE_NAME: "ricc-cal-demo-vpipeline" # TODO change me AFTER it works
+      BUCKET_URI: "gs://${PROJECT_ID}-rnn-demo24"
+      # derived -> TODO
+      PIPELINE_ROOT: "${BUCKET_URI}/california_pipeline"
+      MODEL_PATH: "${PIPELINE_ROOT}/model"
+      MODEL_NAME: "california_reg_model" # changed from Ivan
+      ######################################################
+      # Changed on 20mar after breakup :)
+      DEMO_MODEL_NAME: "california_reg_model" # useless! there's two!
+      DEMO_MODEL_ID: "2596959603388317696"
