@@ -1,6 +1,6 @@
 #! /bin/bash
 
-SCRIPT_VER="1.2"
+SCRIPT_VER="1.3"
 INPUT_DATA_FILE="${1:-california-input-github.json}"
 #
 # 20240321 v1.2 more env vars and adding version to the script, since this is invoked from GH and has different lifecycle :)
@@ -35,6 +35,8 @@ echo "CD Parameters now: see https://cloud.google.com/deploy/docs/parameters"
 # customTarget/vertexAIAliases
 echo "📊 customTarget:    $customTarget"
 echo "📊 vertexAIAliases: $vertexAIAliases"
+echo "📊 VERTEXAIALIASES: $VERTEXAIALIASES"
+
 env | grep -i vertex # echo "📊 vertexAIAliases: $vertexAIAliases"
 echo "===================================================================================="
 
