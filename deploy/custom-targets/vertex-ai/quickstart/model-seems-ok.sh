@@ -58,6 +58,7 @@ echo "-------------"
 # REMOVEME - QUICK_TEST enabled of verify
 # ./model-seems-ok.sh        -> OK
 # ./model-seems-ok.sh FAIL   -> ERR
+# I only need this until Ivan provides me with a magic cURL for this model
 ############################################
 echo "Testing Verify - always returning TRUE unless ARGV[1] is 'FAIL'"
 if [ "${1:-nada}" = "FAIL" ] ; then
@@ -67,8 +68,6 @@ else
     echo "$0 [QUICK_TEST] SUCCESS (While I wait for Ivan's magic cURL)"
     exit 0
 fi
-
-
 ############################################
 # /removeme QUICK_TEST
 ############################################
