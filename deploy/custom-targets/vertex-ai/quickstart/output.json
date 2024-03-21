@@ -1,13 +1,1 @@
-{
-  "error": {
-    "code": 400,
-    "message": "Endpoint projects/849075740253/locations/us-central1/endpoints/demo24-dev misconfigured, \"traffic_split\" not set.  Verify if any models are deployed to the endpoint and traffic split is configured for them.",
-    "status": "FAILED_PRECONDITION",
-    "details": [
-      {
-        "@type": "type.googleapis.com/google.rpc.DebugInfo",
-        "detail": "[ORIGINAL ERROR] generic::failed_precondition: Endpoint projects/849075740253/locations/us-central1/endpoints/demo24-dev misconfigured, \"traffic_split\" not set.  Verify if any models are deployed to the endpoint and traffic split is configured for them. [google.rpc.error_details_ext] { message: \"Endpoint projects/849075740253/locations/us-central1/endpoints/demo24-dev misconfigured, \\\"traffic_split\\\" not set.  Verify if any models are deployed to the endpoint and traffic split is configured for them.\" }"
-      }
-    ]
-  }
-}
+{"detail":"The following exception has occurred: AttributeError. Arguments: (\"'XGBModel' object has no attribute 'gpu_id'\",)."}

@@ -43,6 +43,7 @@ MAX_VALUE="${MAX_VALUE:-5000}"
 set -euo pipefail
 
 echo "-------------"
+echo "ARGS ($#): '$*'"
 echo "ENV vars:"
 echo "🌱 ENDPOINT_ID: $ENDPOINT_ID"
 echo "🌱 INPUT_DATA_FILE: $INPUT_DATA_FILE"
@@ -53,8 +54,28 @@ echo "🏡 MIN_VALUE: $MIN_VALUE"
 echo "🏡 MAX_VALUE: $MAX_VALUE"
 echo "-------------"
 # Specifying the explicit project id in case this came to but me in the future.
-echo "Testing model on project '$PROJECT_ID' on INPUT_DATA_FILE: $INPUT_DATA_FILE"
-echo "Verifying the house price is between $MIN_VALUE and $MAX_VALUE"
+############################################
+# REMOVEME - QUICK_TEST enabled of verify
+# ./model-seems-ok.sh        -> OK
+# ./model-seems-ok.sh FAIL   -> ERR
+############################################
+echo "Testing Verify - always returning TRUE unless ARGV[1] is 'FAIL'"
+if [ "${1:-nada}" = "FAIL" ] ; then
+    echo "$0 [QUICK_TEST] FAILING"
+    exit 42
+else
+    echo "$0 [QUICK_TEST] SUCCESS (While I wait for Ivan's magic cURL)"
+    exit 0
+fi
+
+
+############################################
+# /removeme QUICK_TEST
+############################################
+
+echo "🧠 Testing model on project '$PROJECT_ID' on INPUT_DATA_FILE: $INPUT_DATA_FILE"
+echo "🧠 Verifying the house price is between $MIN_VALUE and $MAX_VALUE"
+
 
 #######################################################################
 # works but its slower - todo make it cleaner when everything works
