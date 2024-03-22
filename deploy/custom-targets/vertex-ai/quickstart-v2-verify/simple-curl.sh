@@ -22,7 +22,6 @@ function _curl_endpoint() {
     MedHouseVal=$(cat output-$MY_ENDPOINT.json | jq .predictions[0])
     # if numeric
     echo "🏚️  MedHouseVal: $MedHouseVal"
-
 }
 echo "1. Testing DEV Model by Ricc: $DEV_DEMO_ENDPOINT_ID"
 _curl_endpoint "$DEV_DEMO_ENDPOINT_ID"

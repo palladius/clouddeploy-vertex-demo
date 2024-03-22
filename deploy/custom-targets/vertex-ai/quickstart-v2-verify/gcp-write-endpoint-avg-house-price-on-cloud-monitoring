@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# This script curls the endpoints with Ivan magic curl JSON and then it publishes on Cloud Monitoring.
+# Depends_on:
+# * `gcp-write-metric` from 'palladius/sakura'
+
+source _env_gaic.sh
+INPUT_DATA_FILE="california-input.json"
+
+set -euo pipefail
+# DEFAULT_PROJECT=$( gcloud config get project 2>/dev/null )
+# PROJECT_ID=${1:-$DEFAULT_PROJECT}
+
+# echo "Pushing now metrics to project_id='$PROJECT_ID':"
+
+# # I only care about fields 3 and 5 in this output:
+# # 1M. 🔋 BatteryLife %🔌🪫: 75.43
+# # 2M. 🔋 BatteryHealth %🛟: 93.2
+# macbook-battery | while read FOO BAR METRIC BAZ VALUE ; do
+# #1B. 🔋 BatteryLife %: 100.0
+# # => METRIC=BatteryLife
+# # => VALUE=100.0
+#     #export PROJECT_ID="$PROJECT_ID"
+#     #echo DEB PROJECT_ID=$PROJECT_ID gcp-write-metric  "$METRIC" "$VALUE"
+#     PROJECT_ID=$PROJECT_ID gcp-write-metric  "$METRIC" "$VALUE" # 2>/dev/null
+# done
+function _curl_endpoint() {
+    MY_ENDPOINT="$1"
+    #echo "_curl_endpoint Vertex::ENDPOINT_ID: $MY_ENDPOINT"
+    curl \
+        -X POST \
+        -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+        -H "Content-Type: application/json" \
+        https://us-central1-aiplatform.googleapis.com/v1/projects/${PROJECT_NUMBER}/locations/us-central1/endpoints/${MY_ENDPOINT}:predict \
+        -d "@${INPUT_DATA_FILE}" 2>/dev/null \
+     > output-$MY_ENDPOINT.json  # | tee output.json
+    export MedHouseVal=$(cat output-$MY_ENDPOINT.json | jq .predictions[0])
+    # if numeric
+    echo "🏚️ EP=$MY_ENDPOINT MedHouseVal: $MedHouseVal"
+}
+echo "1. Testing PROD Model by Ricc: $ENDPOINT_ID"
+for ENDPOINT_I in "$PROD_DEMO_ENDPOINT_ID"  "$DEV_DEMO_ENDPOINT_ID" "$PREPROD_ENDPOINT_ID" ; do
+    _curl_endpoint "$ENDPOINT_I"
+    # echo \
+    PROJECT_ID=$PROJECT_ID gcp-write-metric  "${ENDPOINT_I}-MedHouseVal" "$MedHouseVal" # 2>/dev/null
+done
+
+# _curl_endpoint "$ENDPOINT_ID"
+# echo PROJECT_ID=$PROJECT_ID gcp-write-metric  "prod-endpoint-model-avg-house-price" "$MedHouseVal" # 2>/dev/null
+#_curl_endpoint "$DEV_DEMO_ENDPOINT_ID"
+#echo PROJECT_ID=$PROJECT_ID gcp-write-metric  "dev-endpoint-model-avg-house-price" "$MedHouseVal" # 2>/dev/null
