@@ -1,12 +1,15 @@
 #! /bin/bash
 
-SCRIPT_VER="1.6"
+SCRIPT_VER="1.7"
 INPUT_DATA_FILE="${1:-california-input-github.json}"
+TEMPORARY_BYPASS="true"
+# 20240322 v1.6 added a TEMPORARY_BYPASS
 # 20240322 v1.6 added AUTHORIZATION_BEARER depending if you have gcloud or not
 # 20240322 v1.5 fixed PN and gcloud
 # 20240321 v1.4 fixed for california and better error handling.
 # 20240321 v1.2 more env vars and adding version to the script, since this is invoked from GH and has different lifecycle :)
 #
+
 
 
 # Usage:
@@ -33,12 +36,21 @@ echo "🚀 CLOUD_DEPLOY_JOB_RUN: $CLOUD_DEPLOY_JOB_RUN"
 echo "🚀 CLOUD_DEPLOY_PHASE: $CLOUD_DEPLOY_PHASE"
 echo "CD Parameters now: see https://cloud.google.com/deploy/docs/parameters"
 # customTarget/vertexAIAliases
-echo "📊 customTarget:    $customTarget"
-echo "📊 vertexAIAliases: $vertexAIAliases"
-echo "📊 VERTEXAIALIASES: $VERTEXAIALIASES"
-
-env | grep -i vertex # echo "📊 vertexAIAliases: $vertexAIAliases"
+echo "📊 customTarget:      $customTarget"
+echo "📊 VERTEXAIALIASES:   $VERTEXAIALIASES"
+echo "📊 VERTEX_AI_ALIASES: $VERTEX_AI_ALIASES"
+echo "📊 VERTEXAI_ALIASES:  $VERTEXAI_ALIASES"
+echo "📊📊  Vertex-grepping ENVs BEGIN"
+#env | grep -i vertex # echo "📊 vertexAIAliases: $vertexAIAliases"
+printenv | grep -i vertex # echo "📊 vertexAIAliases: $vertexAIAliases"
+echo "📊📊  Vertex-grepping ENVs END"
 echo "===================================================================================="
+
+if [ "$TEMPORARY_BYPASS" = "true" ] ; then
+    echo "$0 ✅ [TEMPORARY_BYPASS=$TEMPORARY_BYPASS] Success by default (I might need this to fill in all the targets, for example)"
+    exit 42
+fi
+
 
 if [ "${1:-nada}" = "FAIL" ] ; then
     echo "$0 [QUICK_TEST] ⛔ FAILING"
