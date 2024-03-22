@@ -1,8 +1,8 @@
 #! /bin/bash
 
-SCRIPT_VER="1.9"
+SCRIPT_VER="1.10"
 INPUT_DATA_FILE="${1:-california-input-github.json}"
-TEMPORARY_BYPASS="false" # true to try
+TEMPORARY_BYPASS="true" # true to try
 
 ############################################################################################################
 # IMPORTANT TODOs: For the moment, the scri[p]
@@ -12,6 +12,7 @@ TEMPORARY_BYPASS="false" # true to try
 ############################################################################################################
 
 ############################################################################################################
+# 20240322 v1.10 still problem. Removing it
 # 20240322 v1.9 removed the TEMP bypass. lets see.
 # 20240322 v1.8 Adding CLOUD_DEPLOY_customTarget_vertexAIEndpoint which finally allows me to customize the output to do the CURL to the proper ENDPOINT.
 # 20240322 v1.7 added a TEMPORARY_BYPASS
@@ -186,7 +187,7 @@ AUTHORIZATION_BEARER=""
 if which gcloud ; then
   AUTHORIZATION_BEARER="Authorization: Bearer $(gcloud auth print-access-token)"
 else
-  AUTHORIZATION_BEARER="''"
+  AUTHORIZATION_BEARER=""
 fi
 
 echo Note I removed gcloud auth so this will only work on CD
