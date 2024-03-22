@@ -1,15 +1,14 @@
 #! /bin/bash
 
-SCRIPT_VER="1.7c"
+SCRIPT_VER="1.8"
 INPUT_DATA_FILE="${1:-california-input-github.json}"
 TEMPORARY_BYPASS="true"
-# 20240322 v1.6 added a TEMPORARY_BYPASS
+# 20240322 v1.8 Adding CLOUD_DEPLOY_customTarget_vertexAIEndpoint which finally allows me to customize the output to do the CURL to the proper ENDPOINT.
+# 20240322 v1.7 added a TEMPORARY_BYPASS
 # 20240322 v1.6 added AUTHORIZATION_BEARER depending if you have gcloud or not
 # 20240322 v1.5 fixed PN and gcloud
 # 20240321 v1.4 fixed for california and better error handling.
 # 20240321 v1.2 more env vars and adding version to the script, since this is invoked from GH and has different lifecycle :)
-#
-
 
 
 # Usage:
@@ -40,7 +39,8 @@ echo "📊 customTarget:      $customTarget"
 echo "📊 VERTEXAIALIASES:   $VERTEXAIALIASES"
 echo "📊 VERTEX_AI_ALIASES: $VERTEX_AI_ALIASES"
 echo "📊 VERTEXAI_ALIASES:  $VERTEXAI_ALIASES"
-echo "📊📊  Vertex-grepping ENVs BEGIN"
+echo "📊 CLOUD_DEPLOY_customTarget_vertexAIEndpoint: $CLOUD_DEPLOY_customTarget_vertexAIEndpoint"
+echo "📊📊 Vertex-grepping ENVs BEGIN"
 #env | grep -i vertex # echo "📊 vertexAIAliases: $vertexAIAliases"
 printenv | grep -i vertex # echo "📊 vertexAIAliases: $vertexAIAliases"
 echo "📊📊  Vertex-grepping ENVs END"
