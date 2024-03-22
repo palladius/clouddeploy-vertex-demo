@@ -1,8 +1,9 @@
 #! /bin/bash
 
-SCRIPT_VER="1.3"
+SCRIPT_VER="1.4"
 INPUT_DATA_FILE="${1:-california-input-github.json}"
 #
+# 20240321 v1.4 fixed for california and better error handling.
 # 20240321 v1.2 more env vars and adding version to the script, since this is invoked from GH and has different lifecycle :)
 #
 
@@ -78,7 +79,7 @@ else
     echo "downloading INPUT_DATA_FILE from github.."
     wget "https://raw.githubusercontent.com/palladius/clouddeploy-vertex-demo/main/deploy/custom-targets/vertex-ai/quickstart-v2-verify/california-input.json" -O "$INPUT_DATA_FILE"
     cat "$INPUT_DATA_FILE"
-    exit 42
+    # exit 43
 fi
 
 # # Model artifact location gs://cloud-samples-data/vertex-ai/model-deployment/models/boston/model
@@ -103,17 +104,20 @@ MODEL_ID="$DEMO_MODEL_ID"
 # #export PROJECT_NUMBER="$(gcloud projects describe "$PROJECT_ID" --format="value(projectNumber)")"
 # #PROJECT_NUMBER="849075740253"
 
-# House price comes around 8000.
-MIN_VALUE="${MIN_VALUE:-42}"
-MAX_VALUE="${MAX_VALUE:-5000}"
-# this should fail with 5000 and not fail with
+# Boston House price comes around 8000.
+# California House price comes around 1..4.
+MIN_VALUE="${MIN_VALUE:-1}"
+MAX_VALUE="${MAX_VALUE:-5}"
+CORRECT_ENDPOINT_ID="$DEV_ENDPOINT_ID" # todo change by target
 
 set -euo pipefail
 
 echo "-------------"
 echo "ARGS ($#): '$*'"
 echo "ENV vars:"
-echo "🌱 ENDPOINT_ID: $ENDPOINT_ID"
+echo "🌱 DEV_ENDPOINT_ID : $DEV_ENDPOINT_ID (Using THIS)"
+echo "🌱 PROD_ENDPOINT_ID: $ENDPOINT_ID     "
+echo "🌱 CORRECT_ENDPOINT_ID: $CORRECT_ENDPOINT_ID  (Using DEV - todo should be depending on TARGET..)"
 echo "🌱 INPUT_DATA_FILE: $INPUT_DATA_FILE"
 echo "🌱 MODEL_NAME: $MODEL_NAME"
 echo "🌱 MODEL_ID: $MODEL_ID"
@@ -158,7 +162,7 @@ curl \
     -X POST \
     -H "Authorization: Bearer $(gcloud auth print-access-token)" \
     -H "Content-Type: application/json" \
-    https://us-central1-aiplatform.googleapis.com/v1/projects/${PROJECT_NUMBER}/locations/us-central1/endpoints/${ENDPOINT_ID}:predict \
+    https://us-central1-aiplatform.googleapis.com/v1/projects/${PROJECT_NUMBER}/locations/us-central1/endpoints/${CORRECT_ENDPOINT_ID}:predict \
     -d "@${INPUT_DATA_FILE}" 2>/dev/null \
        > output.json  # | tee output.json
 
@@ -173,8 +177,9 @@ fi
 
 # Inspecting the output.json
 # Note that when it wont fail, probably this code needs fixing :)
-if cat output.json | jq .error.code | egrep '^2' ; then
-    echo "output.json seems 2XX: all good"
+#if cat output.json | jq .error.code | egrep '^2' ; then
+if cat output.json | grep predictions; then
+    echo "✅ output.json seems to contain predictions: all good"
 else
     ERR_CODE="$(cat output.json | jq .error.code)"
     echo "- ERROR CODE: $ERR_CODE"
@@ -186,8 +191,10 @@ else
 
 fi
 
-HOUSE_PRICE="$(cat output.json | jq .predictions[0][0])"
-echo  "🏙️ Predicted 🇺🇸 Boston 🏡 house price in 💲: '$HOUSE_PRICE'"
+HOUSE_PRICE=$( cat output.json | jq .predictions[0] )
+#HOUSE_PRICE="$(cat output.json | jq .predictions[0][0])"
+#echo  "🏙️ Predicted 🇺🇸 Boston 🏡 house price in 💲: '$HOUSE_PRICE'"
+echo  "🏙️ Predicted 🇺🇸🧸 California 🏡 house price in 💲: '$HOUSE_PRICE'"
 
 
 # num1=7.2
