@@ -13,3 +13,14 @@
 # limitations under the License.
 dedicatedResources:
   maxReplicaCount: 9
+# Final thing looks like this:
+# deployedModel:
+#   dedicatedResources:
+#     machineSpec:
+#       machineType: n1-standard-2
+#     maxReplicaCount: 9
+#     minReplicaCount: 3
+#   model: projects/849075740253/locations/us-central1/models/2596959603388317696@2
+# trafficSplit:
+#   "0": 100
+

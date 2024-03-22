@@ -13,3 +13,5 @@
 # limitations under the License.
 dedicatedResources:
   maxReplicaCount: 9
+  machineSpec:
+    machineType: n1-standard-16 # since its prod we take the biggest I can see under endpoints..

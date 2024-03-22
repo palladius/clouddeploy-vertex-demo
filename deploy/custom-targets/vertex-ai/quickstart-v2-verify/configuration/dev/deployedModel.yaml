@@ -15,3 +15,18 @@
 # Ricc: made it a bit smaller
 dedicatedResources:
   maxReplicaCount: 1
+  machineSpec:
+    machineType: n1-standard-8 # instead of 2...
+    # if it works -> add also to preprod (8) and prod (16)
+
+# Final thing looks like this:
+# deployedModel:
+#   dedicatedResources:
+#     machineSpec:
+#       machineType: n1-standard-2
+#     maxReplicaCount: 9
+#     minReplicaCount: 3
+#   model: projects/849075740253/locations/us-central1/models/2596959603388317696@2
+# trafficSplit:
+#   "0": 100
+

@@ -16,8 +16,10 @@ metadata:
   #name: vertex-ai-demo-v2
   #name: vertex-ai-cloud-deploy-pipeline
   name: vertex-demo-verify # v4 after tryptich :)
+  description: |
+    240322 v4.1 Added endpoints with n1-standard-{8-16} depending on target
 serialPipeline:
-  stages:s
+  stages:
   - targetId: vertex-dev
     strategy:
       standard:

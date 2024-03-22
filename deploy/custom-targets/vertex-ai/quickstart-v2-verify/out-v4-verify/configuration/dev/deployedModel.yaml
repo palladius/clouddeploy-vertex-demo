@@ -15,3 +15,8 @@
 # Ricc: made it a bit smaller
 dedicatedResources:
   maxReplicaCount: 1
+  # Ricc added on 22mar24
+  # This is to speed up the deployment to EPs...
+  # if it works, add to also preprod and prod
+  machineSpec:
+    machineType: n1-standard-16
