@@ -1,6 +1,6 @@
 #! /bin/bash
 
-SCRIPT_VER="1.7"
+SCRIPT_VER="1.7b"
 INPUT_DATA_FILE="${1:-california-input-github.json}"
 TEMPORARY_BYPASS="true"
 # 20240322 v1.6 added a TEMPORARY_BYPASS
@@ -48,9 +48,8 @@ echo "==========================================================================
 
 if [ "$TEMPORARY_BYPASS" = "true" ] ; then
     echo "$0 ✅ [TEMPORARY_BYPASS=$TEMPORARY_BYPASS] Success by default (I might need this to fill in all the targets, for example)"
-    exit 42
+    exit 0
 fi
-
 
 if [ "${1:-nada}" = "FAIL" ] ; then
     echo "$0 [QUICK_TEST] ⛔ FAILING"
