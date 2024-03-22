@@ -1,15 +1,25 @@
 #! /bin/bash
 
-SCRIPT_VER="1.8"
+SCRIPT_VER="1.9"
 INPUT_DATA_FILE="${1:-california-input-github.json}"
-TEMPORARY_BYPASS="true"
+TEMPORARY_BYPASS="false" # true to try
+
+############################################################################################################
+# IMPORTANT TODOs: For the moment, the scri[p]
+# b/1: script is broken if you remove TEMPORARY_BYPASS => fix it (de to gcloud auth and gcloud missing!)
+# b/2: script uses a static model you should use `CLOUD_DEPLOY_customTarget_vertexAIEndpoint` instead
+# Sample CLOUD_DEPLOY_customTarget_vertexAIEndpoint="projects/rick-and-nardy-demo/locations/us-central1/endpoints/demo24-preprod"
+############################################################################################################
+
+############################################################################################################
+# 20240322 v1.9 removed the TEMP bypass. lets see.
 # 20240322 v1.8 Adding CLOUD_DEPLOY_customTarget_vertexAIEndpoint which finally allows me to customize the output to do the CURL to the proper ENDPOINT.
 # 20240322 v1.7 added a TEMPORARY_BYPASS
 # 20240322 v1.6 added AUTHORIZATION_BEARER depending if you have gcloud or not
 # 20240322 v1.5 fixed PN and gcloud
 # 20240321 v1.4 fixed for california and better error handling.
 # 20240321 v1.2 more env vars and adding version to the script, since this is invoked from GH and has different lifecycle :)
-
+############################################################################################################
 
 # Usage:
 # - ./model-seems-ok.sh (sensible defaults)
@@ -73,7 +83,6 @@ else
 fi
 
 # [alpine-wget] 🚀 CLOUD_DEPLOY_TARGET: vertex-dev
-# vertex-devq
 
 set -euo pipefail
 
@@ -116,7 +125,7 @@ MODEL_ID="$DEMO_MODEL_ID"
 
 # Boston House price comes around 8000.
 # California House price comes around 1..4.
-MIN_VALUE="${MIN_VALUE:-1}"
+MIN_VALUE="${MIN_VALUE:-0}"
 MAX_VALUE="${MAX_VALUE:-5}"
 CORRECT_ENDPOINT_ID="$DEV_ENDPOINT_ID" # todo change by target
 
@@ -202,17 +211,16 @@ fi
 # Inspecting the output.json
 # Note that when it wont fail, probably this code needs fixing :)
 #if cat output.json | jq .error.code | egrep '^2' ; then
-if cat output.json | grep predictions; then
+if cat output.json | grep -q predictions; then
     echo "✅ output.json seems to contain predictions: all good"
 else
     ERR_CODE="$(cat output.json | jq .error.code)"
-    echo "- ERROR CODE: $ERR_CODE"
-    echo "- ERROR MESSAGE: $(cat output.json | jq .error.message)"
+    echo "- ❎ ERROR CODE: $ERR_CODE"
+    echo "- ❎ ERROR MESSAGE: $(cat output.json | jq .error.message)"
     echo "❎ While the cURL returned correctly, the endpoint yielded an application-level error: Exiting."
     echo "--"
     cat output.json | jq .error
     exit "$ERR_CODE"
-
 fi
 
 HOUSE_PRICE=$( cat output.json | jq .predictions[0] )
@@ -232,23 +240,9 @@ echo  "🏙️ Predicted 🇺🇸🧸 California 🏡 house price in 💲: '$HOU
 # HOUSE_PRICE=2500.75
 
 if (( $(bc <<< "$HOUSE_PRICE >= $MIN_VALUE && $HOUSE_PRICE <= $MAX_VALUE") )); then
-    echo "[Gemini] 👍 HOUSE_PRICE=$HOUSE_PRICE is within range. Model seems good!"
+    echo "[California🇺🇸🧸] 👍 HOUSE_PRICE=$HOUSE_PRICE is within range. Model seems good!"
     exit 0
 else
-    echo "[Gemini] 👎 HOUSE_PRICE=$HOUSE_PRICE is outside range [$MIN_VALUE, $MAX_VALUE]"
+    echo "[California🇺🇸🧸] 👎 HOUSE_PRICE=$HOUSE_PRICE is outside range [$MIN_VALUE, $MAX_VALUE]"
     exit 142
 fi
-
-
-# if [ "$HOUSE_PRICE" -gt "$MAX_VALUE" ]; then
-#   echo "HOUSE_PRICE $HOUSE_PRICE is greater than $MAX_VALUE: This is too much so I dont trust this model."
-#   exit 42
-# else
-#   echo "HOUSE_PRICE is not too big, good."
-# fi
-
-# if [ "$num1" -gt "$num2" ]; then
-#     echo "$num1 is greater than $num2"
-# else
-#     echo "$num1 is not greater than $num2"
-# fi
