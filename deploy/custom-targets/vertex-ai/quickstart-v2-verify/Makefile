@@ -6,7 +6,11 @@ login:
 	gcloud auth application-default login
 
 clean:
-	rm -rf out/ .echodo_history rm _env_gaic.*
+	rm -rf out/ .echodo_history rm _env_gaic.* out-v4-verify/
+
+show: status
+status:
+	./13-show.sh
 
 
 test-model-should-fail:

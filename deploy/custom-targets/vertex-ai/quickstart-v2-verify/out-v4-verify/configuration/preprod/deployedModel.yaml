@@ -13,3 +13,5 @@
 # limitations under the License.
 dedicatedResources:
   maxReplicaCount: 5
+  machineSpec:
+    machineType: n1-standard-8 # instead of 2...
