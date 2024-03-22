@@ -1,8 +1,9 @@
 #! /bin/bash
 
-SCRIPT_VER="1.5"
+SCRIPT_VER="1.6"
 INPUT_DATA_FILE="${1:-california-input-github.json}"
-# 1.5 fixed PN and gcloud
+# 20240322 v1.6 added AUTHORIZATION_BEARER depending if you have gcloud or not
+# 20240322 v1.5 fixed PN and gcloud
 # 20240321 v1.4 fixed for california and better error handling.
 # 20240321 v1.2 more env vars and adding version to the script, since this is invoked from GH and has different lifecycle :)
 #
@@ -161,11 +162,18 @@ echo "PROJECT_NUMBER: $PROJECT_NUMBER"
 #     curl -sSL https://sdk.cloud.google.com | bash
 # Re,moving auth for Cloud Deploy env
 #    -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+AUTHORIZATION_BEARER=""
+if which gcloud ; then
+  AUTHORIZATION_BEARER="Authorization: Bearer $(gcloud auth print-access-token)"
+else
+  AUTHORIZATION_BEARER="''"
+fi
 
 echo Note I removed gcloud auth so this will only work on CD
-
+echo "AUTHORIZATION_BEARER: $AUTHORIZATION_BEARER"
 curl \
     -X POST \
+    -H "$AUTHORIZATION_BEARER" \
     -H "Content-Type: application/json" \
     https://us-central1-aiplatform.googleapis.com/v1/projects/${PROJECT_NUMBER}/locations/us-central1/endpoints/${CORRECT_ENDPOINT_ID}:predict \
     -d "@${INPUT_DATA_FILE}" 2>/dev/null \
