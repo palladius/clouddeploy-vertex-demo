@@ -1,13 +1,11 @@
 #! /bin/bash
 
-SCRIPT_VER="1.4"
+SCRIPT_VER="1.5"
 INPUT_DATA_FILE="${1:-california-input-github.json}"
-#
+# 1.5 fixed PN and gcloud
 # 20240321 v1.4 fixed for california and better error handling.
 # 20240321 v1.2 more env vars and adding version to the script, since this is invoked from GH and has different lifecycle :)
 #
-
-
 
 
 # Usage:
@@ -154,13 +152,20 @@ echo "🧠 Verifying the house price is between $MIN_VALUE and $MAX_VALUE"
 #echo "PROJECT_ID: $PROJECT_ID"
 #gcloud projects describe "$PROJECT_ID" --format="value(projectNumber)"
 #export PROJECT_NUMBER2="$(gcloud projects describe "$PROJECT_ID" --format="value(projectNumber)")"
-#echo "PROJECT_NUMBER2: $PROJECT_NUMBER2"
+PROJECT_NUMBER="$PROJECT_NUMBER2"
+echo "PROJECT_NUMBER: $PROJECT_NUMBER"
 #exit 42
 #######################################################################
 
+# which gcloud ||
+#     curl -sSL https://sdk.cloud.google.com | bash
+# Re,moving auth for Cloud Deploy env
+#    -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+
+echo Note I removed gcloud auth so this will only work on CD
+
 curl \
     -X POST \
-    -H "Authorization: Bearer $(gcloud auth print-access-token)" \
     -H "Content-Type: application/json" \
     https://us-central1-aiplatform.googleapis.com/v1/projects/${PROJECT_NUMBER}/locations/us-central1/endpoints/${CORRECT_ENDPOINT_ID}:predict \
     -d "@${INPUT_DATA_FILE}" 2>/dev/null \
