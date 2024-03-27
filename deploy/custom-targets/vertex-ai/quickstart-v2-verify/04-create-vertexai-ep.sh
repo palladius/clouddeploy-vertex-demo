@@ -24,3 +24,20 @@ gcloud ai endpoints create --display-name "$ENDPOINT_ID"    --endpoint-id "$ENDP
 
 # DEV
 gcloud ai endpoints create --display-name "$DEV_ENDPOINT_ID"   --endpoint-id "$DEV_ENDPOINT_ID" --region "$REGION" --project "$PROJECT_ID"
+
+exit 0
+
+
+
+
+##########################
+# Vegas Slides only :)
+##########################
+
+
+# Creates DEV, PREPROD and PROD endpoints
+for ENDPOINT in 'demo24-dev' 'demo24-preprod' 'demo24-prod' ; do
+    gcloud ai endpoints create \
+        --display-name "$ENDPOINT" \
+        --endpoint-id "$ENDPOINT"
+done
