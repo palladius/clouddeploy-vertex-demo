@@ -4,6 +4,8 @@ SCRIPT_VER="1.10"
 INPUT_DATA_FILE="${1:-california-input-github.json}"
 TEMPORARY_BYPASS="true" # true to try
 
+source '_env_gaic.sh'
+
 ############################################################################################################
 # IMPORTANT TODOs: For the moment, the scri[p]
 # b/1: script is broken if you remove TEMPORARY_BYPASS => fix it (de to gcloud auth and gcloud missing!)
@@ -47,9 +49,9 @@ echo "🚀 CLOUD_DEPLOY_PHASE: $CLOUD_DEPLOY_PHASE"
 echo "CD Parameters now: see https://cloud.google.com/deploy/docs/parameters"
 # customTarget/vertexAIAliases
 echo "📊 customTarget:      $customTarget"
-echo "📊 VERTEXAIALIASES:   $VERTEXAIALIASES"
-echo "📊 VERTEX_AI_ALIASES: $VERTEX_AI_ALIASES"
-echo "📊 VERTEXAI_ALIASES:  $VERTEXAI_ALIASES"
+#echo "📊 VERTEXAIALIASES:   $VERTEXAIALIASES"
+#echo "📊 VERTEX_AI_ALIASES: $VERTEX_AI_ALIASES"
+#echo "📊 VERTEXAI_ALIASES:  $VERTEXAI_ALIASES"
 echo "📊 CLOUD_DEPLOY_customTarget_vertexAIEndpoint: $CLOUD_DEPLOY_customTarget_vertexAIEndpoint"
 echo "📊📊 Vertex-grepping ENVs BEGIN"
 #env | grep -i vertex # echo "📊 vertexAIAliases: $vertexAIAliases"
