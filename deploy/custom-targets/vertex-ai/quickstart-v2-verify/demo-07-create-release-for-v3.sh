@@ -2,7 +2,7 @@
 
 # See also `auto_increase_number` in sakura
 
-# source '_env_gaic.sh'
+source '_env_gaic.sh'
 
 set -euo pipefail
 

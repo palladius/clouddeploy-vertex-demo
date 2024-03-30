@@ -4,10 +4,10 @@ SCRIPT_VER="1.10"
 INPUT_DATA_FILE="${1:-california-input-github.json}"
 TEMPORARY_BYPASS="true" # true to try
 
-source '_env_gaic.sh'
+# source '_env_gaic.sh' # NO! This is executed from Github download - you cannot add it here!
 
 ############################################################################################################
-# IMPORTANT TODOs: For the moment, the scri[p]
+# IMPORTANT TODOs: For the moment, the script
 # b/1: script is broken if you remove TEMPORARY_BYPASS => fix it (de to gcloud auth and gcloud missing!)
 # b/2: script uses a static model you should use `CLOUD_DEPLOY_customTarget_vertexAIEndpoint` instead
 # Sample CLOUD_DEPLOY_customTarget_vertexAIEndpoint="projects/rick-and-nardy-demo/locations/us-central1/endpoints/demo24-preprod"
