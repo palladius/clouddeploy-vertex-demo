@@ -25,6 +25,9 @@ REL_DESCRIPTION="Trying descriptions now.."
 # 22feb rel02: same -> prod
 # 22feb rel01: first one -> prod
 
+echo "This is obsolete for Vegas. Do NOT use".
+exit 1
+
 echo "🚀 Deploying release '$REL_NAME'.."
 # vertex-ai-cloud-deploy-pipeline
 gcloud deploy releases create "$REL_NAME" \

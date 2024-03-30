@@ -2,7 +2,9 @@
 
 #export ENDPOINT_ID="quickstart-prod"
 
-set -euo pipefail
+#set -euo pipefail
+echo 'Creating 3 endpoints. If you see an ALREADY_EXISTS dont you worry its expected.'
+
 
 # ENDPOINT_ID: "quickstart-prod"
 # DEV_ENDPOINT_ID: "2371068237996621824" # https://screenshot.googleplex.com/AbYAAZu2PYd9wTz
@@ -24,6 +26,8 @@ gcloud ai endpoints create --display-name "$ENDPOINT_ID"    --endpoint-id "$ENDP
 
 # DEV
 gcloud ai endpoints create --display-name "$DEV_ENDPOINT_ID"   --endpoint-id "$DEV_ENDPOINT_ID" --region "$REGION" --project "$PROJECT_ID"
+
+gcloud ai endpoints list
 
 exit 0
 

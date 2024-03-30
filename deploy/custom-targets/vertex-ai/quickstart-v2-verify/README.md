@@ -11,3 +11,7 @@ Riccardo if you change a var here, do:
 Possibly: `rm -rf out/`
 
 Then relaunch 06 and 07 scripts.
+
+## Demo Vegas24 actions
+
+See `DEMO_VEGAS.md`.
