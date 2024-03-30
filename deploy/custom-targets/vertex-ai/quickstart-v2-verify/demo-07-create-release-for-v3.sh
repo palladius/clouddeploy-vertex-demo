@@ -2,7 +2,7 @@
 
 # See also `auto_increase_number` in sakura
 
-source '_env_gaic.sh'
+# source '_env_gaic.sh'
 
 set -euo pipefail
 
@@ -50,10 +50,13 @@ REL_NAME="relv4-model-$MODEL_VERSION-$AUTO_INC"
 shift
 REL_DESCRIPTION="[$AUTO_INC] $*"
 
+# CD_FANCY_STRING_MODEL="🏴󠁵󠁳󠁣󠁡󠁿California" -> in gaic CD_FANCY_STRING_MODEL
 
 echo "========================================================================"
 echo "CD_DEPLOYABLE_MODEL: $CD_DEPLOYABLE_MODEL"
 echo "CD_DEPLOYABLE_MODEL_ID: $CD_DEPLOYABLE_MODEL_ID"
+echo "CD_FANCY_STRING_MODEL: $CD_FANCY_STRING_MODEL"
+
 echo "REL_NAME: $REL_NAME"
 echo "MODEL_VERSION:  $MODEL_VERSION"
 echo "VAI_PIPELINE: $VAI_PIPELINE"
@@ -65,7 +68,7 @@ echo "🚀 Deploying release '$REL_NAME'.."
 
 gcloud deploy releases create "$REL_NAME" \
     --delivery-pipeline=$VAI_PIPELINE \
-    --description="$CD_DEPLOYABLE_MODEL@$MODEL_VERSION 🧠 $REL_DESCRIPTION" \
+    --description="$CD_FANCY_STRING_MODEL@$MODEL_VERSION 🧠 $REL_DESCRIPTION" \
     --enable-initial-rollout \
     --project=$PROJECT_ID \
     --region=$REGION \

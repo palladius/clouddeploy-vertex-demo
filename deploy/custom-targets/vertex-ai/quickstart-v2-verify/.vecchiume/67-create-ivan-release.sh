@@ -24,6 +24,9 @@ echo "========================================================="
 
 echo "1. Replacing vars in this dir: $TMPDIR"
 
+echo "REL-Ivan 301 seems useless now. Use the ./demo-07-create-release-for-v3.sh instead"
+exit 42
+
 # Normal test version
 #./replace_variables.sh -p $PROJECT_ID -r $REGION -e $ENDPOINT_ID -t $TMPDIR -d $DEV_ENDPOINT_ID
 # Demo version

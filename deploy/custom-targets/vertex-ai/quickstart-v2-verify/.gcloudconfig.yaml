@@ -40,6 +40,7 @@ configurations:
       # This used to be the model to deploy.
       # This is from Ivan for the demo
       CD_DEPLOYABLE_MODEL: california_reg_model # Created by Ivan
+      CD_FANCY_STRING_MODEL: "🏴󠁵󠁳󠁣󠁡󠁿🏠california_housing" # Created by Ricc, good for UI
       #CD_DEPLOYABLE_MODEL_ID_BEFORE_MESSUP: "3485927948584747008" # 3 versions: 1,2,3  # distrutto da ivan il 19mar salle 12:00
       #CD_DEPLOYABLE_MODEL_ID: "2596959603388317696" # 3 versions: 1,2,3  # distrutto da ivan il 19mar salle 12:00
       CD_DEPLOYABLE_MODEL_ID: "8413639997114023936" # ricostruito da Ivan giov pom 21mar
