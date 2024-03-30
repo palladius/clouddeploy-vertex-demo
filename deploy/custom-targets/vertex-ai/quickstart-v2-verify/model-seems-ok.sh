@@ -210,12 +210,15 @@ fi
 
 echo Note I removed gcloud auth so this will only work on CD
 echo "AUTHORIZATION_BEARER: $AUTHORIZATION_BEARER"
+
+# This is the command where it fails
+# lets remove 2>/dev/null
 curl \
     -X POST \
     -H "$AUTHORIZATION_BEARER" \
     -H "Content-Type: application/json" \
     https://us-central1-aiplatform.googleapis.com/v1/projects/${PROJECT_NUMBER}/locations/us-central1/endpoints/${CORRECT_ENDPOINT_ID}:predict \
-    -d "@${INPUT_DATA_FILE}" 2>/dev/null \
+    -d "@${INPUT_DATA_FILE}"  \
        > output.json  # | tee output.json
 
 curl_ret="$?"

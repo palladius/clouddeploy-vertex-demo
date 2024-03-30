@@ -100,3 +100,23 @@ Ask Ivan if the value is ok. If he's ok, then click approve.
 
 * remove aliases manually from the deployed models:
 * remove aliases via pythin script: TODO (not available in gcloud)
+
+## Appendix
+
+Values from various 4 models from Ivan (only 1 and 2 are demonstrayed)
+
+```JSON
+v3:
+{
+ "predictions": [
+   3.07460880279541
+ ],
+ "deployedModelId": "1630142536410464256",
+ "model": "projects/849075740253/locations/us-central1/models/8413639997114023936",
+ "modelDisplayName": "california_reg_model",
+ "modelVersionId": "3"
+}
+
+v4:
+
+```
