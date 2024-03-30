@@ -83,9 +83,6 @@ fi
 if [ "${1:-nada}" = "FAIL" ] ; then
     echo "$0 [QUICK_TEST] ⛔ FAILING"
     exit 42
-#else
-#    echo "$0 [QUICK_TEST] ✅ SUCCESS (While I wait for Ivan's magic cURL)"
-#    exit 0
 fi
 
 ## for Demo purporses pre Ivan fix:
@@ -93,12 +90,12 @@ fi
 # 1. if preprod2prod -> I call the URL and I go further GOOD
 
 if [ "vertex-dev" = "$CLOUD_DEPLOY_TARGET" ] ; then
+    # Dev always succeedes
     echo "$0 [QUICK_TEST] ✅ SUCCESS (While I wait for Ivan's magic cURL)"
-    exit 0
+    echo "$0 [QUICK_TEST] ✅ Riccardo - danger now I remove this exit 0"
+ #   exit 0
 else
     echo "$0 [QUICK_TEST] CLOUD_DEPLOY_TARGET=$CLOUD_DEPLOY_TARGET is NOT dev: continuiung.."
-  #  echo "$0 [QUICK_TEST] ✅ SUCCESS (While I wait for Ivan's magic cURL)"
-  #  exit 0
 fi
 
 # [alpine-wget] 🚀 CLOUD_DEPLOY_TARGET: vertex-dev
