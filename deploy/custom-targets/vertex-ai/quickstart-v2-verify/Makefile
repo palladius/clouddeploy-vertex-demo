@@ -22,3 +22,6 @@ test-model-should-succeed:
 
 test-verify-as-is:
 	cd configuration/ && skaffold verify
+
+test-models:
+	./test-both-endpoints-locally.sh

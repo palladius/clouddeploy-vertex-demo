@@ -2,7 +2,22 @@
 
 set -euo pipefail
 
-INPUT_DATA_FILE="${1:-california-input-github.json}"
+INPUT_DATA_FILE="${1:-california-input.json}"
+
+# {
+#    "instances": [[
+#      2.34476576,
+#       0.98214266,
+#       0.62855945,
+#      -0.15375759,
+#      -0.9744286 ,
+#      -0.04959654,
+#       1.05254828,
+#      -1.32783522
+#    ]]
+#  }
+
+
 
 echo Testing DEV and PROD endpoints. I dont care re preprod. I use gcloud.
 echo "Using JSON in: $INPUT_DATA_FILE"

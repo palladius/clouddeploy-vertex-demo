@@ -82,13 +82,21 @@ Now call the script:
 
 #### Alternative: use CLI
 
-  * CORRECT_ENDPOINT_ID=demo24-dev ./demo-model-seems-ok.sh  # yields 84k
-  * CORRECT_ENDPOINT_ID=demo24-prod ./demo-model-seems-ok.sh # yields 48k
+  * [OLD] `CORRECT_ENDPOINT_ID=demo24-dev ./demo-model-seems-ok.sh`  # yields 84k
+  * [OLD] `CORRECT_ENDPOINT_ID=demo24-prod ./demo-model-seems-ok.sh` # yields 48k
+  * Or better
+  * `./test-both-endpoints-locally.sh`
 
 Ask Ivan if the value is ok. If he's ok, then click approve.
 
+#### Ivan says yes - approve v2 to prod
+
+* Show the Manifest diff.
+* Show it only changes @v1 vs @v2
+* hit approve
+* DONE!
 
 ## Cleanup for next demo
 
 * remove aliases manually from the deployed models:
-* remove aliases vvia pythin script: TODO (not available in gcloud)
+* remove aliases via pythin script: TODO (not available in gcloud)
