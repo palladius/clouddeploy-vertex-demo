@@ -2,10 +2,16 @@
 
 ############################################################################################################
 # do NOT touch before Vegas! this can preclude the VERIFY step of skaffold.
+# TODO move to use tag v1.1.0 where this wont happen again :)
+# This is downloaded from the Cloud so you CANNOT mess with this.
+# To get value locally, use this instead:
+#
+# $ ./demo-model-seems-ok.sh
+#
 ############################################################################################################
 
 
-SCRIPT_VER="1.11"
+SCRIPT_VER="1.11cloud"
 INPUT_DATA_FILE="${1:-california-input-github.json}"
 TEMPORARY_BYPASS="true" # true to try
 
@@ -19,6 +25,11 @@ TEMPORARY_BYPASS="true" # true to try
 ############################################################################################################
 
 ############################################################################################################
+#
+# DO NOT TOUCH THE SOURCE ABOVE!!!
+#
+# -> BRANCHED into Vegas "demo-model-seems-ok.sh"
+# 202403?? v1.11 somewhat I added back the source '_env_gaic.sh' which breaks the skaffold verify.
 # 20240322 v1.10 still problem. Removing it
 # 20240322 v1.9 removed the TEMP bypass. lets see.
 # 20240322 v1.8 Adding CLOUD_DEPLOY_customTarget_vertexAIEndpoint which finally allows me to customize the output to do the CURL to the proper ENDPOINT.
