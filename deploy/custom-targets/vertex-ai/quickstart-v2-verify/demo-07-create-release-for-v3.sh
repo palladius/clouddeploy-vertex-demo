@@ -46,7 +46,8 @@ _auto_increase_release_number() {
 }
 
 AUTO_INC="$(_auto_increase_release_number)"
-REL_NAME="relv4-model-$MODEL_VERSION-$AUTO_INC"
+#REL_NAME="relv4-model-$MODEL_VERSION-$AUTO_INC"
+REL_NAME="california-v$MODEL_VERSION-rel$AUTO_INC"
 shift
 REL_DESCRIPTION="[$AUTO_INC] $*"
 
@@ -66,9 +67,10 @@ echo "========================================================================"
 
 echo "🚀 Deploying release '$REL_NAME'.."
 
+# Removed 🧠 as other emojis are awesome.
 gcloud deploy releases create "$REL_NAME" \
     --delivery-pipeline=$VAI_PIPELINE \
-    --description="$CD_FANCY_STRING_MODEL@$MODEL_VERSION 🧠 $REL_DESCRIPTION" \
+    --description="$CD_FANCY_STRING_MODEL ver=$MODEL_VERSION $REL_DESCRIPTION" \
     --enable-initial-rollout \
     --project=$PROJECT_ID \
     --region=$REGION \
