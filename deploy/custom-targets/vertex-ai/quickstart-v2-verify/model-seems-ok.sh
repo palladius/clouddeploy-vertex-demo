@@ -1,6 +1,11 @@
 #! /bin/bash
 
-SCRIPT_VER="1.10"
+############################################################################################################
+# do NOT touch before Vegas! this can preclude the VERIFY step of skaffold.
+############################################################################################################
+
+
+SCRIPT_VER="1.11"
 INPUT_DATA_FILE="${1:-california-input-github.json}"
 TEMPORARY_BYPASS="true" # true to try
 
