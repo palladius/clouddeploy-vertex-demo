@@ -59,7 +59,36 @@
 
 * Show this in CD UI https://pantheon.corp.google.com/deploy/delivery-pipelines/us-central1/vertex-demo-verify?project=rick-and-nardy-demo
 * Also shjow the change to VAI UI: https://pantheon.corp.google.com/vertex-ai/online-prediction/locations/us-central1/endpoints/demo24-dev?project=rick-and-nardy-demo
+* BINGO! https://screenshot.googleplex.com/4EeUZyevb8WTbwq
+
+
+Now call the script:
+
+* `./demo-model-seems-ok.sh`
+* Price of the house for this model is 0.7?
+
+
+### Check quality of v2 vs v1
+
+* Paste the same above JSON in the v2 prediction and tell that the v2 number is be5tter or worse according to what Ivan says.
+* Now show that you have from UI (nicer):
+* v2 in demo-dev: https://pantheon.corp.google.com/vertex-ai/online-prediction/locations/us-central1/endpoints/demo24-dev?e=-13802955&mods=logs_tg_staging&project=rick-and-nardy-demo
+    *  Value for v2: `3.07460880279541`.
+    *  Estd House price is `307k`.
+* v1 in demo-prod: https://pantheon.corp.google.com/vertex-ai/models/locations/us-central1/models/8413639997114023936/versions/1/deploy?project=rick-and-nardy-demo
+    *  Value for v1: `1.899170756340027`.
+    *  Estd House price is `189k`.
+* demo-preprod somewhere in between.
+
+#### Alternative: use CLI
+
+  * CORRECT_ENDPOINT_ID=demo24-dev ./demo-model-seems-ok.sh  # yields 84k
+  * CORRECT_ENDPOINT_ID=demo24-prod ./demo-model-seems-ok.sh # yields 48k
+
+Ask Ivan if the value is ok. If he's ok, then click approve.
+
 
 ## Cleanup for next demo
 
-* remove aliases from
+* remove aliases manually from the deployed models:
+* remove aliases vvia pythin script: TODO (not available in gcloud)
