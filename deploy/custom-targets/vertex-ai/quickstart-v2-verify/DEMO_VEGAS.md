@@ -35,6 +35,7 @@
 * Open
 * First add JSON request to it: https://pantheon.corp.google.com/vertex-ai/models/locations/us-central1/models/8413639997114023936/versions/1/deploy?e=-13802955&mods=logs_tg_staging&project=rick-and-nardy-demo
 ```
+
 {
    "instances": [[
      2.34476576,
@@ -47,6 +48,7 @@
      -1.32783522
    ]]
  }
+
 ```
 * get result , say "1.899170756340027"
 * Explain this is the price in 100'000 , in this case ~`189k` USD.
@@ -106,6 +108,29 @@ Ask Ivan if the value is ok. If he's ok, then click approve.
 Values from various 4 models from Ivan (only 1 and 2 are demonstrayed)
 
 ```JSON
+v1:
+{
+ "predictions": [
+   1.899170756340027
+ ],
+ "deployedModelId": "4021553938544197632",
+ "model": "projects/849075740253/locations/us-central1/models/8413639997114023936",
+ "modelDisplayName": "california_reg_model",
+ "modelVersionId": "1"
+}
+
+v2:
+
+{
+ "predictions": [
+   3.07460880279541
+ ],
+ "deployedModelId": "6246754366930288640",
+ "model": "projects/849075740253/locations/us-central1/models/8413639997114023936",
+ "modelDisplayName": "california_reg_model",
+ "modelVersionId": "2"
+}
+
 v3:
 {
  "predictions": [
@@ -118,5 +143,14 @@ v3:
 }
 
 v4:
+{
+ "predictions": [
+   3.07460880279541
+ ],
+ "deployedModelId": "7275404669319380992",
+ "model": "projects/849075740253/locations/us-central1/models/8413639997114023936",
+ "modelDisplayName": "california_reg_model",
+ "modelVersionId": "4"
+}
 
 ```
