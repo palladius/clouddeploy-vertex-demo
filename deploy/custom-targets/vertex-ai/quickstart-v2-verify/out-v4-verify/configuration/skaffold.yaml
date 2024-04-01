@@ -43,3 +43,7 @@ verify:
   #     image: alpine
   #     command: ["/bin/sh"]
   #     args: ["-c", "wget #ENDPOINT_URL"]
+
+
+# Test locally:
+# docker run -it alpine:3.15.4 /bin/sh -c "wget https://raw.githubusercontent.com/palladius/clouddeploy-vertex-demo/main/deploy/custom-targets/vertex-ai/quickstart-v2-verify/model-seems-ok.sh -O - | sh"

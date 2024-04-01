@@ -1,11 +1,15 @@
 ## Demo Vegas24 instructions
 
-### Setup and auth.
+Self: https://github.com/palladius/clouddeploy-vertex-demo/blob/main/deploy/custom-targets/vertex-ai/quickstart-v2-verify/DEMO_VEGAS.md
+
+### Setup and auth (make sure you have access)
 
 * `gaic` - set up  env vars. `git diff` if it fails.
 * `./11-explore-models.sh` - check GCLOUD AUTH works.
 
-### Create Endpoints and check
+### [OPTIONAL] Create Endpoints and check
+
+Only run if you dont see the 3 endpoinst.
 
 * `./04-create-vertexai-ep.sh`
 * `./11-explore-models.sh` - check it all works. Model and 3 endpoints are there.

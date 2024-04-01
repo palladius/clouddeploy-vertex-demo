@@ -8,12 +8,14 @@
 #
 # $ ./demo-model-seems-ok.sh
 #
+# Found the bug: docker run -it alpine:3.15.4 /bin/sh -c "wget https://raw.githubusercontent.com/palladius/clouddeploy-vertex-demo/main/deploy/custom-targets/vertex-ai/quickstart-v2-verify/model-seems-ok.sh -O - | sh"
 ############################################################################################################
 
 
 SCRIPT_VER="1.11cloud"
 INPUT_DATA_FILE="${1:-california-input-github.json}"
-TEMPORARY_BYPASS="false" # true to try
+#TEMPORARY_BYPASS="false" # true to try
+TEMPORARY_BYPASS="true" # true to try
 
 # source '_env_gaic.sh' # NO! This is executed from Github download - you cannot add it here!
 
