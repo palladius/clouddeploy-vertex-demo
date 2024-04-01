@@ -25,3 +25,11 @@ test-verify-as-is:
 
 test-models:
 	./test-both-endpoints-locally.sh
+
+test-verify-locally:
+	echo Still unsure which of the 2 scripts I should try:
+	echo '1. Testing the one used by Skaffold: /model-seems-ok.sh'
+	docker run -it alpine:3.15.4 sh -c "`cat model-seems-ok.sh`"
+    echo '2. Testing the one used by Ricc for testing and locally: ./demo-model-seems-ok.sh'
+	docker run -it alpine:3.15.4 sh -c "`cat demo-model-seems-ok.sh`"
+

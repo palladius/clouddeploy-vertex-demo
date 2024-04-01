@@ -3,6 +3,10 @@
 ############################################################################################################
 # do NOT touch before Vegas! this can preclude the VERIFY step of skaffold.
 # TODO move to use tag v1.1.0 where this wont happen again :)
+#
+# * `model-seems-ok.sh`: do NOT touch (as its downloaded from the Cloud and uses CD values to work, see `skaffold.yaml`)
+# * `demo-model-seems-ok.sh`:  I can touch and play with locally.
+#
 # This is downloaded from the Cloud so you CANNOT mess with this.
 # To get value locally, use this instead:
 #
@@ -15,9 +19,8 @@
 ############################################################################################################
 
 
-SCRIPT_VER="1.11cloud"
+SCRIPT_VER="1.11vegas-no-touch"
 INPUT_DATA_FILE="${1:-california-input-github.json}"
-#TEMPORARY_BYPASS="false" # true to try
 TEMPORARY_BYPASS="true" # true to try
 
 # source '_env_gaic.sh' # NO! This is executed from Github download - you cannot add it here!
@@ -34,6 +37,7 @@ TEMPORARY_BYPASS="true" # true to try
 # DO NOT TOUCH THE SOURCE ABOVE!!!
 #
 # -> BRANCHED into Vegas "demo-model-seems-ok.sh"
+# 20240401 v1.13 I learnt to test locally running locally a verify task :)
 # 202403?? v1.11 somewhat I added back the source '_env_gaic.sh' which breaks the skaffold verify.
 # 20240322 v1.10 still problem. Removing it
 # 20240322 v1.9 removed the TEMP bypass. lets see.
