@@ -18,7 +18,7 @@
 SCRIPT_VER="1.11cloud"
 INPUT_DATA_FILE="${1:-california-input-github.json}"
 #TEMPORARY_BYPASS="false" # true to try
-TEMPORARY_BYPASS="false" # true to try
+TEMPORARY_BYPASS="true" # true to try
 
 # source '_env_gaic.sh' # NO! This is executed from Github download - you cannot add it here!
 
