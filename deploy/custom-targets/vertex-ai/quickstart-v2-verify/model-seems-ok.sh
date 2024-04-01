@@ -9,13 +9,16 @@
 # $ ./demo-model-seems-ok.sh
 #
 # Found the bug: docker run -it alpine:3.15.4 /bin/sh -c "wget https://raw.githubusercontent.com/palladius/clouddeploy-vertex-demo/main/deploy/custom-targets/vertex-ai/quickstart-v2-verify/model-seems-ok.sh -O - | sh"
+#
+# Test this locally:
+# $ docker run -it alpine:3.15.4 sh -c "$( cat model-seems-ok.sh )"
 ############################################################################################################
 
 
 SCRIPT_VER="1.11cloud"
 INPUT_DATA_FILE="${1:-california-input-github.json}"
 #TEMPORARY_BYPASS="false" # true to try
-TEMPORARY_BYPASS="true" # true to try
+TEMPORARY_BYPASS="false" # true to try
 
 # source '_env_gaic.sh' # NO! This is executed from Github download - you cannot add it here!
 
@@ -212,13 +215,37 @@ echo "AUTHORIZATION_BEARER: $AUTHORIZATION_BEARER"
 
 # This is the command where it fails
 # lets remove 2>/dev/null
-curl \
-    -X POST \
-    -H "$AUTHORIZATION_BEARER" \
-    -H "Content-Type: application/json" \
-    https://us-central1-aiplatform.googleapis.com/v1/projects/${PROJECT_NUMBER}/locations/us-central1/endpoints/${CORRECT_ENDPOINT_ID}:predict \
-    -d "@${INPUT_DATA_FILE}"  \
-       > output.json  # | tee output.json
+#
+# WGET equivalent as per https://curlconverter.com/wget/
+ls -al "$INPUT_DATA_FILE"
+set -x
+wget \
+    --header="Content-Type: application/json" \
+    --post-data='{
+        "instances": [[
+            2.34476576,
+            0.98214266,
+            0.62855945,
+            -0.15375759,
+            -0.9744286 ,
+            -0.04959654,
+            1.05254828,
+            -1.32783522
+        ]]
+        }' \
+    --output-document=output.json  \
+    https://us-central1-aiplatform.googleapis.com/v1/projects/${PROJECT_NUMBER}/locations/us-central1/endpoints/${CORRECT_ENDPOINT_ID}:predict
+
+ls -al output.json
+echo wget passed at least locally..
+
+# curl \
+#     -X POST \
+#     -H "$AUTHORIZATION_BEARER" \
+#     -H "Content-Type: application/json" \
+#     https://us-central1-aiplatform.googleapis.com/v1/projects/${PROJECT_NUMBER}/locations/us-central1/endpoints/${CORRECT_ENDPOINT_ID}:predict \
+#     -d "@${INPUT_DATA_FILE}"  \
+#        > output.json  # | tee output.json
 
 curl_ret="$?"
 echo "🕸️  cURL returned: '$curl_ret' (0 is good)"
