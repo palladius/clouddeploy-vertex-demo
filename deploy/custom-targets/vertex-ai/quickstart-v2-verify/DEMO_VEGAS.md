@@ -4,7 +4,7 @@ Self: https://github.com/palladius/clouddeploy-vertex-demo/blob/main/deploy/cust
 
 ## Recording Setup
 
-* Linux (derek): _ctrl-space_ + "Take a screenshot"  (screencast recorder)
+* Linux (derek): _ctrl-space_ +  Record -> "Take a screenshot"  (screencast recorder)
     * Goes into derek:~/Videos/Screencasts
 * Mac: `Camtasia`
 * Chromebook / Chrome: **internal** chromext ("Screencast").
@@ -207,3 +207,19 @@ v4:
 }
 
 ```
+
+
+
+
+# Takes
+
+# Take 1
+
+See doc
+
+# Take 2
+
+* pause from 1m50 to XXm??
+* damn going to the toilet interrupted the recording, i need to re-do it
+* But I learn that if i delete the EPs it takes 11m09s to restore: https://screenshot.googleplex.com/7XmSNZKEEMULLdj
+* with existing one it takes ~3m40s https://screenshot.googleplex.com/oriNRb9S7N7PCYs
