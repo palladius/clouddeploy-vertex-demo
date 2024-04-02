@@ -226,7 +226,7 @@ HOUSE_PRICE=$(echo "scale=1; $PREDICTED_HOUSE_PRICE_COEFFICIENT * 100000 / 1" | 
 
 echo
 echo
-echo  "🏙️ Predicted 🇺🇸 🧸 California 🏡 house price: $HOUSE_PRICE💲"
+echo  "🏙️ Predicted 🇺🇸 🧸 California 🏡 house price: ${HOUSE_PRICE} 💲"
 echo
 echo
 

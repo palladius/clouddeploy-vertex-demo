@@ -9,7 +9,7 @@ Self: https://github.com/palladius/clouddeploy-vertex-demo/blob/main/deploy/cust
 * Mac: `Camtasia`
 * Chromebook / Chrome: **internal** chromext ("Screencast").
 
-Tips🧮 :
+Tips :
 * Make sure you dont show the URL and the CTRL SHIFT B below it.
 * start with some things open:
     1. Slides
@@ -36,18 +36,13 @@ Tips🧮 :
 
   forse trovi meglio TODO
 
-1. Undeploy endpoints so that release actually DEPLOYS to them:
-    1. Undeploy from demo24-dev: https://pantheon.corp.google.com/vertex-ai/online-prediction/locations/us-central1/endpoints/demo24-dev?project=rick-and-nardy-demo
-    2. 3 dots -> "Undeploy model from endpoint"
-    3. Undeploy from demo24-prod: https://pantheon.corp.google.com/vertex-ai/online-prediction/locations/us-central1/endpoints/demo24-prod?project=rick-and-nardy-demo
-    4. 3 dots -> "Undeploy model from endpoint"
-    5. Same on demo24-preprod: https://pantheon.corp.google.com/vertex-ai/online-prediction/locations/us-central1/endpoints/demo24-preprod?e=-13802955&mods=logs_tg_staging&project=rick-and-nardy-demo
-    6. Verify that all endpoints are now empty: https://pantheon.corp.google.com/vertex-ai/online-prediction/endpoints?project=rick-and-nardy-demo&e=-13802955&mods=logs_tg_staging
+1. NO! DO NOT UNDEPLOY EPs.
+
 * Check ALL VERSIONS link: https://pantheon.corp.google.com/vertex-ai/models/locations/us-central1/models/8413639997114023936?project=rick-and-nardy-demo
 
 
 1. Make sure v1 is NOT deployed. You want to deploy a v1 first. For instance check :
-    2. https://pantheon.corp.google.com/deploy/delivery-pipelines/us-central1/vertex-demo-verify?e=-13802955&mods=logs_tg_staging&project=rick-and-nardy-demo that all 3 endpoints are on v2. https://screenshot.googleplex.com/tGrgcFiJfkpuHjt
+    1. https://pantheon.corp.google.com/deploy/delivery-pipelines/us-central1/vertex-demo-verify?e=-13802955&mods=logs_tg_staging&project=rick-and-nardy-demo that all 3 endpoints are on v2. https://screenshot.googleplex.com/tGrgcFiJfkpuHjt
 
 **IMPORTANT** Actually if you undeploy them it takes A LONG TIME! 5-6 minutes or more. So maybe worth NOT undeploying but make sure they deploy to v2.
 
